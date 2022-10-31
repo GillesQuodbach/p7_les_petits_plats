@@ -61,3 +61,8 @@ h1 {
 .dropdown-toggle {
     height: 70px;
 }
+
+.dropdown-menu {
+    top: 0px;
+    margin: 0;
+}
