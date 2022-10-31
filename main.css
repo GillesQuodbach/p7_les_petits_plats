@@ -1,0 +1,69 @@
+h1 {
+  color: #D04F4F;
+  font-family: "DM Sans", sans-serif;
+  font-weight: 700;
+}
+
+.form-control::-moz-placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #000;
+  opacity: 0.25;
+  /* Firefox */
+}
+
+.form-control:-ms-input-placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #000;
+  opacity: 0.25;
+  /* Firefox */
+}
+
+.form-control::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #000;
+  opacity: 0.25;
+  /* Firefox */
+}
+
+.form-control:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: #000;
+}
+
+.form-control::-ms-input-placeholder {
+  /* Microsoft Edge */
+  color: #000;
+}
+
+.btn-ingredients {
+  background-color: #3282F7 !important;
+}
+
+.btn-appareils {
+  background-color: #68D9A4 !important;
+}
+
+.btn-ustensiles {
+  background-color: #ED6454 !important;
+}
+
+/*# sourceMappingURL=main.css.map */
+
+.dropdown {
+  width: 170px;
+}
+
+.dropdown-menu,
+.dropdown-toggle {
+  width: 170px;
+}
+
+.dropdown-toggle {
+  height: 70px;
+}
+
+.dropdown-row {
+  display: flex;
+  /* flex-direction: row; */
+  justify-content: flex-start;
+}
