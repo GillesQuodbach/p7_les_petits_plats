@@ -1,1 +1,16 @@
-$primary: #20c997;
+// Changement couleurs
+
+$primary: #3282F7;
+$success: #68D9A4;
+$warning: #ED6454;
+$danger:  #D04F4F;
+
+
+$display-font-sizes: (
+  1: 5rem,
+  2: 4.5rem,
+  3: 4rem,
+  4: 3.5rem,
+  5: 3rem,
+  6: 1rem
+) !default;
