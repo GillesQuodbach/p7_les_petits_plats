@@ -1,0 +1,23 @@
+{
+  "dependencies": {
+    "bootstrap": "^5.2.2"
+  },
+  "name": "p7_les_petits_plats",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "sass": "sass --watch ./scss/style.scss:./css/style.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GillesQuodbach/p7_les_petits_plats.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GillesQuodbach/p7_les_petits_plats/issues"
+  },
+  "homepage": "https://github.com/GillesQuodbach/p7_les_petits_plats#readme",
+  "description": ""
+}
