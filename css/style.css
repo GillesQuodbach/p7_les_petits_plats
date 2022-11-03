@@ -10778,11 +10778,6 @@ textarea.form-control-lg {
   font-weight: 700;
 }
 
-.dropdown-toggle i {
-  padding-left: 10px;
-  font-size: 1.2em;
-}
-
 .dropdown-menu {
   border-radius: 0px 0px 5px 5px;
 }
@@ -10801,8 +10796,26 @@ textarea.form-control-lg {
   min-width: 150px;
 }
 
-.dropdown-toggle::after {
-  content: url(/img/chevron-down.svg);
+#search-menu button {
+  font-family: "DM", sans-serif;
+}
+
+#card-body-container {
+  background-color: #E7E7E7;
+}
+
+.list-group-item {
+  background-color: #E7E7E7;
+}
+
+.card-main {
+  font-size: 8px;
+}
+
+.list-group-item {
+  border: none;
+  margin: 0;
+  padding: 0;
 }
 
 /*# sourceMappingURL=style.css.map */
