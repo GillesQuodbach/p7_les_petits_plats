@@ -1,0 +1,128 @@
+#header-title {
+    font-family: 'DM', sans-serif;
+    font-size: 36px;
+    font-weight: 700;
+}
+
+/* Suppression des bordures des inputs */
+
+button:focus,
+button:active,
+textarea:focus,
+input[type="text"]:focus,
+textarea[type="text"]:focus,
+input[type="password"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="date"]:focus,
+input[type="month"]:focus,
+input[type="time"]:focus,
+input[type="week"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="color"]:focus,
+.uneditable-input:focus,
+.form-control:focus {
+    border-color: none;
+    box-shadow: none;
+    outline: none;
+}
+
+/* Barre de recherche principale */
+
+#main-search-barre input {
+    border: none;
+    height: 70px;
+}
+
+/* Modification placerholder barre de recherche */
+#main-search-barre input::placeholder {
+    color: #000000;
+    opacity: 0.25;
+    font-size: 18px;
+    font-family: 'Lato', sans-serif;
+}
+
+#main-search-input {
+    padding-left: 20px;
+}
+
+#main-search-icon {
+    padding-right: 10px;
+}
+
+
+/* Mise en forme dropdowns */
+
+.dropdown {
+    margin: 0;
+    padding: 0;
+
+}
+
+.dropdown-toggle {
+    border: none;
+    font-weight: 700;
+    width: 155px;
+}
+
+.dropdown-input {
+    max-width: 80%;
+}
+
+.dropdown-menu {
+    border-radius: 0px 0px 5px 5px;
+}
+
+.dropdown-toggle.show {
+    border-radius: 5px 5px 0px 0px;
+}
+
+.dropdown-toggle:after {
+    border: none;
+
+}
+
+.dropdown-toggle,
+.dropdown-menu {
+    border: none;
+    /* min-width: 150px; */
+}
+
+.chevron {
+    /* transform: rotate(180deg); */
+
+}
+
+
+#search-dropdown button {
+    font-family: 'DM', sans-serif;
+    font-size: 18px;
+
+}
+
+#search-dropdown input::placeholder {
+    color: #fff;
+    font-size: 18px;
+}
+
+#card-body-container {
+    background-color: #E7E7E7;
+}
+
+.list-group-item {
+    background-color: #E7E7E7;
+}
+
+.card-main {
+    font-size: 8px;
+}
+
+.list-group-item {
+    border: none;
+    margin: 0;
+    padding: 0;
+}
