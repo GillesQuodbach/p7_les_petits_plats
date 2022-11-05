@@ -117,7 +117,10 @@ input[type="color"]:focus,
     /* min-width: 150px; */
 }
 
-.btn-ingredients {
+.btn-ingredients,
+.btn-ingredients:hover,
+.btn-ingredients:active,
+.btn-ingredients:focus {
     text-decoration: none;
     background-color: #3282F7;
     outline: #3282F7;
@@ -132,7 +135,28 @@ input[type="color"]:focus,
     ;
 }
 
-.btn-appareils {
+.dropdown-menu-ingredients,
+.dropdown-menu-ingredients:hover,
+.dropdown-menu-ingredients:active,
+.dropdown-menu-ingredients:focus {
+    text-decoration: none;
+    background-color: #3282F7;
+    outline: #3282F7;
+    box-shadow: #3282F7;
+    --bs-btn-hover-color: #3282F7;
+    --bs-btn-hover-bg: #3282F7;
+    --bs-btn-hover-border-color: #3282F7;
+    --bs-btn-focus-shadow-rgb: #3282F7;
+    --bs-btn-active-color: #3282F7;
+    --bs-btn-active-bg: #3282F7;
+    --bs-btn-active-border-color: #3282F7;
+    ;
+}
+
+.btn-appareils,
+.btn-appareils:hover,
+.btn-appareils:active,
+.btn-appareils:focus {
     text-decoration: none;
     background-color: #68D9A4;
     outline: #68D9A4;
@@ -147,7 +171,46 @@ input[type="color"]:focus,
     ;
 }
 
-.btn-ustensiles {
+.dropdown-menu-ingredients,
+.dropdown-menu-ingredients:hover,
+.dropdown-menu-ingredients:active,
+.dropdown-menu-ingredients:focus {
+    text-decoration: none;
+    background-color: #68D9A4;
+    outline: #68D9A4;
+    box-shadow: #68D9A4;
+    --bs-btn-hover-color: #68D9A4;
+    --bs-btn-hover-bg: #68D9A4;
+    --bs-btn-hover-border-color: #68D9A4;
+    --bs-btn-focus-shadow-rgb: #68D9A4;
+    --bs-btn-active-color: #68D9A4;
+    --bs-btn-active-bg: #68D9A4;
+    --bs-btn-active-border-color: #68D9A4;
+    ;
+}
+
+.dropdown-menu-ustensiles,
+.dropdown-menu-ustensiles:hover,
+.dropdown-menu-ustensiles:focus,
+.dropdown-menu-ustensiles:active {
+    text-decoration: none;
+    background-color: #ED6454;
+    outline: #ED6454;
+    box-shadow: #ED6454;
+    --bs-btn-hover-color: #ED6454;
+    --bs-btn-hover-bg: #ED6454;
+    --bs-btn-hover-border-color: #ED6454;
+    --bs-btn-focus-shadow-rgb: #ED6454;
+    --bs-btn-active-color: #ED6454;
+    --bs-btn-active-bg: #ED6454;
+    --bs-btn-active-border-color: #ED6454;
+    ;
+}
+
+.btn-ustensiles,
+.btn-ustensiles:hover,
+.btn-ustensiles:focus,
+.btn-ustensiles:active {
     text-decoration: none;
     background-color: #ED6454;
     outline: #ED6454;
@@ -166,17 +229,26 @@ input[type="color"]:focus,
     font-family: 'DM', sans-serif;
     font-size: 18px;
     color: #fff;
+    font-weight: 700;
 
 }
 
 #search-dropdown input::placeholder {
     color: #fff;
     font-size: 18px;
+    font-weight: 700;
 }
 
 #search-dropdown input:active {
     color: #fff;
     font-size: 18px;
+    font-weight: 700;
+}
+
+#search-dropdown input:focus {
+    color: #fff;
+    font-size: 18px;
+    font-weight: 700;
 }
 
 
