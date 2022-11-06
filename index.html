@@ -23,27 +23,45 @@
                 width="50" height="46">
         </div>
         <div class="row">
-            <h1 id="header-title" class="text-center text-danger">Les petits plats</h1>
+            <h1 id="header-title" class="text-center text-danger bg-info">Les petits plats</h1>
         </div>
 
         <!-- Main search -->
 
         <div id="main-search" class="row">
-            <div id="main-search-barre" class="input-group">
+            <div id="main-search-barre" class="input-group m-0 p-0">
                 <input id="main-search-input" type="text" class="form-control text-dark rounded-start bg-light"
                     placeholder="Rechercher une recette" aria-label="Rechercher une recette" />
                 <button id="main-search-btn" type="button" class="search-btn btn bg-light"><img id="main-search-icon"
                         src="img/search.svg" alt="search" class="search-icon"></button>
             </div>
         </div>
+        <!-- Search dropdown -->
+        <div id="search-dropdown" class="row  bg-success p-0">
+            <div id="ingredients-choice" class="d-grid d-md-flex flex-column mt-4 mb-0 gap-2 col-2 p-0">
+                <button type="button"
+                    class="ingredients-choice-button btn btn-primary btn-sm disabled text-white">Coco<img
+                        src="img/choice-delete-cross.svg" alt="delete-cross" class="choice-cross"></button>
+                <button type="button"
+                    class="ingredients-choice-button btn btn-primary btn-sm disabled text-white">Coco<img
+                        class="choice-cross" src="img/choice-delete-cross.svg" alt="delete-cross">
+                </button>
+                <button type="button"
+                    class="ingredients-choice-button btn btn-primary btn-sm disabled text-white">Coco<img
+                        class="choice-cross" src="img/choice-delete-cross.svg" alt="delete-cross"
+                        class="choice-cross"></button>
+            </div>
+
+        </div>
+
+
 
         <!-- Search dropdown -->
-
-        <div id="search-dropdown" class="row">
-            <div class="d-grid d-md-flex justify-content-start my-3 gap-3">
-                <div id="dropdown-ingredients" class="dropdown h-auto">
+        <div id="search-dropdown" class="row bg-warning p-0">
+            <div class="d-grid d-md-flex justify-content-start my-3 gap-3 p-0">
+                <div id="dropdown-ingredients" class="dropdown col-2">
                     <button id="button-ingredients"
-                        class="btn btn-sm btn-primary text-white btn-ingredients dropdown-toggle d-flex justify-content-between align-items-center ps-3 w-100"
+                        class="btn btn-sm btn-primary text-white btn-ingredients dropdown-toggle d-flex justify-content-between align-items-center ps-3"
                         type="button" data-bs-toggle="dropdown" data-bs-offset="0,0" aria-expanded="false">
                         <input id="input-ingredients" class="dropdown-input form-control bg-primary border-0 px-0"
                             type="text" aria-label="default input example" placeholder="Ingrédients">
@@ -78,7 +96,7 @@
                         <li><a class="dropdown-item text-white" href="#">Something here</a></li>
                     </ul>
                 </div>
-                <div id="dropdown-ustensiles" class="dropdown">
+                <div id="dropdown-ustensiles" class="dropdown col-2">
                     <button id="button-ustensiles"
                         class="btn btn-sm btn-warning text-white btn-ustensiles dropdown-toggle d-flex justify-content-between align-items-center align- ps-3 w-100"
                         type="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-offset="0,0"><input
@@ -89,8 +107,7 @@
                                 d="M14.12 0.453369L8 6.56004L1.88 0.453369L0 2.33337L8 10.3334L16 2.33337L14.12 0.453369Z"
                                 fill="white" />
                         </svg>
-                        <ul id="dropdown-menu-ustensiles"
-                            class="dropdown-menu dropdown-menu-ustensiles bg-warning w-100">
+                        <ul id="dropdown-menu-ustensiles" class="dropdown-menu dropdown-menu-ustensiles bg-warning">
                             <li><a class="dropdown-item text-white" href="#">Action</a></li>
                             <li><a class="dropdown-item text-white" href="#">Another action</a></li>
                             <li><a class="dropdown-item text-white" href="#">Something here</a></li>
@@ -101,26 +118,28 @@
 
         <!-- Recipes gallery -->
 
-        <div id="recipes-gallery" class="row row-cols-3 g-4">
+        <div id="recipes-gallery" class="row row-cols-3 g-4 bg-info">
             <div class="col">
                 <div id="card-body-container" class="card">
                     <img src="https://picsum.photos/380/178" class="card-img-top" alt="...">
                     <div class="card-body">
                         <div class="card-hdr d-flex justify-content-between">
-                            <h5 class="card-title fs-6">Limonade de coco</h5>
-                            <p class="card-time fw-bold"><img class="mb-1" src="img/clock.svg" alt="clock"> 10
-                                min
-                            </p>
+                            <h5 class="card-title">Limonade de coco</h5>
+
+                            <img class="card-clock mb-1" src="img/clock.svg" alt="clock">
+                            <p class="card-time fw-bold">10 min</p>
+
                         </div>
                         <div class="card-main d-flex justify-content-between">
-                            <ul id="list" class=" col-6 list-group">
+                            <ul id="list" class="col-6 list-group">
                                 <li class="list-group-item"><b>Lait de coco: </b> 400ml</li>
                                 <li class="list-group-item"><b>Jus de citron: </b> 2</li>
                                 <li class="list-group-item"><b>Crème de coco: </b> 4 cuillères</li>
                                 <li class="list-group-item"><b>Sucre: </b>20g</li>
                                 <li class="list-group-item"><b>Glaçons: </b>2</li>
                             </ul>
-                            <p class="col-6">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique,
+                            <p class="card-recipe col-6">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                                Similique,
                                 aperiam odit ratione
                                 vel laborum laboriosam numquam iusto autem assumenda, asperiores, facilis hic. Aliquid
                                 ex fugit veniam laboriosam fuga earum quos?</p>
