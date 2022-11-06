@@ -54,18 +54,16 @@ input[type="color"]:focus,
     font-family: 'Lato', sans-serif;
 }
 
-#main-search-icon {
+/* #main-search-icon {
     padding-right: 10px;
-}
+} */
 
 #ingredients-choice {
-    width: 170px;
     background-color: aqua;
 }
 
 /* Mise en forme selection choix */
 .ingredients-choice-button {
-    width: 105px;
     height: 35px;
     font-size: 14px;
     font-weight: 700;
@@ -79,11 +77,6 @@ input[type="color"]:focus,
 .dropdown-toggle,
 .dropdown-menu {
     border: none;
-}
-
-.dropdown {
-    margin: 0;
-    padding: 0;
 }
 
 .dropdown-toggle {
@@ -261,8 +254,6 @@ input[type="color"]:focus,
 .list-group-item {
     background-color: #E7E7E7;
     border: none;
-    margin: 0;
-    padding: 0;
 }
 
 .card-main {
