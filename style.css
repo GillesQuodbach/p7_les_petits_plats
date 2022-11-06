@@ -153,6 +153,19 @@ input[type="color"]:focus,
     ;
 }
 
+#dropdown-menu-ingredients:hover a {
+    background-color: #3282F7;
+}
+
+
+#dropdown-menu-appareils:hover a {
+    background-color: #68D9A4;
+}
+
+#dropdown-menu-ustensiles:hover a {
+    background-color: #ED6454;
+}
+
 .btn-appareils,
 .btn-appareils:hover,
 .btn-appareils:active,
