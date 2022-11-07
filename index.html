@@ -17,28 +17,30 @@
 </head>
 
 <body>
-    <!-- Header -->
-    <div id="container" class="container pt-5 pb-2">
+    <div id="main-container" class="container pt-5 pb-2">
+        <!--! Header -->
         <div id="header-logo" class="row"><img id="header-logo" src="img/logo.svg" alt="Logo les petits plats"
                 width="50" height="46">
         </div>
         <div class="row">
-            <h1 id="header-title" class="text-center text-danger bg-info">Les petits plats</h1>
+            <h1 id="header-title" class="text-center text-danger fw-bold fs-1">Les petits plats</h1>
         </div>
 
-        <!-- Main search -->
-
-        <div id="main-search" class="row">
-            <div id="main-search-barre" class="input-group m-0 p-0">
-                <input id="main-search-input" type="text" class="form-control text-dark rounded-start bg-light"
+        <!--! Search Barre -->
+        <div id="main-search" class="row mt-3">
+            <div id="main-search-barre" class="input-group">
+                <input id="main-search-input" type="text"
+                    class="form-control text-dark rounded-start bg-light border-0 ps-4"
                     placeholder="Rechercher une recette" aria-label="Rechercher une recette" />
-                <button id="main-search-btn" type="button" class="search-btn btn bg-light"><img id="main-search-icon"
-                        src="img/search.svg" alt="search" class="search-icon"></button>
+                <button id="main-search-btn" type="button" class="search-btn btn bg-light pe-3"><img
+                        id="main-search-icon" src="img/search.svg" alt="search" class="search-icon"></button>
             </div>
         </div>
-        <!-- Search dropdown -->
-        <div id="search-dropdown" class="row  bg-success p-0">
-            <div id="ingredients-choice" class="d-grid d-md-flex flex-column mt-4 mb-0 gap-2 col-2 p-0">
+        <!--! Dropdown and choices container -->
+        <div id="search-dropdown" class="row mt-4 d-flex flex-row">
+            <!--! Ingrendients container -->
+            <div id="ingredients-choice" class="d-grid d-md-flex flex-column gap-2">
+                <!--! Ingredients Choices -->
                 <button type="button"
                     class="ingredients-choice-button btn btn-primary btn-sm disabled text-white">Coco<img
                         src="img/choice-delete-cross.svg" alt="delete-cross" class="choice-cross"></button>
@@ -50,21 +52,15 @@
                     class="ingredients-choice-button btn btn-primary btn-sm disabled text-white">Coco<img
                         class="choice-cross" src="img/choice-delete-cross.svg" alt="delete-cross"
                         class="choice-cross"></button>
-            </div>
 
-        </div>
-
-
-
-        <!-- Search dropdown -->
-        <div id="search-dropdown" class="row bg-warning">
-            <div class="d-grid d-md-flex justify-content-start my-3 gap-3 p-0">
-                <div id="dropdown-ingredients" class="dropdown col-2">
+                <!--! Ingredients Dropdown -->
+                <div id="dropdown-ingredients" class="dropdown">
                     <button id="button-ingredients"
                         class="btn btn-sm btn-primary text-white btn-ingredients dropdown-toggle d-flex justify-content-between align-items-center ps-3"
                         type="button" data-bs-toggle="dropdown" data-bs-offset="0,0" aria-expanded="false">
-                        <input id="input-ingredients" class="dropdown-input form-control bg-primary border-0 px-0"
-                            type="text" aria-label="default input example" placeholder="Ingrédients">
+                        <input id="input-ingredients"
+                            class="dropdown-input bg-primary form-control bg-primary border-0 px-0" type="text"
+                            aria-label="default input example" placeholder="Ingrédients">
 
                         <svg width="16" height="11" viewBox="0 0 16 11" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
@@ -72,18 +68,37 @@
                                 fill="white" />
                         </svg>
                     </button>
-                    <ul id="dropdown-menu-ingredients" class="dropdown-menu bg-primary col-2">
+                    <ul id="dropdown-menu-ingredients" class="dropdown-menu bg-primary">
                         <li><a class="dropdown-item text-white" href="#">Action</a></li>
                         <li><a class="dropdown-item text-white" href="#">Another action</a></li>
-                        <li><a class="dropdown-item text-white" href="#">Something here</a></li>
+                        <li><a class="dropdown-item text-white" href="#">Something here !!!!!!!!!!!</a></li>
                     </ul>
                 </div>
-                <div id="dropdown-appareils" class="dropdown col-2">
+            </div>
+
+            <!--! Appareils container -->
+            <div id="appareils-choice" class="d-grid d-md-flex flex-column gap-2">
+                <!--!  Appareils Choices -->
+                <button type="button"
+                    class="appareils-choice-button btn btn-primary btn-sm disabled text-white">Coco<img
+                        src="img/choice-delete-cross.svg" alt="delete-cross" class="choice-cross"></button>
+                <button type="button"
+                    class="appareils-choice-button btn btn-primary btn-sm disabled text-white">Coco<img
+                        class="choice-cross" src="img/choice-delete-cross.svg" alt="delete-cross">
+                </button>
+                <button type="button"
+                    class="appareils-choice-button btn btn-primary btn-sm disabled text-white">Coco<img
+                        class="choice-cross" src="img/choice-delete-cross.svg" alt="delete-cross"
+                        class="choice-cross"></button>
+
+                <!--!  Appareils Dropdown -->
+                <div id="dropdown-appareils" class="dropdown">
                     <button id="button-appareils"
-                        class="btn btn-sm btn-success text-white btn-appareils dropdown-toggle d-flex justify-content-between align-items-center ps-3"
-                        type="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-offset="0,0"><input
-                            id="input-appareils" class="dropdown-input form-control bg-success border-0 px-0 "
+                        class="btn btn-sm btn-primary text-white btn-appareils dropdown-toggle d-flex justify-content-between align-items-center  ps-3"
+                        type="button" data-bs-toggle="dropdown" data-bs-offset="0,0" aria-expanded="false">
+                        <input id="input-appareils" class="dropdown-input form-control bg-success border-0 px-0"
                             type="text" aria-label="default input example" placeholder="Appareils">
+
                         <svg width="16" height="11" viewBox="0 0 16 11" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
                                 d="M14.12 0.453369L8 6.56004L1.88 0.453369L0 2.33337L8 10.3334L16 2.33337L14.12 0.453369Z"
@@ -93,45 +108,98 @@
                     <ul id="dropdown-menu-appareils" class="dropdown-menu bg-success">
                         <li><a class="dropdown-item text-white" href="#">Action</a></li>
                         <li><a class="dropdown-item text-white" href="#">Another action</a></li>
-                        <li><a class="dropdown-item text-white" href="#">Something here</a></li>
+                        <li><a class="dropdown-item text-white" href="#">Something here !!!!!!!!!!!</a></li>
                     </ul>
                 </div>
-                <div id="dropdown-ustensiles" class="dropdown col-2">
+            </div>
+
+            <!--! Ustensiles container -->
+            <div id="ustensiles-choice" class="d-grid d-md-flex flex-column gap-2">
+                <!--! Ustensiles Choices -->
+                <button type="button"
+                    class="ustensiles-choice-button btn btn-primary btn-sm disabled text-white">Coco<img
+                        src="img/choice-delete-cross.svg" alt="delete-cross" class="choice-cross"></button>
+                <button type="button"
+                    class="ustensiles-choice-button btn btn-primary btn-sm disabled text-white">Coco<img
+                        class="choice-cross" src="img/choice-delete-cross.svg" alt="delete-cross">
+                </button>
+                <button type="button"
+                    class="ustensiles-choice-button btn btn-primary btn-sm disabled text-white">Coco<img
+                        class="choice-cross" src="img/choice-delete-cross.svg" alt="delete-cross"
+                        class="choice-cross"></button>
+
+                <!--! Ustensiles Dropdown -->
+                <div id="dropdown-ustensiles" class="dropdown">
                     <button id="button-ustensiles"
-                        class="btn btn-sm btn-warning text-white btn-ustensiles dropdown-toggle d-flex justify-content-between align-items-center align- ps-3 w-100"
-                        type="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-offset="0,0"><input
-                            id="input-ustensiles" class="dropdown-input form-control bg-warning border-0 px-0"
+                        class="btn btn-sm btn-primary text-white btn-ustensiles dropdown-toggle d-flex justify-content-between align-items-center ps-3"
+                        type="button" data-bs-toggle="dropdown" data-bs-offset="0,0" aria-expanded="false">
+                        <input id="input-ustensiles" class="dropdown-input form-control bg-warning border-0 px-0"
                             type="text" aria-label="default input example" placeholder="Ustensiles">
+
                         <svg width="16" height="11" viewBox="0 0 16 11" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
                                 d="M14.12 0.453369L8 6.56004L1.88 0.453369L0 2.33337L8 10.3334L16 2.33337L14.12 0.453369Z"
                                 fill="white" />
                         </svg>
-                        <ul id="dropdown-menu-ustensiles" class="dropdown-menu dropdown-menu-ustensiles bg-warning">
-                            <li><a class="dropdown-item text-white" href="#">Action</a></li>
-                            <li><a class="dropdown-item text-white" href="#">Another action</a></li>
-                            <li><a class="dropdown-item text-white" href="#">Something here</a></li>
-                        </ul>
+                    </button>
+                    <ul id="dropdown-menu-ustensiles" class="dropdown-menu bg-warning">
+                        <li><a class="dropdown-item text-white" href="#">Action</a></li>
+                        <li><a class="dropdown-item text-white" href="#">Another action</a></li>
+                        <li><a class="dropdown-item text-white" href="#">Something here !!!!!!!!!!!</a></li>
+                    </ul>
                 </div>
             </div>
+            <!-- <div id="dropdown-appareils" class="dropdown col-2">
+                <button id="button-appareils"
+                    class="btn btn-sm btn-success text-white btn-appareils dropdown-toggle d-flex justify-content-between align-items-center ps-3"
+                    type="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-offset="0,0"><input
+                        id="input-appareils" class="dropdown-input form-control bg-success border-0 px-0 " type="text"
+                        aria-label="default input example" placeholder="Appareils">
+                    <svg width="16" height="11" viewBox="0 0 16 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M14.12 0.453369L8 6.56004L1.88 0.453369L0 2.33337L8 10.3334L16 2.33337L14.12 0.453369Z"
+                            fill="white" />
+                    </svg>
+                </button>
+                <ul id="dropdown-menu-appareils" class="dropdown-menu bg-success">
+                    <li><a class="dropdown-item text-white" href="#">Action</a></li>
+                    <li><a class="dropdown-item text-white" href="#">Another action</a></li>
+                    <li><a class="dropdown-item text-white" href="#">Something here</a></li>
+                </ul>
+            </div> -->
+            <!-- <div id="dropdown-ustensiles" class="dropdown col-2">
+                <button id="button-ustensiles"
+                    class="btn btn-sm btn-warning text-white btn-ustensiles dropdown-toggle d-flex justify-content-between align-items-center align- ps-3 w-100"
+                    type="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-offset="0,0"><input
+                        id="input-ustensiles" class="dropdown-input form-control bg-warning border-0 px-0" type="text"
+                        aria-label="default input example" placeholder="Ustensiles">
+                    <svg width="16" height="11" viewBox="0 0 16 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M14.12 0.453369L8 6.56004L1.88 0.453369L0 2.33337L8 10.3334L16 2.33337L14.12 0.453369Z"
+                            fill="white" />
+                    </svg>
+                    <ul id="dropdown-menu-ustensiles" class="dropdown-menu dropdown-menu-ustensiles bg-warning">
+                        <li><a class="dropdown-item text-white" href="#">Action</a></li>
+                        <li><a class="dropdown-item text-white" href="#">Another action</a></li>
+                        <li><a class="dropdown-item text-white" href="#">Something here</a></li>
+                    </ul>
+            </div> -->
+
         </div>
 
         <!-- Recipes gallery -->
 
-        <div id="recipes-gallery" class="row row-cols-3 g-4 bg-info">
+        <div id="recipes-gallery" class="row row-cols-3 g-4 mt-0">
             <div class="col">
                 <div id="card-body-container" class="card">
                     <img src="https://picsum.photos/380/178" class="card-img-top" alt="...">
                     <div class="card-body">
-                        <div class="card-hdr d-flex justify-content-between">
-                            <h5 class="card-title">Limonade de coco</h5>
-
-                            <img class="card-clock mb-1" src="img/clock.svg" alt="clock">
-                            <p class="card-time fw-bold">10 min</p>
+                        <div class="card-hdr d-flex justify-content-between align-items-center">
+                            <h5 class="card-title my-auto">Limonade de coco</h5>
+                            <img class="card-clock my-auto" src="img/clock.svg" alt="clock">
+                            <p class="card-time fw-bold my-auto">10 min</p>
 
                         </div>
-                        <div class="card-main d-flex justify-content-between">
-                            <ul id="list" class="col-6 list-group">
+                        <div class="card-main d-flex justify-content-between mt-3">
+                            <ul id="list" class="col-6 list-group rounded-0">
                                 <li class="list-group-item"><b>Lait de coco: </b> 400ml</li>
                                 <li class="list-group-item"><b>Jus de citron: </b> 2</li>
                                 <li class="list-group-item"><b>Crème de coco: </b> 4 cuillères</li>
