@@ -62,6 +62,18 @@ input[type="color"]:focus,
     width: 14.5%;
 }
 
+#ingredients-choice-button {
+    background-color: #3282F7;
+}
+
+#appareils-choice-button {
+    background-color: #68D9A4;
+}
+
+#ustensiles-choice-button {
+    background-color: #ED6454;
+}
+
 /* Mise en forme selection choix */
 .ingredients-choice-button,
 .appareils-choice-button,
@@ -90,6 +102,7 @@ input[type="color"]:focus,
     font-size: 18px;
     font-weight: 700;
     color: #fff;
+    min-width: 100%;
 }
 
 .dropdown-toggle:after {
@@ -120,6 +133,7 @@ input[type="color"]:focus,
     font-family: 'Lato', sans-serif;
     font-size: 18px;
     color: #fff;
+    min-width: inherit;
 }
 
 .btn-ingredients,
@@ -230,8 +244,6 @@ input[type="color"]:focus,
     ;
 }
 
-#dropdown-ingredients button {}
-
 #dropdown-menu-ingredients:hover a {
     background-color: #3282F7;
 }
@@ -310,3 +322,8 @@ input[type="color"]:focus,
         transform: rotate(0.5turn);
     }
 }
+
+
+/* #ustensiles-choice {
+    max-width: 100%;
+} */
