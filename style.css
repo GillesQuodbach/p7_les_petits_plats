@@ -248,7 +248,7 @@ input[type="color"]:focus,
 #search-dropdown input:active,
 #search-dropdown input:focus {
     color: #fff;
-    font-size: 18px;
+    font-size: 1rem;
     font-weight: 700;
 }
 
