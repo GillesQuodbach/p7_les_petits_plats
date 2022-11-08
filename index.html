@@ -37,151 +37,43 @@
             </div>
         </div>
         <!--! Dropdown and choices container -->
-        <div id="search-dropdown" class="row mt-4 d-flex flex-row">
-            <!--! Ingrendients container -->
-            <div id="ingredients-choice" class="d-grid d-md-flex flex-column gap-2">
-                <!--! Ingredients Choices -->
-                <button type="button"
-                    class="ingredients-choice-button btn btn-primary btn-sm disabled text-white">Coco<img
-                        src="img/choice-delete-cross.svg" alt="delete-cross" class="choice-cross"></button>
-                <button type="button"
-                    class="ingredients-choice-button btn btn-primary btn-sm disabled text-white">Coco<img
-                        class="choice-cross" src="img/choice-delete-cross.svg" alt="delete-cross">
-                </button>
-                <button type="button"
-                    class="ingredients-choice-button btn btn-primary btn-sm disabled text-white">Coco<img
-                        class="choice-cross" src="img/choice-delete-cross.svg" alt="delete-cross"
-                        class="choice-cross"></button>
-
-                <!--! Ingredients Dropdown -->
-                <div id="dropdown-ingredients" class="dropdown">
-                    <button id="button-ingredients"
-                        class="btn btn-sm btn-primary text-white btn-ingredients dropdown-toggle d-flex justify-content-between align-items-center ps-3"
-                        type="button" data-bs-toggle="dropdown" data-bs-offset="0,0" aria-expanded="false">
-                        <input id="input-ingredients"
-                            class="dropdown-input bg-primary form-control bg-primary border-0 px-0" type="text"
-                            aria-label="default input example" placeholder="Ingrédients">
-
-                        <svg width="16" height="11" viewBox="0 0 16 11" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M14.12 0.453369L8 6.56004L1.88 0.453369L0 2.33337L8 10.3334L16 2.33337L14.12 0.453369Z"
-                                fill="white" />
-                        </svg>
-                    </button>
-                    <ul id="dropdown-menu-ingredients" class="dropdown-menu bg-primary">
-                        <li><a class="dropdown-item text-white" href="#">Action</a></li>
-                        <li><a class="dropdown-item text-white" href="#">Another action</a></li>
-                        <li><a class="dropdown-item text-white" href="#">Something here !!!!!!!!!!!</a></li>
-                    </ul>
-                </div>
-            </div>
-
-            <!--! Appareils container -->
-            <div id="appareils-choice" class="d-grid d-md-flex flex-column gap-2">
-                <!--!  Appareils Choices -->
-                <button type="button"
-                    class="appareils-choice-button btn btn-success btn-sm disabled text-white">Coco<img
-                        src="img/choice-delete-cross.svg" alt="delete-cross" class="choice-cross"></button>
-                <button type="button"
-                    class="appareils-choice-button btn btn-success btn-sm disabled text-white">Coco<img
-                        class="choice-cross" src="img/choice-delete-cross.svg" alt="delete-cross">
-                </button>
-                <button type="button"
-                    class="appareils-choice-button btn btn-success btn-sm disabled text-white">Coco<img
-                        class="choice-cross" src="img/choice-delete-cross.svg" alt="delete-cross"
-                        class="choice-cross"></button>
-
-                <!--!  Appareils Dropdown -->
-                <div id="dropdown-appareils" class="dropdown-fluid">
-                    <button id="button-appareils"
-                        class="btn btn-sm btn-primary text-white btn-appareils dropdown-toggle d-flex justify-content-between align-items-center  ps-3"
-                        type="button" data-bs-toggle="dropdown" data-bs-offset="0,0" aria-expanded="false">
-                        <input id="input-appareils" class="dropdown-input form-control bg-success border-0 px-0"
-                            type="text" aria-label="default input example" placeholder="Appareils">
-
-                        <svg width="16" height="11" viewBox="0 0 16 11" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M14.12 0.453369L8 6.56004L1.88 0.453369L0 2.33337L8 10.3334L16 2.33337L14.12 0.453369Z"
-                                fill="white" />
-                        </svg>
-                    </button>
-                    <ul id="dropdown-menu-appareils" class="dropdown-menu bg-success">
-                        <li><a class="dropdown-item text-white" href="#">Action</a></li>
-                        <li><a class="dropdown-item text-white" href="#">Another action</a></li>
-                        <li><a class="dropdown-item text-white" href="#">Something here !!!!!!!!!!!</a></li>
-                    </ul>
-                </div>
-            </div>
-
-            <!--! Ustensiles container -->
-            <div id="ustensiles-choice" class="d-grid d-md-flex flex-column gap-2 bg-info">
-                <!--! Ustensiles Choices -->
-                <button type="button"
-                    class="ustensiles-choice-button btn btn-warning btn-sm disabled text-white">Coco<img
-                        src="img/choice-delete-cross.svg" alt="delete-cross" class="choice-cross"></button>
-                <button type="button"
-                    class="ustensiles-choice-button btn btn-warning btn-sm disabled text-white">Coco<img
-                        class="choice-cross" src="img/choice-delete-cross.svg" alt="delete-cross">
-                </button>
-                <button type="button"
-                    class="ustensiles-choice-button btn btn-warning btn-sm disabled text-white">Coco<img
-                        class="choice-cross" src="img/choice-delete-cross.svg" alt="delete-cross"
-                        class="choice-cross"></button>
-
-                <!--! Ustensiles Dropdown -->
-                <div id="dropdown-ustensiles" class="dropdown">
-                    <button id="button-ustensiles"
-                        class="btn btn-sm btn-primary text-white btn-ustensiles dropdown-toggle d-flex justify-content-between align-items-center ps-3"
-                        type="button" data-bs-toggle="dropdown" data-bs-offset="0,0" aria-expanded="false">
-                        <input id="input-ustensiles" class="dropdown-input form-control bg-warning border-0 px-0"
-                            type="text" aria-label="default input example" placeholder="Ustensiles">
-
-                        <svg width="16" height="11" viewBox="0 0 16 11" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M14.12 0.453369L8 6.56004L1.88 0.453369L0 2.33337L8 10.3334L16 2.33337L14.12 0.453369Z"
-                                fill="white" />
-                        </svg>
-                    </button>
-                    <ul id="dropdown-menu-ustensiles" class="dropdown-menu bg-warning">
-                        <li><a class="dropdown-item text-white" href="#">Action</a></li>
-                        <li><a class="dropdown-item text-white" href="#">Another action</a></li>
-                        <li><a class="dropdown-item text-white" href="#">Something here !!!!!!!!!!!</a></li>
-                    </ul>
-                </div>
-            </div>
-            <!-- <div id="dropdown-appareils" class="dropdown col-2">
-                <button id="button-appareils"
-                    class="btn btn-sm btn-success text-white btn-appareils dropdown-toggle d-flex justify-content-between align-items-center ps-3"
-                    type="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-offset="0,0"><input
-                        id="input-appareils" class="dropdown-input form-control bg-success border-0 px-0 " type="text"
-                        aria-label="default input example" placeholder="Appareils">
-                    <svg width="16" height="11" viewBox="0 0 16 11" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M14.12 0.453369L8 6.56004L1.88 0.453369L0 2.33337L8 10.3334L16 2.33337L14.12 0.453369Z"
-                            fill="white" />
-                    </svg>
-                </button>
-                <ul id="dropdown-menu-appareils" class="dropdown-menu bg-success">
-                    <li><a class="dropdown-item text-white" href="#">Action</a></li>
-                    <li><a class="dropdown-item text-white" href="#">Another action</a></li>
-                    <li><a class="dropdown-item text-white" href="#">Something here</a></li>
+        <div id="search-dropdown" class="row mt-4 d-flex flex-row bg-info">
+            <div class="dropdown-container">
+                <button id="ingredient-btn" class="dropdown-button" type="button" class="dropdown-trigger"><input
+                        class="input" type="text" placeholder="Ingrédients"><img class="caret"
+                        src="img/chevron-down.svg"></button>
+                <ul class="dropdown-list">
+                    <li>Thym</li>
+                    <li>Laurier</li>
+                    <li>lorem</li>
+                    <li>moaoaozozoz</li>
+                    <li>azazazazazaggggggggggggggggggggggggggggggg</li>
                 </ul>
-            </div> -->
-            <!-- <div id="dropdown-ustensiles" class="dropdown col-2">
-                <button id="button-ustensiles"
-                    class="btn btn-sm btn-warning text-white btn-ustensiles dropdown-toggle d-flex justify-content-between align-items-center align- ps-3 w-100"
-                    type="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-offset="0,0"><input
-                        id="input-ustensiles" class="dropdown-input form-control bg-warning border-0 px-0" type="text"
-                        aria-label="default input example" placeholder="Ustensiles">
-                    <svg width="16" height="11" viewBox="0 0 16 11" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M14.12 0.453369L8 6.56004L1.88 0.453369L0 2.33337L8 10.3334L16 2.33337L14.12 0.453369Z"
-                            fill="white" />
-                    </svg>
-                    <ul id="dropdown-menu-ustensiles" class="dropdown-menu dropdown-menu-ustensiles bg-warning">
-                        <li><a class="dropdown-item text-white" href="#">Action</a></li>
-                        <li><a class="dropdown-item text-white" href="#">Another action</a></li>
-                        <li><a class="dropdown-item text-white" href="#">Something here</a></li>
-                    </ul>
-            </div> -->
+            </div>
+            <div class="dropdown-container">
+                <button id="ingredient-btn" class="dropdown-button" type="button" class="dropdown-trigger"><input
+                        class="input" type="text" placeholder="Ingrédients"><img class="caret"
+                        src="img/chevron-down.svg"></button>
+                <ul class="dropdown-list">
+                    <li>Thym</li>
+                    <li>Laurier</li>
+                    <li>lorem</li>
+                    <li>moaoaozozoz</li>
+                    <li>azazazazazaggggggggggggggggggggggggggggggg</li>
+                </ul>
+            </div>
+            <div class="dropdown-container">
+                <button id="ingredient-btn" class="dropdown-button" type="button" class="dropdown-trigger"><input
+                        class="input" type="text" placeholder="Ingrédients"><img class="caret"
+                        src="img/chevron-down.svg"></button>
+                <ul class="dropdown-list">
+                    <li>Thym</li>
+                    <li>Laurier</li>
+                    <li>lorem</li>
+                    <li>moaoaozozoz</li>
+                    <li>azazazazazaggggggggggggggggggggggggggggggg</li>
+                </ul>
+            </div>
 
         </div>
 
