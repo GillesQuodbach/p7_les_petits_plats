@@ -1,33 +1,31 @@
 // Récupération des recettes
-async function getRecipes() {
-    const jsonUrl = 'json/recettes.js'
-    const res = await fetch(jsonUrl)
-    const json = await res.json()
-    console.log(json)
-}
-getRecipes()
-
-const dropdownCaret = document.querySelector('.caret')
-const dropdownButton = document.querySelector('.dropdown-button')
-const dropdownMenu = document.querySelector('.dropdown-list')
+const ingredientsDropdownCaret = document.querySelector('#ingredients-dropdown-caret');
+const ingredientsDropdownButton = document.querySelector('.ingredients-button');
+const ingredientsDropdownMenu = document.querySelector('#ingredients-dropdown-menu');
 // target = element that triggered event; currentTarget = element that listens to event
-dropdownButton.addEventListener('mouseover', function (e) {
-    dropdownButton.classList.add('show')
-    dropdownMenu.classList.add('show')
-    dropdownCaret.classList.add('reverse')
-})
-dropdownButton.addEventListener('mouseout', function (e) {
-    dropdownButton.classList.remove('show')
-    dropdownMenu.classList.remove('show')
-    dropdownCaret.classList.remove('reverse')
-})
-dropdownMenu.addEventListener('mouseover', function (e) {
-    dropdownButton.classList.add('show')
-    dropdownMenu.classList.add('show')
-    dropdownCaret.classList.add('reverse')
-})
-dropdownMenu.addEventListener('mouseout', function (e) {
-    dropdownButton.classList.remove('show')
-    dropdownMenu.classList.remove('show')
-    dropdownCaret.classList.remove('reverse')
-})
+ingredientsDropdownButton.addEventListener('mouseover', () => {
+  ingredientsDropdownButton.classList.add('show');
+  ingredientsDropdownMenu.classList.add('show');
+  ingredientsDropdownCaret.classList.add('reverse');
+});
+ingredientsDropdownButton.addEventListener('mouseout', () => {
+  ingredientsDropdownButton.classList.remove('show');
+  ingredientsDropdownMenu.classList.remove('show');
+  ingredientsDropdownCaret.classList.remove('reverse');
+});
+ingredientsDropdownMenu.addEventListener('mouseover', () => {
+  ingredientsDropdownButton.classList.add('show');
+  ingredientsDropdownMenu.classList.add('show');
+  ingredientsDropdownCaret.classList.add('reverse');
+});
+ingredientsDropdownMenu.addEventListener('mouseout', () => {
+  ingredientsDropdownButton.classList.remove('show');
+  ingredientsDropdownMenu.classList.remove('show');
+  ingredientsDropdownCaret.classList.remove('reverse');
+});
+
+// Modification placerholder
+
+const dropdownPlaceholder = document.querySelector('.dropdown-inputs');
+
+console.log(dropdownPlaceholder);

@@ -19,5 +19,11 @@
     "url": "https://github.com/GillesQuodbach/p7_les_petits_plats/issues"
   },
   "homepage": "https://github.com/GillesQuodbach/p7_les_petits_plats#readme",
-  "description": ""
+  "description": "",
+  "devDependencies": {
+    "eslint": "^8.27.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "prettier": "^2.7.1"
+  }
 }
