@@ -1,6 +1,7 @@
+//! Dropdown ingredients
 // Récupération des recettes
 const ingredientsDropdownCaret = document.querySelector('#ingredients-dropdown-caret');
-const ingredientsDropdownButton = document.querySelector('.ingredients-button');
+const ingredientsDropdownButton = document.querySelector('#ingredients-btn');
 const ingredientsDropdownMenu = document.querySelector('#ingredients-dropdown-menu');
 // target = element that triggered event; currentTarget = element that listens to event
 ingredientsDropdownButton.addEventListener('mouseover', () => {
@@ -24,8 +25,56 @@ ingredientsDropdownMenu.addEventListener('mouseout', () => {
   ingredientsDropdownCaret.classList.remove('reverse');
 });
 
-// Modification placerholder
+//! Dropdown appareils
+// Récupération des recettes
+const appareilsDropdownCaret = document.querySelector('#appareils-dropdown-caret');
+const appareilsDropdownButton = document.querySelector('#appareils-btn');
+const appareilsDropdownMenu = document.querySelector('#appareils-dropdown-menu');
+// target = element that triggered event; currentTarget = element that listens to event
+appareilsDropdownButton.addEventListener('mouseover', () => {
+  appareilsDropdownButton.classList.add('show');
+  appareilsDropdownMenu.classList.add('show');
+  appareilsDropdownCaret.classList.add('reverse');
+});
+appareilsDropdownButton.addEventListener('mouseout', () => {
+  appareilsDropdownButton.classList.remove('show');
+  appareilsDropdownMenu.classList.remove('show');
+  appareilsDropdownCaret.classList.remove('reverse');
+});
+appareilsDropdownMenu.addEventListener('mouseover', () => {
+  appareilsDropdownButton.classList.add('show');
+  appareilsDropdownMenu.classList.add('show');
+  appareilsDropdownCaret.classList.add('reverse');
+});
+appareilsDropdownMenu.addEventListener('mouseout', () => {
+  appareilsDropdownButton.classList.remove('show');
+  appareilsDropdownMenu.classList.remove('show');
+  appareilsDropdownCaret.classList.remove('reverse');
+});
 
-const dropdownPlaceholder = document.querySelector('.dropdown-inputs');
-
-console.log(dropdownPlaceholder);
+//! Dropdown ustensiles
+// Récupération des recettes
+const ustensilesDropdownCaret = document.querySelector('#ustensiles-dropdown-caret');
+const ustensilesDropdownButton = document.querySelector('#ustensiles-btn');
+const ustensilesDropdownMenu = document.querySelector('#ustensiles-dropdown-menu');
+// target = element that triggered event; currentTarget = element that listens to event
+ustensilesDropdownButton.addEventListener('mouseover', () => {
+  ustensilesDropdownButton.classList.add('show');
+  ustensilesDropdownMenu.classList.add('show');
+  ustensilesDropdownCaret.classList.add('reverse');
+});
+ustensilesDropdownButton.addEventListener('mouseout', () => {
+  ustensilesDropdownButton.classList.remove('show');
+  ustensilesDropdownMenu.classList.remove('show');
+  ustensilesDropdownCaret.classList.remove('reverse');
+});
+ustensilesDropdownMenu.addEventListener('mouseover', () => {
+  ustensilesDropdownButton.classList.add('show');
+  ustensilesDropdownMenu.classList.add('show');
+  ustensilesDropdownCaret.classList.add('reverse');
+});
+ustensilesDropdownMenu.addEventListener('mouseout', () => {
+  ustensilesDropdownButton.classList.remove('show');
+  ustensilesDropdownMenu.classList.remove('show');
+  ustensilesDropdownCaret.classList.remove('reverse');
+});
