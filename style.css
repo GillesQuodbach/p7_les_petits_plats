@@ -56,6 +56,42 @@ input[type="color"]:focus,
     padding-right: 10px;
 } */
 
+.selected-choices-container {
+    width: 107px;
+    height: 37px;
+    color: #fff;
+    font-size: 0.8rem;
+    font-weight: bold;
+    border-radius: 5px;
+    display: flex;
+    /* display: none; */
+    justify-content: center;
+    align-items: center;
+    padding: 15px 15px;
+    margin-bottom: 10px;
+}
+
+.ingredients-selected-choices-container {
+    background-color: #3282F7;
+
+}
+
+.appareils-selected-choices-container {
+    background-color: #68D9A4;
+}
+
+.ustensiles-selected-choices-container {
+    background-color: #ED6454;
+}
+
+.selected-choice {
+    margin: 0;
+}
+
+.selected-choice-cross {
+    margin-left: 10px;
+}
+
 .dropdown-container {
     min-width: 15%;
     max-width: fit-content;
