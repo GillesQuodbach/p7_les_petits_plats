@@ -1,13 +1,10 @@
-<mxfile host="app.diagrams.net" modified="2022-11-10T15:40:03.599Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36" etag="CJdayUK5aLa36xgrkTUk" version="20.5.1" type="github">
+<mxfile host="app.diagrams.net" modified="2022-11-10T15:43:26.958Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36" etag="gumUyg7kCJAOg0YYXE3t" version="20.5.1" type="github">
   <diagram id="zSLrW9iclxR0P2SrXjDv" name="Page-1">
     <mxGraphModel dx="782" dy="432" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="fAVFCxH8SQh7ahzYsibG-1" value="Début&lt;br&gt;L&#39;interface affiche tout" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="320" y="20" width="170" height="80" as="geometry" />
-        </mxCell>
-        <mxCell id="fAVFCxH8SQh7ahzYsibG-3" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+        <mxCell id="fAVFCxH8SQh7ahzYsibG-3" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="fAVFCxH8SQh7ahzYsibG-42">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="404.5" y="100" as="sourcePoint" />
             <mxPoint x="405" y="150" as="targetPoint" />
@@ -80,20 +77,19 @@
         <mxCell id="fAVFCxH8SQh7ahzYsibG-30" value="Oui" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;rotation=0;" vertex="1" parent="1">
           <mxGeometry x="414" y="600" width="40" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="fAVFCxH8SQh7ahzYsibG-31" value="Mise a jour des recettes et des choix" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" vertex="1" parent="1">
-          <mxGeometry x="270" y="650" width="280" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="fAVFCxH8SQh7ahzYsibG-32" value="" style="endArrow=classic;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" target="fAVFCxH8SQh7ahzYsibG-31">
+        <mxCell id="fAVFCxH8SQh7ahzYsibG-32" value="" style="endArrow=classic;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="130" y="200" as="sourcePoint" />
-            <mxPoint x="130" y="680" as="targetPoint" />
+            <mxPoint x="280" y="680" as="targetPoint" />
             <Array as="points">
               <mxPoint x="130" y="680" />
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="fAVFCxH8SQh7ahzYsibG-39" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="fAVFCxH8SQh7ahzYsibG-33" target="fAVFCxH8SQh7ahzYsibG-1">
-          <mxGeometry relative="1" as="geometry" />
+        <mxCell id="fAVFCxH8SQh7ahzYsibG-39" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1" source="fAVFCxH8SQh7ahzYsibG-33">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="320" y="90" as="targetPoint" />
+          </mxGeometry>
         </mxCell>
         <mxCell id="fAVFCxH8SQh7ahzYsibG-33" value="Sélection d&#39;un hashtag&lt;br&gt;par l&#39;utilisateur" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" vertex="1" parent="1">
           <mxGeometry x="60" y="150" width="160" height="50" as="geometry" />
@@ -106,6 +102,12 @@
         </mxCell>
         <mxCell id="fAVFCxH8SQh7ahzYsibG-40" value="Non" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;rotation=0;" vertex="1" parent="1">
           <mxGeometry x="140" y="80" width="50" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="fAVFCxH8SQh7ahzYsibG-41" value="Mise a jour des recettes et des choix" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="280" y="650" width="260" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="fAVFCxH8SQh7ahzYsibG-42" value="Début&lt;br&gt;L&#39;interface affiche tout" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="297" y="30" width="216" height="60" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
