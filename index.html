@@ -19,8 +19,7 @@
 <body>
     <div id="main-container" class="container pt-5 pb-2">
         <!--! Header -->
-        <div id="header-logo" class="row"><img id="header-logo" src="img/logo.svg" alt="Logo les petits plats"
-                width="50" height="46">
+        <div class="row"><img id="header-logo" src="img/logo.svg" alt="Logo les petits plats" width="50" height="46">
         </div>
         <div class="row">
             <h1 id="header-title" class="text-center text-danger fw-bold fs-1">Les petits plats</h1>
@@ -31,7 +30,7 @@
             <div id="main-search-barre" class="input-group">
                 <input id="main-search-input" type="text"
                     class="form-control text-dark rounded-start bg-light border-0 ps-4"
-                    placeholder="Rechercher une recette" aria-label="Rechercher une recette" />
+                    placeholder="Rechercher une recette" aria-label="Rechercher une recette">
                 <button id="main-search-btn" type="button" class="search-btn btn bg-light pe-3"><img
                         id="main-search-icon" src="img/search.svg" alt="search" class="search-icon"></button>
             </div>
@@ -40,13 +39,15 @@
         <div id="search-dropdown" class="row mt-4 d-flex flex-row">
             <div class="dropdown-container">
                 <div class="selected-choices-container ingredients-selected-choices-container">
-                    <p class="selected-choice">Coco<img src="img/choice-delete-cross.svg" class="selected-choice-cross">
+                    <p class="selected-choice">Coco<img src="img/choice-delete-cross.svg" alt="delete your choice"
+                            class="selected-choice-cross">
                     </p>
                 </div>
-                <button id="ingredients-btn" class="dropdown-button dropdown-trigger ingredients-button"
-                    type="button"><input id="input-ingredients" class="input  dropdown-inputs" type="text"
-                        value="Ingrédients" placeholder="Rechercher un ingrédients"><img id="ingredients-dropdown-caret"
-                        class="caret" src="img/chevron-down.svg"></button>
+                <div id="ingredients-btn" class="dropdown-button dropdown-trigger ingredients-button">
+                    <input id="input-ingredients" class="input  dropdown-inputs" type="text" value="Ingrédients"
+                        placeholder="Rechercher un ingrédients"><img id="ingredients-dropdown-caret" class="caret"
+                        src="img/chevron-down.svg" alt="caret">
+                </div>
                 <ul id="ingredients-dropdown-menu" class="dropdown-list">
                     <li>Thym</li>
                     <li>Laurier</li>
@@ -67,13 +68,14 @@
             </div>
             <div class="dropdown-container">
                 <div class="selected-choices-container appareils-selected-choices-container">
-                    <p class="selected-choice">Coco<img src="img/choice-delete-cross.svg" class="selected-choice-cross">
+                    <p class="selected-choice">Coco<img src="img/choice-delete-cross.svg" class="selected-choice-cross"
+                            alt="delete your choice">
                     </p>
                 </div>
-                <button id="appareils-btn" class="dropdown-button" type="button" class="dropdown-trigger"><input
-                        id="input-appareils" class="input input-appareils" type="text" value="Appareils"
+                <div id="appareils-btn" class="dropdown-button dropdown-trigger"><input id="input-appareils"
+                        class="input input-appareils" type="text" value="Appareils"
                         placeholder="Rechercher un appareil"><img id="appareils-dropdown-caret" class="caret"
-                        src="img/chevron-down.svg"></button>
+                        src="img/chevron-down.svg" alt="caret"></div>
                 <ul id="appareils-dropdown-menu" class="dropdown-list">
                     <li>Thym</li>
                     <li>Laurier</li>
@@ -84,13 +86,14 @@
             </div>
             <div class="dropdown-container">
                 <div class="selected-choices-container ustensiles-selected-choices-container">
-                    <p class="selected-choice">Coco<img src="img/choice-delete-cross.svg" class="selected-choice-cross">
+                    <p class="selected-choice">Coco<img src="img/choice-delete-cross.svg" class="selected-choice-cross"
+                            alt="delete your choice">
                     </p>
                 </div>
-                <button id="ustensiles-btn" class="dropdown-button" type="button" class="dropdown-trigger"> <input
-                        id="input-ustensiles" class="input input-ustensiles" type="text" value="Ustensiles"
+                <div id="ustensiles-btn" class="dropdown-button dropdown-trigger"> <input id="input-ustensiles"
+                        class="input input-ustensiles" type="text" value="Ustensiles"
                         placeholder="Rechercher un ustensile"><img id="ustensiles-dropdown-caret" class="caret"
-                        src="img/chevron-down.svg"></button>
+                        src="img/chevron-down.svg" alt="caret"></div>
                 <ul id="ustensiles-dropdown-menu" class="dropdown-list">
                     <li>Thym</li>
                     <li>Laurier</li>
