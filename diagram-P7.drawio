@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2022-11-10T15:31:10.543Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36" etag="ppcm6Nh-q-fxTOBkFFhH" version="20.5.1" type="github">
+<mxfile host="app.diagrams.net" modified="2022-11-10T15:38:26.622Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36" etag="iopGJ1HyQkxm0na2adIq" version="20.5.1" type="github">
   <diagram id="zSLrW9iclxR0P2SrXjDv" name="Page-1">
     <mxGraphModel dx="782" dy="432" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -12,6 +12,9 @@
             <mxPoint x="404.5" y="100" as="sourcePoint" />
             <mxPoint x="405" y="150" as="targetPoint" />
           </mxGeometry>
+        </mxCell>
+        <mxCell id="fAVFCxH8SQh7ahzYsibG-34" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="fAVFCxH8SQh7ahzYsibG-4" target="fAVFCxH8SQh7ahzYsibG-33">
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="fAVFCxH8SQh7ahzYsibG-4" value="Saisie de l&#39;utilisateur dans le champs de&amp;nbsp;&lt;br&gt;recherche" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" vertex="1" parent="1">
           <mxGeometry x="265" y="150" width="280" height="50" as="geometry" />
@@ -59,24 +62,6 @@
         <mxCell id="fAVFCxH8SQh7ahzYsibG-23" value="Caractères saisies&lt;br&gt;présents dans la&amp;nbsp;&lt;br&gt;liste" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="332.5" y="450" width="145" height="140" as="geometry" />
         </mxCell>
-        <mxCell id="fAVFCxH8SQh7ahzYsibG-24" value="" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1">
-          <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="200" y="330" as="sourcePoint" />
-            <mxPoint x="332.5" y="520" as="targetPoint" />
-            <Array as="points">
-              <mxPoint x="200" y="520" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="fAVFCxH8SQh7ahzYsibG-25" value="" style="endArrow=classic;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" target="fAVFCxH8SQh7ahzYsibG-4">
-          <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="200" y="330" as="sourcePoint" />
-            <mxPoint x="332.5" y="329.5" as="targetPoint" />
-            <Array as="points">
-              <mxPoint x="200" y="175" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
         <mxCell id="fAVFCxH8SQh7ahzYsibG-26" value="Non" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;rotation=0;" vertex="1" parent="1">
           <mxGeometry x="250" y="480" width="50" height="30" as="geometry" />
         </mxCell>
@@ -97,6 +82,24 @@
         </mxCell>
         <mxCell id="fAVFCxH8SQh7ahzYsibG-31" value="Mise a jour des recettes et des choix" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" vertex="1" parent="1">
           <mxGeometry x="270" y="650" width="280" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="fAVFCxH8SQh7ahzYsibG-32" value="" style="endArrow=classic;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" target="fAVFCxH8SQh7ahzYsibG-31">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="130" y="200" as="sourcePoint" />
+            <mxPoint x="130" y="680" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="130" y="680" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="fAVFCxH8SQh7ahzYsibG-33" value="Sélection d&#39;un hashtag&lt;br&gt;par l&#39;utilisateur" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="150" width="160" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="fAVFCxH8SQh7ahzYsibG-35" value="Non" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;rotation=0;" vertex="1" parent="1">
+          <mxGeometry x="220" y="140" width="50" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="fAVFCxH8SQh7ahzYsibG-37" value="Oui" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;rotation=0;" vertex="1" parent="1">
+          <mxGeometry x="140" y="270" width="40" height="30" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
