@@ -32,7 +32,7 @@ input[type="tel"]:focus,
 input[type="color"]:focus,
 .uneditable-input:focus,
 .form-control:focus {
-    border-color: none;
+    border: none;
     box-shadow: none;
     outline: none;
 }
@@ -218,14 +218,13 @@ input[type="color"]:focus,
 
 .card-title {
     font-size: 1rem;
-    font-style: 'Lato', sans-serif;
     font-weight: 400;
     margin-top: 2px;
 }
 
 .card-time {
     font-size: 1rem;
-    font-style: 'Lato', sans-serif;
+
     font-weight: 700;
 }
 
