@@ -144,22 +144,25 @@ input[type="color"]:focus,
     font-weight: bold;
 }
 
-.input-ingredients {
+#input-ingredients {
     background-color: #3282F7;
+    min-width: 80%;
 }
 
-.input-appareils {
+#input-appareils {
     background-color: #68D9A4;
+    min-width: 80%;
 }
 
-.input-ustensiles {
+#input-ustensiles {
     background-color: #ED6454;
+    min-width: 80%;
 }
-
-
 
 .input::placeholder {
-    opacity: 1;
+    opacity: 0.5;
+    min-width: 100%;
+    font-size: 0.9rem;
 }
 
 .dropdown-list {
@@ -170,8 +173,16 @@ input[type="color"]:focus,
     list-style-type: none;
     display: none;
     padding: 15px;
+    padding-top: 0;
     border-radius: 0px 0px 5px 5px;
     /* display: block; */
+    column-count: 3;
+    column-fill: balance;
+    min-height: fit-content;
+}
+
+.dropdown-list li {
+    display: block;
 }
 
 .dropdown-list.show {
