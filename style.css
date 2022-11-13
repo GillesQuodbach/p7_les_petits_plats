@@ -3,6 +3,11 @@
 font-family: 'Lato', sans-serif;
 font-family: 'Roboto', sans-serif; */
 
+/*html {*/
+/*    --line-h: 12px;*/
+/*    --nth-lines-trunc: 6;*/
+/*}*/
+
 body {
     font-family: 'Lato', sans-serif;
 }
@@ -204,6 +209,9 @@ input[type="color"]:focus,
 /* Cards */
 .card-body-container {
     background-color: #E7E7E7;
+    height: 380px;
+    overflow: hidden;
+
 }
 
 .list-group-item {
@@ -213,6 +221,7 @@ input[type="color"]:focus,
 
 .card-main {
     font-size: 8px;
+
 }
 
 .card-title {
@@ -245,9 +254,30 @@ input[type="color"]:focus,
 
 .card-recipe {
     font-family: 'Roboto', sans-serif;
-    font-size: 0.7rem;
+    font-size: 0.81rem;
     font-weight: 400;
+    width: 170px;
+    height: 81px;
+    line-height: 0.885;
+    display: -webkit-box;
+    -webkit-line-clamp: 7;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    padding-right: 10px;
+    /*position: relative;*/
+    /*padding-right: 12px;*/
+
+    /*line-height: var(--line-h);*/
+    /*max-height: calc(var(--line-h) * var(--nth-lines-trunc));*/
+
 }
+
+/*.card-recipe::after {*/
+/*    content: "...";*/
+/*    position: absolute;*/
+/*    bottom: 0;*/
+/*    right: 0;*/
+/*}*/
 
 @keyframes rotationChevron {
     0% {

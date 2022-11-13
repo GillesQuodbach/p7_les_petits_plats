@@ -1,8 +1,6 @@
 
 A
 css/style.css.map,9\f\9f452116be72e80a7aa1d2a44143b07933383b7d
-N
-scss/_variables_overrides.scss,5\f\5f05f7d480999ab2e56d59c1d30f1d2cdf56b8f8
 <
 package.json,7\0\7030d0b2f71b999ff89a343de08c414af32fc93a
 @
@@ -13,8 +11,6 @@ N
 js/dropdown.js,7\3\73cc003d5aae670c95d6564c22a257629999906e
 J
 js/bootstrap.bundle.min.js,8\e\8e8d88a5308780099ca27040bdf05d7f8257eb96
-9
-	style.css,4\6\46e3381e9569c09e85a30b9e5a2af7525ee9fd78
 A
 package-lock.json,f\a\fa288d1472d29beccb489a676f68739ad365fc47
 L

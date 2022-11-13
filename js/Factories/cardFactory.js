@@ -61,7 +61,7 @@ function cardsFactory(data) {
       const { ingredient = "", quantity = "", unit = "" } = item;
       const listIngredientItem = document.createElement("li");
       listIngredientItem.setAttribute("class", "list-group-item");
-      listIngredientItem.textContent = `${ingredient}: ${quantity} ${unit}`;
+      listIngredientItem.innerHTML = `<b>${ingredient}:</b> ${quantity} ${unit}`;
       listIngredient.appendChild(listIngredientItem);
     });
     // * Card description
