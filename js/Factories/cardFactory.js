@@ -1,7 +1,11 @@
 // // * FACTORY cards
 function cardsFactory(data) {
-  console.log(data); // ! OK avec P6
-  const { id, name, time, description } = data;
+  // console.log(data); // ! OK avec P6
+  const { id, name, time, description, ingredients } = data;
+  console.log(ingredients);
+
+  // console.log(ingredientsList);
+
   const picture = "https://picsum.photos/380/178";
   const clockIconSRC = "img/clock.svg";
 
@@ -56,8 +60,13 @@ function cardsFactory(data) {
     listIngredient.setAttribute("class", "col-6 list-group rounded-0");
 
     // * Ingredient list LI
-    // TODO RAJOUTER LISTE (LI) INGREDIENTS
-
+    ingredients.forEach((item) => {
+      const { ingredient = "", quantity = "", unit = "" } = item;
+      const listIngredientItem = document.createElement("li");
+      listIngredientItem.setAttribute("class", "list-group-item");
+      listIngredientItem.textContent = `${ingredient}: ${quantity} ${unit}`;
+      listIngredient.appendChild(listIngredientItem);
+    });
     // * Card description
     const recipeDescription = document.createElement("p");
     recipeDescription.setAttribute("class", "card-recipe col-6");
@@ -78,30 +87,5 @@ function cardsFactory(data) {
     return cardBootstrapColumn;
   }
 
-  return { id, name, time, description, getRecipesCardDOM };
+  return { id, name, time, description, ingredients, getRecipesCardDOM };
 }
-
-//
-
-// // ? Ingredients list UL
-// const ingredientsList = document.createElement("ul");
-// ingredientsList.setAttribute("id", "list");
-// ingredientsList.setAttribute("class", "col-6 list-group rounded-0");
-
-// * Ingredients list LI
-// let i = 0;
-
-// console.log(recipes.ingredients[id]);
-// let i = 0;
-// let listItems = ingredients[i];
-// listItems.forEach((listItem) => {
-//   listItem.createElement("li");
-//   listItem.setAttribute("class", "list-group-item");
-//   listItem.textContent = listItem;
-// });
-
-//     return cardsContainer;
-//   }
-//
-//   return { id, getRecipesCardDOM };
-// }

@@ -27,7 +27,7 @@ async function displayData(recettes) {
 // Affichage des cards
 async function init() {
   const { recettes } = await getRecipes();
-  console.log({ recettes });
+  // console.log({ recettes });
   displayData(recettes);
 }
 
