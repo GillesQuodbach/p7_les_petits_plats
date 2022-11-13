@@ -1,10 +1,7 @@
 // // * FACTORY cards
 function cardsFactory(data) {
-  // console.log(data); // ! OK avec P6
   const { id, name, time, description, ingredients } = data;
   console.log(ingredients);
-
-  // console.log(ingredientsList);
 
   const picture = "https://picsum.photos/380/178";
   const clockIconSRC = "img/clock.svg";
