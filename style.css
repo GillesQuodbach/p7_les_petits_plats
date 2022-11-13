@@ -209,14 +209,23 @@ input[type="color"]:focus,
 /* Cards */
 .card-body-container {
     background-color: #E7E7E7;
-    height: 380px;
+    height: 330px;
     overflow: hidden;
 
 }
 
 .list-group-item {
     background-color: #E7E7E7;
+    background-color: #8e3c32;
+    width: 90%;
     border: none;
+    white-space: nowrap;
+    overflow: hidden;
+    font-family: 'Lato', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    padding: 0;
+    line-height: 15px;
 }
 
 .card-main {
@@ -245,25 +254,19 @@ input[type="color"]:focus,
     margin-right: 7px;
 }
 
-.list-group-item {
-    font-family: 'Lato', sans-serif;
-    font-size: 0.7rem;
-    font-weight: 400;
-    padding: 0;
-}
-
 .card-recipe {
     font-family: 'Roboto', sans-serif;
-    font-size: 0.81rem;
+    background-color: #6610f2;
+    font-size: 12px;
     font-weight: 400;
-    width: 170px;
-    height: 81px;
-    line-height: 0.885;
+    width: 150px;
+    height: 85px;
+    line-height: 1;
     display: -webkit-box;
     -webkit-line-clamp: 7;
     -webkit-box-orient: vertical;
     overflow: hidden;
-    padding-right: 10px;
+    padding-right: 30px;
     /*position: relative;*/
     /*padding-right: 12px;*/
 
