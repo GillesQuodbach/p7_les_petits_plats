@@ -94,10 +94,21 @@ function cardsFactory(data) {
     // * Ingredient list LI
     ingredients.forEach((item) => {
       const { ingredient = "", quantity = "", unit = "" } = item;
+
+      // Ingredients de la card
       const listIngredientItem = document.createElement("li");
       listIngredientItem.setAttribute("class", "list-group-item");
       listIngredientItem.innerHTML = `<b>${ingredient}:</b> ${quantity} ${unit}`;
       listIngredient.appendChild(listIngredientItem);
+
+      // Ingrédients du dropdown
+      const dropdownIngredientsContainer = document.querySelector(
+        "#ingredients-dropdown-menu"
+      );
+      const dropdownIngredientItem = document.createElement("li");
+      dropdownIngredientItem.setAttribute("class", "dropdown-ingredients-item");
+      dropdownIngredientItem.innerHTML = `${ingredient}`;
+      dropdownIngredientsContainer.appendChild(dropdownIngredientItem);
     });
     // * Card description
     const recipeDescription = document.createElement("p");
