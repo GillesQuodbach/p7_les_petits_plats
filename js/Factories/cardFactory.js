@@ -1,3 +1,6 @@
+//Création du tableau des ingredients
+const allIngredients = [];
+
 //Réception des données (recettes)
 async function getRecipes() {
   return { recettes: [...recipes] };
@@ -15,9 +18,9 @@ getRecipes()
 async function displayData(recettes) {
   const recipesCardsSection = document.getElementById("recipes-gallery");
   recettes.forEach((recette) => {
-    const recipeCard = cardsFactory(recette);
-    const recipeCardDOM = recipeCard.getRecipesCardDOM();
-    recipesCardsSection.appendChild(recipeCardDOM);
+    const recipesData = appFactory(recette);
+    const dataDOM = recipesData.getDataDOM();
+    recipesCardsSection.appendChild(dataDOM);
   });
 }
 
@@ -36,12 +39,12 @@ init()
   });
 
 //  FACTORY cards
-function cardsFactory(data) {
+function appFactory(data) {
   const { id, name, time, description, ingredients } = data;
   const picture = "https://picsum.photos/380/178";
   const clockIconSRC = "img/clock.svg";
 
-  function getRecipesCardDOM() {
+  function getDataDOM() {
     const cardBootstrapColumn = document.createElement("div");
     cardBootstrapColumn.setAttribute("class", "col");
     // ? Card container
@@ -102,13 +105,14 @@ function cardsFactory(data) {
       listIngredient.appendChild(listIngredientItem);
 
       // Ingrédients du dropdown
-      const dropdownIngredientsContainer = document.querySelector(
-        "#ingredients-dropdown-menu"
-      );
-      const dropdownIngredientItem = document.createElement("li");
-      dropdownIngredientItem.setAttribute("class", "dropdown-ingredients-item");
-      dropdownIngredientItem.innerHTML = `${ingredient}`;
-      dropdownIngredientsContainer.appendChild(dropdownIngredientItem);
+      // const dropdownIngredientsContainer = document.querySelector(
+      //   "#ingredients-dropdown-menu"
+      // );
+      // const dropdownIngredientItem = document.createElement("li");
+      // dropdownIngredientItem.setAttribute("class", "dropdown-ingredients-item");
+      // dropdownIngredientItem.innerHTML = `${ingredient}`;
+      // dropdownIngredientsContainer.appendChild(dropdownIngredientItem);
+      // allIngredients.push(ingredient);
     });
     // * Card description
     const recipeDescription = document.createElement("p");
@@ -130,5 +134,5 @@ function cardsFactory(data) {
     return cardBootstrapColumn;
   }
 
-  return { id, name, time, description, ingredients, getRecipesCardDOM };
+  return { id, name, time, description, ingredients, getDataDOM };
 }

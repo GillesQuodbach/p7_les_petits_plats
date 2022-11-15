@@ -45,3 +45,7 @@ K
 scss/style.scss,e\f\efa4d8b2a29221ba0bb30281ccccf7ccf2ce193a
 =
 css/style.css,1\2\126b0f8c1ec95fb3a2541745bfc21365b438d668
+9
+	style.css,4\6\46e3381e9569c09e85a30b9e5a2af7525ee9fd78
+8
+index.js,a\7\a77b15c0d64cf6111e025645e562faf8ccabb9d7
