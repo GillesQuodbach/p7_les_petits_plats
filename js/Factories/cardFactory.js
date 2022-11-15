@@ -1,6 +1,3 @@
-//Création du tableau des ingredients
-const allIngredients = [];
-
 //Réception des données (recettes)
 async function getRecipes() {
   return { recettes: [...recipes] };
@@ -14,13 +11,14 @@ getRecipes()
     console.error("ERROR, les recettes sont manquantes");
   });
 
-// Création des cards des recettes
+// Création du DOM
 async function displayData(recettes) {
+  // Création des cards des recettes
   const recipesCardsSection = document.getElementById("recipes-gallery");
   recettes.forEach((recette) => {
     const recipesData = appFactory(recette);
-    const dataDOM = recipesData.getDataDOM();
-    recipesCardsSection.appendChild(dataDOM);
+    const cardsDOM = recipesData.getDataDOM();
+    recipesCardsSection.appendChild(cardsDOM);
   });
 }
 
@@ -97,14 +95,14 @@ function appFactory(data) {
     // * Ingredient list LI
     ingredients.forEach((item) => {
       const { ingredient = "", quantity = "", unit = "" } = item;
-
+      // console.log(ingredient);
       // Ingredients de la card
       const listIngredientItem = document.createElement("li");
       listIngredientItem.setAttribute("class", "list-group-item");
       listIngredientItem.innerHTML = `<b>${ingredient}:</b> ${quantity} ${unit}`;
       listIngredient.appendChild(listIngredientItem);
 
-      // Ingrédients du dropdown
+      // // Ingrédients du dropdown
       // const dropdownIngredientsContainer = document.querySelector(
       //   "#ingredients-dropdown-menu"
       // );
@@ -112,8 +110,8 @@ function appFactory(data) {
       // dropdownIngredientItem.setAttribute("class", "dropdown-ingredients-item");
       // dropdownIngredientItem.innerHTML = `${ingredient}`;
       // dropdownIngredientsContainer.appendChild(dropdownIngredientItem);
-      // allIngredients.push(ingredient);
     });
+
     // * Card description
     const recipeDescription = document.createElement("p");
     recipeDescription.setAttribute("class", "card-recipe col-6");
