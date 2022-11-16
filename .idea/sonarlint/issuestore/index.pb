@@ -45,5 +45,5 @@ K
 scss/style.scss,e\f\efa4d8b2a29221ba0bb30281ccccf7ccf2ce193a
 =
 css/style.css,1\2\126b0f8c1ec95fb3a2541745bfc21365b438d668
-8
-index.js,a\7\a77b15c0d64cf6111e025645e562faf8ccabb9d7
+K
+js/Factories/cardFactory.js,4\a\4ad0fb68ed085b492958a2bcf316b8d38cb22a8a

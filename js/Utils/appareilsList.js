@@ -1,6 +1,5 @@
 //Création des tableaux des ingredients
 const getAppliancesArray = [];
-const appliancesArrayWithDuplicate = [];
 
 // Récupération des ingrédients
 recipes.forEach((recipe) => getAppliancesArray.push(recipe.appliance));

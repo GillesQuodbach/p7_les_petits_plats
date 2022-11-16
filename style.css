@@ -134,9 +134,10 @@ input[type="color"]:focus,
 }
 
 .caret {
-    justify-content: center;
-    margin-left: auto;
-    margin-right: 20px;
+    /*justify-content: center;*/
+    /*margin-left: auto;*/
+    /*margin-right: 20px;*/
+    margin: 5px 5px;
     width: 20px;
 }
 
@@ -191,7 +192,7 @@ input[type="color"]:focus,
     border-radius: 0px 0px 5px 5px;
     /* display: block; */
     column-fill: balance;
-    /*column-width: min-content;*/
+    column-width: min-content;
     min-height: fit-content;
     column-count: 3;
     /*overflow: hidden;*/
