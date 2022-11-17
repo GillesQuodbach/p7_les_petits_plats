@@ -37,12 +37,8 @@
   </div>
   <!--! Dropdown and choices container -->
   <div id="search-dropdown" class="row mt-4 d-flex flex-row">
-    <div class="dropdown-container">
-      <div class="selected-choices-container ingredients-selected-choices-container">
-        <p class="selected-choice">Coco<img src="img/choice-delete-cross.svg" alt="delete your choice"
-                                            class="selected-choice-cross">
-        </p>
-      </div>
+    <div id="ingredients-dropdown-container" class="dropdown-container">
+      <!-- ! INGREDIENTS CHOICES HERE-->
       <div id="ingredients-btn" class="dropdown-button dropdown-trigger ingredients-button">
         <label for="input-ingredients"></label><input id="input-ingredients" class="input dropdown-inputs"
                                                       type="text"
@@ -55,12 +51,8 @@
         <!--LISTE INGREDIENTS ICI-->
       </ul>
     </div>
-    <div class="dropdown-container">
-      <div class="selected-choices-container appareils-selected-choices-container">
-        <p class="selected-choice">Coco<img src="img/choice-delete-cross.svg" class="selected-choice-cross"
-                                            alt="delete your choice">
-        </p>
-      </div>
+    <div id="appareils-dropdown-container" class="dropdown-container">
+      <!-- ! APPAREILS CHOICES HERE-->
       <div id="appareils-btn" class="dropdown-button dropdown-trigger"><label for="input-appareils"></label><input
         id="input-appareils"
         class="input input-appareils dropdown-inputs" type="text"
@@ -72,12 +64,8 @@
         <!--LISTE APPAREILS ICI-->
       </ul>
     </div>
-    <div class="dropdown-container">
-      <div class="selected-choices-container ustensiles-selected-choices-container">
-        <p class="selected-choice">Coco<img src="img/choice-delete-cross.svg" class="selected-choice-cross"
-                                            alt="delete your choice">
-        </p>
-      </div>
+    <div id="ustensiles-dropdown-container" class="dropdown-container">
+      <!-- ! USTENSILES CHOICES HERE-->
       <div id="ustensiles-btn" class="dropdown-button dropdown-trigger"><label for="input-ustensiles"></label><input
         id="input-ustensiles"
         class="input input-ustensiles dropdown-inputs"
@@ -108,6 +96,7 @@
 <script src="js/Utils/ingredientsList.js"></script>
 <script src="js/Utils/appareilsList.js"></script>
 <script src="js/Utils/ustensilesList.js"></script>
+<script src="js/Utils/hashtags.js"></script>
 
 
 </body>

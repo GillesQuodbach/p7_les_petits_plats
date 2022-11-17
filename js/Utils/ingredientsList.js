@@ -18,7 +18,6 @@ flatIngredientsArray.forEach((item) => {
 const uniqueIngredientsArray = Array.from(
   new Set(ingredientArrayWithDuplicate)
 );
-// console.log(uniqueIngredientsArray);
 
 // Création de la liste des ingrédients
 const ingredientsListContainer = document.querySelector(
@@ -26,7 +25,7 @@ const ingredientsListContainer = document.querySelector(
 );
 uniqueIngredientsArray.forEach((ingredient) => {
   const ingredientItem = document.createElement("li");
-  ingredientItem.setAttribute("class", "text-nowrap");
+  ingredientItem.setAttribute("class", "ingredients-item text-nowrap");
   ingredientItem.textContent = ingredient;
   ingredientsListContainer.appendChild(ingredientItem);
 });

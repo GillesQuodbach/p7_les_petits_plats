@@ -5,8 +5,6 @@
 scss/_forms.scss,4\f\4f4b04bef1cde52ffeafa18c3615b1e54cf22ed7
 ?
 json/recipes.js,a\c\ac8032c3e61d4fbfc743770a81690f35b1df03d1
->
-js/dropdown.js,7\3\73cc003d5aae670c95d6564c22a257629999906e
 J
 js/bootstrap.bundle.min.js,8\e\8e8d88a5308780099ca27040bdf05d7f8257eb96
 A
@@ -47,3 +45,5 @@ K
 css/style.css,1\2\126b0f8c1ec95fb3a2541745bfc21365b438d668
 K
 js/Factories/cardFactory.js,4\a\4ad0fb68ed085b492958a2bcf316b8d38cb22a8a
+D
+js/Utils/dropdown.js,9\7\9703eabea828249023058307090401821839b74a

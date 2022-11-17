@@ -18,7 +18,7 @@ const ustensilesListContainer = document.querySelector(
 );
 uniqueUstensilesArray.forEach((appliance) => {
   const ustensileItem = document.createElement("li");
-  ustensileItem.setAttribute("class", "text-nowrap");
+  ustensileItem.setAttribute("class", "ustensiles-item text-nowrap");
   ustensileItem.textContent = appliance;
   ustensilesListContainer.appendChild(ustensileItem);
 });

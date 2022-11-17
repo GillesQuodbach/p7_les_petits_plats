@@ -62,7 +62,7 @@ input[type="color"]:focus,
 } */
 
 .selected-choices-container {
-    width: 107px;
+    width: fit-content;
     height: 37px;
     color: #fff;
     font-size: 0.8rem;

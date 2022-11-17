@@ -18,7 +18,7 @@ const appliancesListContainer = document.querySelector(
 );
 uniqueAppliancesArray.forEach((appliance) => {
   const applianceItem = document.createElement("li");
-  applianceItem.setAttribute("class", "text-nowrap");
+  applianceItem.setAttribute("class", "appareils-item text-nowrap");
   applianceItem.textContent = appliance;
   appliancesListContainer.appendChild(applianceItem);
 });
