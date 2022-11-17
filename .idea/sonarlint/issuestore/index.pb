@@ -1,14 +1,10 @@
 
-<
-package.json,7\0\7030d0b2f71b999ff89a343de08c414af32fc93a
 @
 scss/_forms.scss,4\f\4f4b04bef1cde52ffeafa18c3615b1e54cf22ed7
 ?
 json/recipes.js,a\c\ac8032c3e61d4fbfc743770a81690f35b1df03d1
 J
 js/bootstrap.bundle.min.js,8\e\8e8d88a5308780099ca27040bdf05d7f8257eb96
-A
-package-lock.json,f\a\fa288d1472d29beccb489a676f68739ad365fc47
 L
 .idea/dictionaries/quodb.xml,8\6\868dc4a7f58b20e019815eb68e4b4ab78be16fad
 L
@@ -23,8 +19,6 @@ w
 G.idea/sonarlint/issuestore/d/d/dd7b3350c29c49497756c7f32c69a3bed18b1cba,9\d\9db44714da783e82392884aeea0d83f0125570ed
 w
 G.idea/sonarlint/issuestore/1/2/126b0f8c1ec95fb3a2541745bfc21365b438d668,0\4\04bdbd54783f54e32717b7209b6a3751768469dd
-w
-G.idea/sonarlint/issuestore/7/3/73cc003d5aae670c95d6564c22a257629999906e,b\3\b304c1822e0a8ac35f0214b15d104659a98e3e94
 w
 G.idea/sonarlint/issuestore/f/a/fa288d1472d29beccb489a676f68739ad365fc47,c\d\cdb55fb7b9550cf1c93c03e68dfe3882647e90dc
 w
@@ -43,7 +37,3 @@ K
 scss/style.scss,e\f\efa4d8b2a29221ba0bb30281ccccf7ccf2ce193a
 =
 css/style.css,1\2\126b0f8c1ec95fb3a2541745bfc21365b438d668
-K
-js/Factories/cardFactory.js,4\a\4ad0fb68ed085b492958a2bcf316b8d38cb22a8a
-D
-js/Utils/dropdown.js,9\7\9703eabea828249023058307090401821839b74a

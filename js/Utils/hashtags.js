@@ -1,7 +1,6 @@
 // GESTION DES CHOIX DES INGREDIENTS
 // Récupération de la liste des ingrédients
 const ingredientsItems = document.querySelectorAll(".ingredients-item");
-console.log(ingredientsItems);
 
 ingredientsItems.forEach((ingredient) => {
   ingredient.addEventListener("click", function () {
@@ -25,13 +24,17 @@ ingredientsItems.forEach((ingredient) => {
     selectedItemContainer.appendChild(selectedItem);
     selectedItem.appendChild(selectedItemCross);
     console.log(this.textContent);
+
+    // * Suppression du HASHTAG
+    selectedItemContainer.addEventListener("click", (e) => {
+      e.currentTarget.remove(this);
+    });
   });
 });
 
 // GESTION DES CHOIX DES APPAREILS
 // Récupération de la liste des appareils
 const appareilsItems = document.querySelectorAll(".appareils-item");
-console.log(appareilsItems);
 
 appareilsItems.forEach((appareil) => {
   appareil.addEventListener("click", function () {
@@ -55,13 +58,18 @@ appareilsItems.forEach((appareil) => {
     selectedItemContainer.appendChild(selectedItem);
     selectedItem.appendChild(selectedItemCross);
     console.log(this.textContent);
+
+    // * Suppression du HASHTAG
+    selectedItemContainer.addEventListener("click", (e) => {
+      console.log(this.textContent);
+      e.currentTarget.remove(this);
+    });
   });
 });
 
 // GESTION DES CHOIX DES USTENSILES
 // Récupération de la liste des ustensiles
 const ustensilesItems = document.querySelectorAll(".ustensiles-item");
-console.log(ustensilesItems);
 
 ustensilesItems.forEach((ustensile) => {
   ustensile.addEventListener("click", function () {
@@ -85,5 +93,22 @@ ustensilesItems.forEach((ustensile) => {
     selectedItemContainer.appendChild(selectedItem);
     selectedItem.appendChild(selectedItemCross);
     console.log(this.textContent);
+
+    // * Suppression du HASHTAG
+    selectedItemContainer.addEventListener("click", (e) => {
+      console.log(this.textContent);
+      e.currentTarget.remove(this);
+    });
   });
 });
+
+//SUPPRESSION D'UN HASHTAG
+const ingredientHashtagContainer = document.querySelector(
+  "#ingredients-dropdown-container"
+);
+const appareilsHashtagContainer = document.querySelector(
+  "#appareils-dropdown-container"
+);
+const ustensilesHashtagContainer = document.querySelector(
+  "#ustensiles-dropdown-container"
+);
