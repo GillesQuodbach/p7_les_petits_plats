@@ -6,11 +6,11 @@ recipes.forEach((recipe) => getUstensilesArray.push(recipe.ustensils));
 // console.log(getAppliancesArray);
 // Aplatissage du tableau
 const flatUstensilesArray = getUstensilesArray.flat(3);
-console.log(flatUstensilesArray);
+// console.log(flatUstensilesArray);
 
 //Suppression des doublons
 const uniqueUstensilesArray = Array.from(new Set(flatUstensilesArray));
-console.log(uniqueUstensilesArray);
+// console.log(uniqueUstensilesArray);
 
 // Création de la liste des ingrédients
 const ustensilesListContainer = document.querySelector(

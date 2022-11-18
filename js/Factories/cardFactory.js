@@ -44,7 +44,7 @@ function appFactory(data) {
 
   function getDataDOM() {
     const cardBootstrapColumn = document.createElement("div");
-    cardBootstrapColumn.setAttribute("class", "col");
+    cardBootstrapColumn.setAttribute("class", "col recipe-card");
     // ? Card container
     const cardContainer = document.createElement("div");
     cardContainer.setAttribute("id", id);

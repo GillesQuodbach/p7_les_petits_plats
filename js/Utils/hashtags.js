@@ -23,7 +23,7 @@ ingredientsItems.forEach((ingredient) => {
     allSelectedItemsContainer.prepend(selectedItemContainer);
     selectedItemContainer.appendChild(selectedItem);
     selectedItem.appendChild(selectedItemCross);
-    console.log(this.textContent);
+    // console.log(this.textContent);
 
     // * Suppression du HASHTAG
     selectedItemContainer.addEventListener("click", (e) => {
@@ -57,11 +57,11 @@ appareilsItems.forEach((appareil) => {
     allSelectedItemsContainer.prepend(selectedItemContainer);
     selectedItemContainer.appendChild(selectedItem);
     selectedItem.appendChild(selectedItemCross);
-    console.log(this.textContent);
+    // console.log(this.textContent);
 
     // * Suppression du HASHTAG
     selectedItemContainer.addEventListener("click", (e) => {
-      console.log(this.textContent);
+      // console.log(this.textContent);
       e.currentTarget.remove(this);
     });
   });
@@ -92,11 +92,11 @@ ustensilesItems.forEach((ustensile) => {
     allSelectedItemsContainer.prepend(selectedItemContainer);
     selectedItemContainer.appendChild(selectedItem);
     selectedItem.appendChild(selectedItemCross);
-    console.log(this.textContent);
+    // console.log(this.textContent);
 
     // * Suppression du HASHTAG
     selectedItemContainer.addEventListener("click", (e) => {
-      console.log(this.textContent);
+      // console.log(this.textContent);
       e.currentTarget.remove(this);
     });
   });

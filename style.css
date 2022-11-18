@@ -144,6 +144,7 @@ input[type="color"]:focus,
 .dropdown-button.show {
     border-radius: 5px 5px 0 0;
     z-index: 9999999;
+
 }
 
 .caret {
@@ -207,6 +208,7 @@ input[type="color"]:focus,
     padding-left: 15px;
     padding-right: 15px;
     padding-bottom: 15px;
+    cursor: pointer;
 }
 
 .dropdown-list li {
@@ -218,6 +220,7 @@ input[type="color"]:focus,
 
 .dropdown-list.show {
     display: block;
+
 }
 
 #ingredients-dropdown-menu {
@@ -333,14 +336,18 @@ input[type="color"]:focus,
 #recipes-gallery {
     z-index: 0;
     overflow: visible;
+    cursor: pointer;
 }
 #ingredients-choices-container {
     min-width: 195px;
+    cursor: pointer;
 
 }
 #appareils-choices-container {
     min-width: 195px;
+    cursor: pointer;
 }
 #ustensiles-choices-container {
     min-width: 195px;
+    cursor: pointer;
 }
