@@ -5,7 +5,7 @@ const ingredientsItems = document.querySelectorAll(".ingredients-item");
 ingredientsItems.forEach((ingredient) => {
   ingredient.addEventListener("click", function () {
     const allSelectedItemsContainer = document.querySelector(
-      "#ingredients-dropdown-container"
+      "#ingredients-choices-container"
     );
     const selectedItemContainer = document.createElement("div");
     selectedItemContainer.setAttribute(
@@ -39,7 +39,7 @@ const appareilsItems = document.querySelectorAll(".appareils-item");
 appareilsItems.forEach((appareil) => {
   appareil.addEventListener("click", function () {
     const allSelectedItemsContainer = document.querySelector(
-      "#appareils-dropdown-container"
+      "#appareils-choices-container"
     );
     const selectedItemContainer = document.createElement("div");
     selectedItemContainer.setAttribute(
@@ -74,7 +74,7 @@ const ustensilesItems = document.querySelectorAll(".ustensiles-item");
 ustensilesItems.forEach((ustensile) => {
   ustensile.addEventListener("click", function () {
     const allSelectedItemsContainer = document.querySelector(
-      "#ustensiles-dropdown-container"
+      "#ustensiles-choices-container"
     );
     const selectedItemContainer = document.createElement("div");
     selectedItemContainer.setAttribute(
@@ -104,11 +104,11 @@ ustensilesItems.forEach((ustensile) => {
 
 //SUPPRESSION D'UN HASHTAG
 const ingredientHashtagContainer = document.querySelector(
-  "#ingredients-dropdown-container"
+  "#ingredients-choices-container"
 );
 const appareilsHashtagContainer = document.querySelector(
-  "#appareils-dropdown-container"
+  "#appareils-choices-container"
 );
 const ustensilesHashtagContainer = document.querySelector(
-  "#ustensiles-dropdown-container"
+  "#ustensiles-choices-container"
 );
