@@ -98,7 +98,7 @@ input[type="color"]:focus,
 }
 
 .dropdown-container {
-    min-width: 15%;
+    min-width: 10%;
     max-width: fit-content;
 }
 
@@ -137,7 +137,7 @@ input[type="color"]:focus,
     /*justify-content: center;*/
     /*margin-left: auto;*/
     /*margin-right: 20px;*/
-    margin: 5px 5px;
+   margin-left: auto;
     width: 20px;
 }
 
@@ -183,23 +183,24 @@ input[type="color"]:focus,
 .dropdown-list {
     background-color: #3282F7;
     color: white;
-    width: min-content;
-    padding-left: 0;
     list-style-type: none;
     display: none;
-    padding: 15px;
     padding-top: 0;
-    border-radius: 0px 0px 5px 5px;
-    /* display: block; */
+    border-radius: 0 0 5px 5px;
     column-fill: balance;
-    column-width: min-content;
-    min-height: fit-content;
     column-count: 3;
-    /*overflow: hidden;*/
+    max-width: 525px;
+    font-size: 1rem;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 15px;
 }
 
 .dropdown-list li {
     display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: 5px 5px;
 }
 
 .dropdown-list.show {
@@ -303,7 +304,21 @@ input[type="color"]:focus,
     }
 }
 
+.dropdown-list {
+    position: relative;
+    z-index: 99999;
 
+}
 /* #ustensiles-choice {
     max-width: 100%;
 } */
+
+#search-dropdown {
+    height: 70px;
+
+}
+
+#recipes-gallery {
+    z-index: 0;
+    overflow: visible;
+}
