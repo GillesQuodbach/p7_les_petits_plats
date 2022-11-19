@@ -2,18 +2,20 @@
 const searchBarreInput = document.querySelector("#main-search-barre");
 console.log(searchBarreInput);
 
-searchBarreInput.addEventListener("keyup", (e) => {
+searchBarreInput?.addEventListener("keyup", (e) => {
   const userInput = e.target.value; //Lettres rentrées
-  recipesFilter(userInput, recipes);
+  recipesFilter(userInput, displayedRecipesArray);
 });
-console.log(recipes);
+
+const displayedRecipesArray = document.querySelectorAll(".card");
+console.log(displayedRecipesArray[0].innerText);
+
 //Fonction de recherche FILTER
-function recipesFilter(inputs, array) {
-  const { id, name, appliance, ingredients, ustensils } = array;
+function recipesFilter(inputs, cardGallery) {
   if (inputs.length > 2) {
-    for (let i = 0; i < array.length; i++)
-      if (array.indexOf(inputs)) {
-        console.log(id);
+    for (let i = 0; i < cardGallery.length; i++)
+      if (cardGallery[i].innerText.toLowerCase().includes(inputs)) {
+        console.log(cardGallery[i].innerText);
       } else {
         console.log("Aucun résultat !");
       }
