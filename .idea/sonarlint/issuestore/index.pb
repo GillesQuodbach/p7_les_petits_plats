@@ -1,8 +1,6 @@
 
 @
 scss/_forms.scss,4\f\4f4b04bef1cde52ffeafa18c3615b1e54cf22ed7
-?
-json/recipes.js,a\c\ac8032c3e61d4fbfc743770a81690f35b1df03d1
 J
 js/bootstrap.bundle.min.js,8\e\8e8d88a5308780099ca27040bdf05d7f8257eb96
 L
@@ -33,3 +31,9 @@ K
 scss/_utilities_custom.scss,4\7\47905bcb68fba0110e4313bdd69068d832fdd99a
 ?
 scss/style.scss,e\f\efa4d8b2a29221ba0bb30281ccccf7ccf2ce193a
+D
+js/Utils/hashtags.js,3\4\34a2dddb1c44b24f5269f6ce0fe7f452dc5aa3e1
+=
+css/style.css,1\2\126b0f8c1ec95fb3a2541745bfc21365b438d668
+I
+js/Utils/appareilsList.js,b\7\b75dbc79b41807b710730e62957f624928861b8e
