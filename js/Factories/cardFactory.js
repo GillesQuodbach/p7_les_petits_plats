@@ -1,6 +1,6 @@
 //Réception des données (recettes)
 async function getRecipes() {
-  return { recettes: [...recipes] };
+  return { recettes: [...orderedRecipesArray] };
 }
 
 getRecipes()
@@ -102,15 +102,6 @@ function appFactory(data) {
       listIngredientItem.setAttribute("class", "list-group-item");
       listIngredientItem.innerHTML = `<b>${ingredient}:</b> ${quantity} ${unit}`;
       listIngredient.appendChild(listIngredientItem);
-
-      // // Ingrédients du dropdown
-      // const dropdownIngredientsContainer = document.querySelector(
-      //   "#ingredients-dropdown-menu"
-      // );
-      // const dropdownIngredientItem = document.createElement("li");
-      // dropdownIngredientItem.setAttribute("class", "dropdown-ingredients-item");
-      // dropdownIngredientItem.innerHTML = `${ingredient}`;
-      // dropdownIngredientsContainer.appendChild(dropdownIngredientItem);
     });
 
     // * Card description
