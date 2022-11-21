@@ -42,7 +42,7 @@ async function init(data) {
   const { recettes } = await getRecipes(data);
   await affichageCard(recettes);
 }
-
+// Appel affichage des cards
 init(recipes);
 
 //  FACTORY cards
@@ -140,12 +140,22 @@ function appFactory(data) {
 searchInput.addEventListener("input", filterData);
 
 function filterData(e) {
-  searchResult.innerHTML = "";
   const searchedString = e.target.value.toLowerCase().replace(/\s/g, "");
-  filteredArray = recipes.filter((el) =>
-    el.name.toLowerCase().includes(searchedString)
-  );
-  console.log(filteredArray);
-  init(filteredArray);
+  if (searchedString.length > 2) {
+    searchResult.innerHTML = "";
+    const inputValue = searchInput.value;
+    const inputLength = searchInput.value.length;
+    console.log(searchInput.value);
+
+    filteredArray = recipes.filter(
+      ({ name, description, ingredients }) =>
+        name.toLowerCase().includes(searchedString) ||
+        description.toLowerCase().includes(searchedString)
+    );
+    console.log(filteredArray);
+    init(filteredArray);
+  } else {
+    init(orderedRecipes);
+  }
 }
 console.log(filteredArray);
