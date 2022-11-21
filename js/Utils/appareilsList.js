@@ -1,6 +1,5 @@
 //Création des tableaux des ingredients
 const getAppliancesArray = [];
-console.log("hello");
 // Récupération des ingrédients
 recipes.forEach((recipe) => getAppliancesArray.push(recipe.appliance));
 // console.log(getAppliancesArray);

@@ -1,21 +1,36 @@
-//Réception des données (recettes)
-async function getRecipes() {
-  return { recettes: [...orderedRecipesArray] };
+let filteredArray = [];
+//Gallery
+const searchResult = document.querySelector("#recipes-gallery");
+const searchInput = document.querySelector("#main-search-input");
+
+// * Réception des données (recettes)
+// Recipes => fichier recipes.js
+async function getRecipes(data) {
+  return { recettes: [...data] };
 }
 
-getRecipes()
-  .then((response) => {
-    console.log("Les recettes ont bien été reçu");
-  })
-  .catch((error) => {
-    console.error("ERROR, les recettes sont manquantes");
+// * Function ordonnancement
+function orderList(data) {
+  return data.sort((a, b) => {
+    if (a.name.toLowerCase() > b.name.toLowerCase()) {
+      return 1;
+    }
+    if (a.name.toLowerCase() < b.name.toLowerCase()) {
+      return -1;
+    }
+    return 0;
   });
+}
+//Appel fonction
+// * On met les recettes dans l'ordre
+const orderedRecipes = orderList(recipes);
+console.log(orderedRecipes);
 
 // Création du DOM
-async function displayData(recettes) {
+async function affichageCard(data) {
   // Création des cards des recettes
   const recipesCardsSection = document.getElementById("recipes-gallery");
-  recettes.forEach((recette) => {
+  data.forEach((recette) => {
     const recipesData = appFactory(recette);
     const cardsDOM = recipesData.getDataDOM();
     recipesCardsSection.appendChild(cardsDOM);
@@ -23,18 +38,12 @@ async function displayData(recettes) {
 }
 
 // Affichage des cards
-async function init() {
-  const { recettes } = await getRecipes();
-  await displayData(recettes);
+async function init(data) {
+  const { recettes } = await getRecipes(data);
+  await affichageCard(recettes);
 }
 
-init()
-  .then((response) => {
-    console.log("Les recettes ont bien été affichées");
-  })
-  .catch((error) => {
-    console.error("ERROR, les recettes sont manquantes");
-  });
+init(recipes);
 
 //  FACTORY cards
 function appFactory(data) {
@@ -126,3 +135,17 @@ function appFactory(data) {
 
   return { id, name, time, description, ingredients, getDataDOM };
 }
+
+// ! écoute de l'input de la recherche
+searchInput.addEventListener("input", filterData);
+
+function filterData(e) {
+  searchResult.innerHTML = "";
+  const searchedString = e.target.value.toLowerCase().replace(/\s/g, "");
+  filteredArray = recipes.filter((el) =>
+    el.name.toLowerCase().includes(searchedString)
+  );
+  console.log(filteredArray);
+  init(filteredArray);
+}
+console.log(filteredArray);
