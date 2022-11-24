@@ -20,9 +20,8 @@ function orderList(data) {
 }
 
 //Mise en ordre alphabetique
-orderList(recipes);
-// console.log(recipes)
-console.log(recipes);
+const orderedRecipes = orderList(recipes);
+
 //Fonction de création des cards
 function createCardList(recipesList) {
   //Tableau de chaques RECETTES" (recipesList)
@@ -50,7 +49,8 @@ function createCardList(recipesList) {
 
     const cardListIngredient = `${recipeIngredients
       .map(
-        (item) => `<li>${item.ingredient} ${item.quantity} ${item.unit}</li>`
+        (item) =>
+          `<li class="list-group-item"><b>${item.ingredient}:</b> ${item.quantity} ${item.unit}</li>`
       )
       .join("")
       .replace("undefined", "")}`;
@@ -66,7 +66,7 @@ function createCardList(recipesList) {
                 <p class="card-time fw-bold my-auto">${time} min</p>
             </div>
             <div class="card-main d-flex justify-content-between mt-3">
-                <ul> ${cardListIngredient}</ul>
+                <ul class="col-6 list-group rounded-0"> ${cardListIngredient}</ul>
                 <p class="card-recipe col-6">${description}</p>
             </div>
             </div>
@@ -78,4 +78,26 @@ function createCardList(recipesList) {
   });
 }
 // Creation de la liste des cartes
-createCardList(recipes);
+createCardList(orderedRecipes);
+
+//Fonction de recherche
+searchInput.addEventListener("input", filterData);
+
+function filterData(e) {
+  //Remise a zéro de la gallery
+  cardsGallery.innerHTML = "";
+  //Récupération de l'input de l'utilisateur à chaque lettre tapée
+  const searchedString = e.target.value.toLowerCase();
+  //Si plus de 2 lettres entrées alors on lance la recherche
+  if (searchedString.length > 2) {
+    // Recherche dans DESCRITPION - NOM - INGREDIENT
+    const filteredArr = recipes.filter(
+      (recipe) =>
+        recipe.name.toLowerCase().includes(searchedString) ||
+        recipe.description.toLowerCase().includes(searchedString)
+    );
+    createCardList(filteredArr);
+  } else {
+    createCardList(orderedRecipes);
+  }
+}
