@@ -29,12 +29,8 @@ A
 package-lock.json,f\a\fa288d1472d29beccb489a676f68739ad365fc47
 <
 package.json,7\0\7030d0b2f71b999ff89a343de08c414af32fc93a
-D
-js/Utils/dropdown.js,9\7\9703eabea828249023058307090401821839b74a
 J
 js/Utils/ustensilesList.js,4\a\4a5603356796f54f37676a4c231570505b2277e7
-K
-js/Utils/ingredientsList.js,2\7\27edb5821dfb1e649a64b61fc0fdc206b020aba9
 D
 js/Utils/hashtags.js,3\4\34a2dddb1c44b24f5269f6ce0fe7f452dc5aa3e1
 @

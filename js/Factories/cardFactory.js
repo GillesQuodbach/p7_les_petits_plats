@@ -111,4 +111,10 @@ function filterData(e) {
   }
 }
 
-console.log(recipes);
+// console.log(recipes);
+
+window.onload = (event) => {
+  console.log("page is fully loaded");
+  const ingredientsChoices = document.querySelectorAll(".ingredients-item");
+  console.log(ingredientsChoices);
+};

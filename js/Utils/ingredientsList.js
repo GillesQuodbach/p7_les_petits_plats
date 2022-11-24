@@ -25,6 +25,7 @@ const ingredientsListContainer = document.querySelector(
 );
 uniqueIngredientsArray.forEach((ingredient) => {
   const ingredientItem = document.createElement("li");
+  ingredientItem.setAttribute("id");
   ingredientItem.setAttribute("class", "ingredients-item text-nowrap");
   ingredientItem.textContent = ingredient;
   ingredientsListContainer.appendChild(ingredientItem);
