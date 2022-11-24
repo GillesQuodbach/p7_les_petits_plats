@@ -82,7 +82,7 @@ createCardList(orderedRecipes);
 
 //Fonction de recherche
 searchInput.addEventListener("input", filterData);
-
+let filteredArr = [];
 function filterData(e) {
   //Remise a zéro de la gallery
   cardsGallery.innerHTML = "";
@@ -91,11 +91,15 @@ function filterData(e) {
   //Si plus de 2 lettres entrées alors on lance la recherche
   if (searchedString.length > 2) {
     // Recherche dans DESCRITPION - NOM - INGREDIENT
-    const filteredArr = recipes.filter(
+    filteredArr = recipes.filter(
       (recipe) =>
         recipe.name.toLowerCase().includes(searchedString) ||
-        recipe.description.toLowerCase().includes(searchedString)
+        recipe.description.toLowerCase().includes(searchedString) ||
+        recipe.ingredients.forEach((item) =>
+          item.ingredient.toLowerCase().includes(searchedString)
+        )
     );
+
     createCardList(filteredArr);
   } else {
     createCardList(orderedRecipes);
