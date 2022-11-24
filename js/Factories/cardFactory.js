@@ -48,10 +48,15 @@ function createCardList(recipesList) {
     //Fonction createIngredientList
 
     const cardListIngredient = `${recipeIngredients
-      .map(
-        (item) =>
-          `<li class="list-group-item"><b>${item.ingredient}:</b> ${item.quantity} ${item.unit}</li>`
-      )
+      .map((item) => {
+        if (item.quantity === undefined) {
+          item.quantity = "";
+        }
+        if (item.unit === undefined) {
+          item.unit = "";
+        }
+        return `<li class="list-group-item"><b>${item.ingredient}:</b> ${item.quantity} ${item.unit}</li>`;
+      })
       .join("")
       .replace("undefined", "")}`;
 
@@ -105,3 +110,5 @@ function filterData(e) {
     createCardList(orderedRecipes);
   }
 }
+
+console.log(recipes);
