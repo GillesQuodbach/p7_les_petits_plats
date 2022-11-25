@@ -1,3 +1,6 @@
+let filteredArr = [];
+let testArr = [];
+
 // Input de recherche
 const searchInput = document.querySelector("#main-search-input");
 
@@ -87,8 +90,9 @@ createCardList(orderedRecipes);
 
 //Fonction de recherche
 searchInput.addEventListener("input", filterData);
-let filteredArr = [];
+
 function filterData(e) {
+  let filteredIngredientsArr2 = [];
   //Remise a zéro de la gallery
   cardsGallery.innerHTML = "";
   //Récupération de l'input de l'utilisateur à chaque lettre tapée
@@ -96,25 +100,22 @@ function filterData(e) {
   //Si plus de 2 lettres entrées alors on lance la recherche
   if (searchedString.length > 2) {
     // Recherche dans DESCRITPION - NOM - INGREDIENT
-    filteredArr = recipes.filter(
+    let filteredIngredientsArr1 = recipes.filter(
       (recipe) =>
+        // Work well
         recipe.name.toLowerCase().includes(searchedString) ||
+        // Work well
         recipe.description.toLowerCase().includes(searchedString) ||
-        recipe.ingredients.forEach((item) =>
-          item.ingredient.toLowerCase().includes(searchedString)
-        )
+        // Find what I'm looking for but don't push it in the filteredArr
+        recipe.ingredients.forEach((item) => {
+          if (item.ingredient.toLowerCase().includes(searchedString)) {
+            filteredIngredientsArr2.push(recipe);
+          }
+        })
     );
-
+    filteredArr = filteredIngredientsArr1.concat(filteredIngredientsArr2);
     createCardList(filteredArr);
   } else {
     createCardList(orderedRecipes);
   }
 }
-
-// console.log(recipes);
-
-window.onload = (event) => {
-  console.log("page is fully loaded");
-  const ingredientsChoices = document.querySelectorAll(".ingredients-item");
-  console.log(ingredientsChoices);
-};
