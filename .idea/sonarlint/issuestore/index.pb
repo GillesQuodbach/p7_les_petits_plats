@@ -31,11 +31,9 @@ A
 package.json,7\0\7030d0b2f71b999ff89a343de08c414af32fc93a
 J
 js/Utils/ustensilesList.js,4\a\4a5603356796f54f37676a4c231570505b2277e7
-D
-js/Utils/hashtags.js,3\4\34a2dddb1c44b24f5269f6ce0fe7f452dc5aa3e1
 =
 css/style.css,1\2\126b0f8c1ec95fb3a2541745bfc21365b438d668
 9
 	style.css,4\6\46e3381e9569c09e85a30b9e5a2af7525ee9fd78
-D
-js/Utils/dropdown.js,9\7\9703eabea828249023058307090401821839b74a
+I
+js/Utils/appareilsList.js,b\7\b75dbc79b41807b710730e62957f624928861b8e

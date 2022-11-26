@@ -1,5 +1,8 @@
 let filteredArr = [];
 let testArr = [];
+let testIngredients = [];
+let testAppareils = [];
+let testUstensils = [];
 
 // Input de recherche
 const searchInput = document.querySelector("#main-search-input");
@@ -119,3 +122,102 @@ function filterData(e) {
     createCardList(orderedRecipes);
   }
 }
+
+//*
+// ! Filtrage par hashtag ==================================
+//*
+window.onload = () => {
+  // Une fois la page complètement chargée
+
+  // *
+  // ?  Choix des ingredients
+  //*
+  //Récupération de la liste des ingredients
+  const allIngredientsChoices = document.querySelectorAll(".ingredients-item");
+
+  //On récupère la liste de tout les ingredients
+  allIngredientsChoices.forEach((choice) => {
+    //Pour chaque choix, au clic...
+    choice.addEventListener("click", function filterIngr(e) {
+      const choicedIngredient = e.target.innerText; // On récupère le text de l'ingrédient choisi
+      console.log(choicedIngredient);
+      console.log(choicedIngredient.toLowerCase());
+      recipes.forEach((recipe) => {
+        recipe.ingredients.forEach((item) => {
+          if (
+            item.ingredient
+              .toLowerCase()
+              .includes(choicedIngredient.toLowerCase())
+          ) {
+            testIngredients.push(item);
+          }
+        });
+      });
+      console.log(testIngredients);
+    });
+  });
+
+  // *
+  // ? Choix des appareils
+  //*
+  //Récupération de la liste des appareils
+  const allAppareilsChoices = document.querySelectorAll(".appareils-item");
+
+  //On récupère la liste de tout les appareils
+  allAppareilsChoices.forEach((choice) => {
+    //Pour chaque choix, au clic...
+    choice.addEventListener("click", function filterAppareils(e) {
+      const choicedAppareils = e.target.innerText; // On récupère le text de l'appareil choisi
+      console.log(choicedAppareils);
+      console.log(choicedAppareils.toLowerCase());
+      recipes.forEach((recipe) => {
+        if (
+          recipe.appliance
+            .toLowerCase()
+            .includes(choicedAppareils.toLowerCase())
+        ) {
+          testAppareils.push(recipe);
+        }
+      });
+      console.log(testAppareils);
+    });
+  });
+
+  // *
+  // ?  Choix des ustensiles
+  //*
+  //Récupération de la liste des ingredients
+  const allUstensilsChoices = document.querySelectorAll(".ustensiles-item");
+
+  //On récupère la liste de tout les ingredients
+  allUstensilsChoices.forEach((choice) => {
+    //Pour chaque choix, au clic...
+    choice.addEventListener("click", function filterUstensils(e) {
+      const choicedUstensils = e.target.innerText; // On récupère le text de l'ingrédient choisi
+      console.log(choicedUstensils);
+      console.log(choicedUstensils.toLowerCase());
+      recipes.forEach((recipe) => {
+        recipe.ustensils.forEach((item) => {
+          if (item.toLowerCase().includes(choicedUstensils.toLowerCase())) {
+            testUstensils.push(recipe);
+          }
+        });
+      });
+      console.log(testUstensils);
+    });
+  });
+};
+
+//! Recherche dans ingredients OK
+// let test = [];
+//
+// recipes.forEach((recipe) => {
+//   recipe.ingredients.forEach((item) => {
+//     if (item.ingredient.toLowerCase().includes("gla")) {
+//       test.push(item);
+//     }
+//   });
+// });
+// console.log(test);
+//!================================
+console.log(recipes);

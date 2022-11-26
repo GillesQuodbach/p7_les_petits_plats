@@ -31,17 +31,3 @@ uniqueIngredientsArray.forEach((ingredient) => {
   ingredientItem.textContent = ingredient;
   ingredientsListContainer.appendChild(ingredientItem);
 });
-
-//! Recherche dans ingredients OK
-// let test = [];
-//
-// recipes.forEach((recipe) => {
-//   recipe.ingredients.forEach((item) => {
-//     if (item.ingredient.toLowerCase().includes("gla")) {
-//       test.push(item);
-//     }
-//   });
-// });
-// console.log(test);
-//!================================
-// console.log(recipes);
