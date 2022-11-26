@@ -27,7 +27,7 @@ function orderList(data) {
 
 //Mise en ordre alphabetique
 const orderedRecipes = orderList(recipes);
-
+console.log(recipes);
 //Fonction de création des cards
 function createCardList(recipesList) {
   //Tableau de chaques RECETTES" (recipesList)
@@ -90,6 +90,7 @@ function createCardList(recipesList) {
 }
 // Creation de la liste des cartes
 createCardList(orderedRecipes);
+console.log(orderedRecipes);
 
 //Fonction de recherche
 searchInput.addEventListener("input", filterData);
@@ -117,6 +118,7 @@ function filterData(e) {
         })
     );
     filteredArr = filteredIngredientsArr1.concat(filteredIngredientsArr2);
+    console.log(filteredArr);
     createCardList(filteredArr);
   } else {
     createCardList(orderedRecipes);
@@ -126,6 +128,7 @@ function filterData(e) {
 //*
 // ! Filtrage par hashtag ==================================
 //*
+// TODO problème dans le retour des tableaux (retourne les ingrédients au lien des recettes)
 window.onload = () => {
   // Une fois la page complètement chargée
 
@@ -149,11 +152,13 @@ window.onload = () => {
               .toLowerCase()
               .includes(choicedIngredient.toLowerCase())
           ) {
-            testIngredients.push(item);
+            testIngredients.push(recipe);
           }
         });
       });
-      console.log(testIngredients);
+      console.log("=====DISPLAY OK======");
+      cardsGallery.innerHTML = "";
+      createCardList(testIngredients);
     });
   });
 
@@ -179,7 +184,9 @@ window.onload = () => {
           testAppareils.push(recipe);
         }
       });
-      console.log(testAppareils);
+      console.log("=====DISPLAY OK======");
+      cardsGallery.innerHTML = "";
+      createCardList(testAppareils);
     });
   });
 
@@ -203,8 +210,10 @@ window.onload = () => {
           }
         });
       });
-      console.log(testUstensils);
     });
+    console.log("=====DISPLAY OK======");
+    cardsGallery.innerHTML = "";
+    createCardList(testUstensils);
   });
 };
 
@@ -220,4 +229,4 @@ window.onload = () => {
 // });
 // console.log(test);
 //!================================
-console.log(recipes);
+// console.log(recipes);
