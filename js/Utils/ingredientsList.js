@@ -21,7 +21,6 @@ const uniqueIngredientsArray = Array.from(
 console.log(uniqueIngredientsArray);
 // Loading item
 // Création de la liste des ingrédients
-
 const ingredientsListContainer = document.querySelector(
   "#ingredients-dropdown-menu"
 );
@@ -38,14 +37,17 @@ const ingredientsItems = document.querySelectorAll(".ingredients-item");
 
 ingredientsItems.forEach((ingredient) => {
   ingredient.addEventListener("click", function () {
+    //Container des ingrédients choisi
     const allSelectedItemsContainer = document.querySelector(
       "#ingredients-choices-container"
     );
+    // Création du "bouton" de l'ingrédient choisi
     const selectedItemContainer = document.createElement("div");
     selectedItemContainer.setAttribute(
       "class",
       "selected-choices-container ingredients-selected-choices-container"
     );
+    //Affichage de l'ingrédient choisi
     const selectedItem = document.createElement("p");
     selectedItem.setAttribute("class", "selected-choice");
     selectedItem.textContent = this.textContent;
@@ -57,6 +59,7 @@ ingredientsItems.forEach((ingredient) => {
     allSelectedItemsContainer.prepend(selectedItemContainer);
     selectedItemContainer.appendChild(selectedItem);
     selectedItem.appendChild(selectedItemCross);
+
     // console.log(this.textContent);
 
     // * Suppression du HASHTAG
@@ -66,5 +69,7 @@ ingredientsItems.forEach((ingredient) => {
       createCardList(orderedRecipes);
       // TODO rajouter suppression du tag de la liste de CHAQUE dropdown
     });
+    ingredient.remove();
   });
+  // console.log(ingredient);
 });

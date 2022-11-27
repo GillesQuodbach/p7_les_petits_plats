@@ -56,6 +56,8 @@ ustensilesItems.forEach((ustensile) => {
       e.currentTarget.remove(this);
       cardsGallery.innerHTML = "";
       createCardList(orderedRecipes);
+      //TODO ICI RAJOUTER NOEUD
     });
+    ustensile.remove();
   });
 });

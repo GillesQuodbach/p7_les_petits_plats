@@ -56,5 +56,6 @@ appareilsItems.forEach((appareil) => {
       cardsGallery.innerHTML = "";
       createCardList(orderedRecipes);
     });
+    appareil.remove();
   });
 });
