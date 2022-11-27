@@ -27,7 +27,7 @@ function orderList(data) {
 
 //Mise en ordre alphabetique
 const orderedRecipes = orderList(recipes);
-console.log(recipes);
+// console.log(recipes);
 //Fonction de création des cards
 function createCardList(recipesList) {
   //Tableau de chaques RECETTES" (recipesList)
@@ -89,7 +89,7 @@ function createCardList(recipesList) {
 }
 // Creation de la liste des cartes
 createCardList(orderedRecipes);
-console.log(orderedRecipes);
+// console.log(orderedRecipes);
 
 //Fonction de recherche
 searchInput.addEventListener("input", filterData);
@@ -117,7 +117,7 @@ function filterData(e) {
         })
     );
     filteredArr = filteredIngredientsArr1.concat(filteredIngredientsArr2);
-    console.log(filteredArr);
+    // console.log(filteredArr);
     createCardList(filteredArr);
   } else {
     createCardList(orderedRecipes);
@@ -141,8 +141,8 @@ window.onload = () => {
     //Pour chaque choix, au clic...
     choice.addEventListener("click", function filterIngr(e) {
       const choicedIngredient = e.target.innerText; // On récupère le text de l'ingrédient choisi
-      console.log(choicedIngredient);
-      console.log(choicedIngredient.toLowerCase());
+      // console.log(choicedIngredient);
+      // console.log(choicedIngredient.toLowerCase());
       recipes.forEach((recipe) => {
         recipe.ingredients.forEach((item) => {
           if (
@@ -154,7 +154,7 @@ window.onload = () => {
           }
         });
       });
-      console.log("=====DISPLAY OK======");
+      // console.log("=====DISPLAY OK======");
       cardsGallery.innerHTML = "";
       createCardList(testIngredients);
     });
@@ -171,8 +171,8 @@ window.onload = () => {
     //Pour chaque choix, au clic...
     choice.addEventListener("click", function filterAppareils(e) {
       const choicedAppareils = e.target.innerText; // On récupère le text de l'appareil choisi
-      console.log(choicedAppareils);
-      console.log(choicedAppareils.toLowerCase());
+      // console.log(choicedAppareils);
+      // console.log(choicedAppareils.toLowerCase());
       recipes.forEach((recipe) => {
         if (
           recipe.appliance
@@ -182,7 +182,7 @@ window.onload = () => {
           testAppareils.push(recipe);
         }
       });
-      console.log("=====DISPLAY OK======");
+      // console.log("=====DISPLAY OK======");
       cardsGallery.innerHTML = "";
       createCardList(testAppareils);
     });
@@ -199,8 +199,8 @@ window.onload = () => {
     //Pour chaque choix, au clic...
     choice.addEventListener("click", function filterUstensils(e) {
       const choicedUstensils = e.target.innerText; // On récupère le text de l'ingrédient choisi
-      console.log(choicedUstensils);
-      console.log(choicedUstensils.toLowerCase());
+      // console.log(choicedUstensils);
+      // console.log(choicedUstensils.toLowerCase());
       recipes.forEach((recipe) => {
         recipe.ustensils.forEach((item) => {
           if (item.toLowerCase().includes(choicedUstensils.toLowerCase())) {
@@ -208,7 +208,7 @@ window.onload = () => {
           }
         });
       });
-      console.log("=====DISPLAY OK======");
+      // console.log("=====DISPLAY OK======");
       cardsGallery.innerHTML = "";
       createCardList(testUstensils);
     });

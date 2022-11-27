@@ -55,7 +55,7 @@ const appareilsDropdownMenu = document.querySelector(
 const appareilsDropdownInput = document.getElementById("input-appareils");
 
 // target = element that triggered event; currentTarget = element that listens to event
-appareilsDropdownButton?.addEventListener("mouseover", () => {
+appareilsDropdownButton.addEventListener("mouseover", () => {
   appareilsDropdownButton.classList.add("show");
   appareilsDropdownMenu.classList.add("show");
   appareilsDropdownCaret.classList.add("reverse");
@@ -63,7 +63,7 @@ appareilsDropdownButton?.addEventListener("mouseover", () => {
     appareilsDropdownInput.value = "";
   }
 });
-appareilsDropdownButton?.addEventListener("mouseout", () => {
+appareilsDropdownButton.addEventListener("mouseout", () => {
   appareilsDropdownButton.classList.remove("show");
   appareilsDropdownMenu.classList.remove("show");
   appareilsDropdownCaret.classList.remove("reverse");
@@ -71,7 +71,7 @@ appareilsDropdownButton?.addEventListener("mouseout", () => {
     appareilsDropdownInput.value = "Appareils";
   }
 });
-appareilsDropdownMenu?.addEventListener("mouseover", () => {
+appareilsDropdownMenu.addEventListener("mouseover", () => {
   appareilsDropdownButton.classList.add("show");
   appareilsDropdownMenu.classList.add("show");
   appareilsDropdownCaret.classList.add("reverse");
@@ -79,7 +79,7 @@ appareilsDropdownMenu?.addEventListener("mouseover", () => {
     appareilsDropdownInput.value = "";
   }
 });
-appareilsDropdownMenu?.addEventListener("mouseout", () => {
+appareilsDropdownMenu.addEventListener("mouseout", () => {
   appareilsDropdownButton.classList.remove("show");
   appareilsDropdownMenu.classList.remove("show");
   appareilsDropdownCaret.classList.remove("reverse");
@@ -100,7 +100,7 @@ const ustensilesDropdownMenu = document.querySelector(
 const ustensilesDropdownInput = document.getElementById("input-ustensiles");
 
 // target = element that triggered event; currentTarget = element that listens to event
-ustensilesDropdownButton?.addEventListener("mouseover", () => {
+ustensilesDropdownButton.addEventListener("mouseover", () => {
   ustensilesDropdownButton.classList.add("show");
   ustensilesDropdownMenu.classList.add("show");
   ustensilesDropdownCaret.classList.add("reverse");
@@ -108,7 +108,7 @@ ustensilesDropdownButton?.addEventListener("mouseover", () => {
     ustensilesDropdownInput.value = "";
   }
 });
-ustensilesDropdownButton?.addEventListener("mouseout", () => {
+ustensilesDropdownButton.addEventListener("mouseout", () => {
   ustensilesDropdownButton.classList.remove("show");
   ustensilesDropdownMenu.classList.remove("show");
   ustensilesDropdownCaret.classList.remove("reverse");
@@ -116,7 +116,7 @@ ustensilesDropdownButton?.addEventListener("mouseout", () => {
     ustensilesDropdownInput.value = "Ustensiles";
   }
 });
-ustensilesDropdownMenu?.addEventListener("mouseover", () => {
+ustensilesDropdownMenu.addEventListener("mouseover", () => {
   ustensilesDropdownButton.classList.add("show");
   ustensilesDropdownMenu.classList.add("show");
   ustensilesDropdownCaret.classList.add("reverse");
@@ -124,7 +124,7 @@ ustensilesDropdownMenu?.addEventListener("mouseover", () => {
     ustensilesDropdownInput.value = "";
   }
 });
-ustensilesDropdownMenu?.addEventListener("mouseout", () => {
+ustensilesDropdownMenu.addEventListener("mouseout", () => {
   ustensilesDropdownButton.classList.remove("show");
   ustensilesDropdownMenu.classList.remove("show");
   ustensilesDropdownCaret.classList.remove("reverse");

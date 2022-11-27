@@ -35,9 +35,5 @@ J
 css/style.css,1\2\126b0f8c1ec95fb3a2541745bfc21365b438d668
 I
 js/Utils/appareilsList.js,b\7\b75dbc79b41807b710730e62957f624928861b8e
-D
-js/Utils/dropdown.js,9\7\9703eabea828249023058307090401821839b74a
-K
-js/Utils/ingredientsList.js,2\7\27edb5821dfb1e649a64b61fc0fdc206b020aba9
 @
 js/Utils/test.js,e\a\eaecab40cfd6139ebc1ed3bece0b06e7de8d67fb
