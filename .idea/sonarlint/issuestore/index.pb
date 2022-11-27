@@ -29,11 +29,9 @@ A
 package-lock.json,f\a\fa288d1472d29beccb489a676f68739ad365fc47
 <
 package.json,7\0\7030d0b2f71b999ff89a343de08c414af32fc93a
-J
-js/Utils/ustensilesList.js,4\a\4a5603356796f54f37676a4c231570505b2277e7
 =
 css/style.css,1\2\126b0f8c1ec95fb3a2541745bfc21365b438d668
-I
-js/Utils/appareilsList.js,b\7\b75dbc79b41807b710730e62957f624928861b8e
-@
-js/Utils/test.js,e\a\eaecab40cfd6139ebc1ed3bece0b06e7de8d67fb
+9
+	style.css,4\6\46e3381e9569c09e85a30b9e5a2af7525ee9fd78
+A
+css/style.css.map,9\f\9f452116be72e80a7aa1d2a44143b07933383b7d
