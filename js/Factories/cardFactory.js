@@ -128,7 +128,6 @@ function filterData(e) {
 //*
 // ! Filtrage par hashtag ==================================
 //*
-// TODO problème dans le retour des tableaux (retourne les ingrédients au lien des recettes)
 window.onload = () => {
   // Une fois la page complètement chargée
 
@@ -215,4 +214,8 @@ window.onload = () => {
       createCardList(testUstensils);
     });
   });
+
+  // Suppression des choices
+  // Sélection des boutons (choix)
+  const selectedChoice = document.querySelectorAll(".selected-choice");
 };

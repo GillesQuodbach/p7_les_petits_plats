@@ -38,8 +38,6 @@ J
 I
 js/Utils/appareilsList.js,b\7\b75dbc79b41807b710730e62957f624928861b8e
 D
-js/Utils/hashtags.js,3\4\34a2dddb1c44b24f5269f6ce0fe7f452dc5aa3e1
-D
 js/Utils/dropdown.js,9\7\9703eabea828249023058307090401821839b74a
 K
 js/Utils/ingredientsList.js,2\7\27edb5821dfb1e649a64b61fc0fdc206b020aba9

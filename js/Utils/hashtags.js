@@ -28,6 +28,8 @@ ingredientsItems.forEach((ingredient) => {
     // * Suppression du HASHTAG
     selectedItemContainer.addEventListener("click", (e) => {
       e.currentTarget.remove(this);
+      cardsGallery.innerHTML = "";
+      createCardList(orderedRecipes);
     });
   });
 });
@@ -63,6 +65,8 @@ appareilsItems.forEach((appareil) => {
     selectedItemContainer.addEventListener("click", (e) => {
       // console.log(this.textContent);
       e.currentTarget.remove(this);
+      cardsGallery.innerHTML = "";
+      createCardList(orderedRecipes);
     });
   });
 });
@@ -98,6 +102,8 @@ ustensilesItems.forEach((ustensile) => {
     selectedItemContainer.addEventListener("click", (e) => {
       // console.log(this.textContent);
       e.currentTarget.remove(this);
+      cardsGallery.innerHTML = "";
+      createCardList(orderedRecipes);
     });
   });
 });
