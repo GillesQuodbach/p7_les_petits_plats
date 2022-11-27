@@ -78,12 +78,11 @@ function createCardList(recipesList) {
             </div>
             <div class="card-main d-flex justify-content-between mt-3">
                 <ul class="col-6 list-group rounded-0"> ${cardListIngredient}</ul>
-                <p class="card-recipe col-6">${description}</p>
+                <p class="card-recipe col-6">${description.slice(0, 175)}...</p>
             </div>
             </div>
             </div>
         `;
-
     listContainer.innerHTML = cardsHTML;
     cardsGallery.appendChild(listContainer);
   });

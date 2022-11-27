@@ -33,8 +33,6 @@ J
 js/Utils/ustensilesList.js,4\a\4a5603356796f54f37676a4c231570505b2277e7
 =
 css/style.css,1\2\126b0f8c1ec95fb3a2541745bfc21365b438d668
-9
-	style.css,4\6\46e3381e9569c09e85a30b9e5a2af7525ee9fd78
 I
 js/Utils/appareilsList.js,b\7\b75dbc79b41807b710730e62957f624928861b8e
 D
