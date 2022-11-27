@@ -213,8 +213,4 @@ window.onload = () => {
       createCardList(testUstensils);
     });
   });
-
-  // Suppression des choices
-  // Sélection des boutons (choix)
-  const selectedChoice = document.querySelectorAll(".selected-choice");
 };

@@ -1,25 +1,43 @@
 //Création des tableaux des ingredients
-const getAppliancesArray = [];
+const getAppareilsArray = [];
+//Liste des appareils
+const appareilsListContainer = document.querySelector(
+  "#appareils-dropdown-menu"
+);
 // Récupération des ingrédients
-recipes.forEach((recipe) => getAppliancesArray.push(recipe.appliance));
+recipes.forEach((recipe) => getAppareilsArray.push(recipe.appliance));
 // console.log(getAppliancesArray);
 // Aplatissage du tableau
-const flatAppliancesArray = getAppliancesArray.flat(3);
+const flatAppareilArray = getAppareilsArray.flat(3);
 // console.log(flatAppliancesArray);
 
 //Suppression des doublons
-const uniqueAppliancesArray = Array.from(new Set(flatAppliancesArray));
-// console.log(uniqueAppliancesArray);
+const uniqueAppareilsArray = Array.from(new Set(flatAppareilArray));
 
+//Mise dans l'ordre alphabétique
+const orderedAppareilsArray = orderChoices(uniqueAppareilsArray);
+
+console.log(uniqueAppareilsArray);
+
+function orderChoices(data) {
+  const orderedData = data.sort((a, b) => {
+    if (a.toLowerCase() < b.toLowerCase()) {
+      return -1;
+    }
+    if (a.toLowerCase() > b.toLowerCase()) {
+      return 1;
+    }
+    return 0;
+  });
+  return orderedData;
+}
 // Création de la liste des ingrédients
-const appliancesListContainer = document.querySelector(
-  "#appareils-dropdown-menu"
-);
-uniqueAppliancesArray.forEach((appliance) => {
+
+orderedAppareilsArray.forEach((appliance) => {
   const applianceItem = document.createElement("li");
   applianceItem.setAttribute("class", "appareils-item text-nowrap");
   applianceItem.textContent = appliance;
-  appliancesListContainer.appendChild(applianceItem);
+  appareilsListContainer.appendChild(applianceItem);
 });
 
 // GESTION DES CHOIX DES APPAREILS
@@ -53,6 +71,7 @@ appareilsItems.forEach((appareil) => {
     selectedItemContainer.addEventListener("click", (e) => {
       // console.log(this.textContent);
       e.currentTarget.remove(this);
+      appareilsListContainer.appendChild(appareil);
       cardsGallery.innerHTML = "";
       createCardList(orderedRecipes);
     });

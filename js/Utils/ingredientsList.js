@@ -1,7 +1,10 @@
 //Création des tableaux des ingredients
 const getIngredientsArray = [];
 const ingredientArrayWithDuplicate = [];
-
+//Liste des ingredients
+const ingredientsListContainer = document.querySelector(
+  "#ingredients-dropdown-menu"
+);
 // Récupération des ingrédients
 recipes.forEach((recipe) => getIngredientsArray.push(recipe.ingredients));
 
@@ -19,12 +22,12 @@ const uniqueIngredientsArray = Array.from(
   new Set(ingredientArrayWithDuplicate)
 );
 console.log(uniqueIngredientsArray);
-// Loading item
+
+//Mise dans l'ordre alphabétique
+const orderedIngredients = orderChoices(uniqueIngredientsArray);
+
 // Création de la liste des ingrédients
-const ingredientsListContainer = document.querySelector(
-  "#ingredients-dropdown-menu"
-);
-uniqueIngredientsArray.forEach((ingredient) => {
+orderedIngredients.forEach((ingredient) => {
   const ingredientItem = document.createElement("li");
   ingredientItem.setAttribute("class", "ingredients-item text-nowrap");
   ingredientItem.textContent = ingredient;
@@ -65,9 +68,9 @@ ingredientsItems.forEach((ingredient) => {
     // * Suppression du HASHTAG
     selectedItemContainer.addEventListener("click", (e) => {
       e.currentTarget.remove(this);
+      ingredientsListContainer.appendChild(ingredient);
       cardsGallery.innerHTML = "";
       createCardList(orderedRecipes);
-      // TODO rajouter suppression du tag de la liste de CHAQUE dropdown
     });
     ingredient.remove();
   });

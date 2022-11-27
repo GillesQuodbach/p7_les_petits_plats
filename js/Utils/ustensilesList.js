@@ -1,6 +1,9 @@
 //Création des tableaux des ingredients
 const getUstensilesArray = [];
-
+//Liste des ustensiles
+const ustensilesListContainer = document.querySelector(
+  "#ustensiles-dropdown-menu"
+);
 // Récupération des ingrédients
 recipes.forEach((recipe) => getUstensilesArray.push(recipe.ustensils));
 // console.log(getAppliancesArray);
@@ -12,11 +15,10 @@ const flatUstensilesArray = getUstensilesArray.flat(3);
 const uniqueUstensilesArray = Array.from(new Set(flatUstensilesArray));
 // console.log(uniqueUstensilesArray);
 
+//Mise dans l'ordre alphabétique
+const orderedUstensiles = orderChoices(uniqueUstensilesArray);
 // Création de la liste des ingrédients
-const ustensilesListContainer = document.querySelector(
-  "#ustensiles-dropdown-menu"
-);
-uniqueUstensilesArray.forEach((appliance) => {
+orderedUstensiles.forEach((appliance) => {
   const ustensileItem = document.createElement("li");
   ustensileItem.setAttribute("class", "ustensiles-item text-nowrap");
   ustensileItem.textContent = appliance;
@@ -54,9 +56,9 @@ ustensilesItems.forEach((ustensile) => {
     selectedItemContainer.addEventListener("click", (e) => {
       // console.log(this.textContent);
       e.currentTarget.remove(this);
+      ustensilesListContainer.appendChild(ustensile);
       cardsGallery.innerHTML = "";
       createCardList(orderedRecipes);
-      //TODO ICI RAJOUTER NOEUD
     });
     ustensile.remove();
   });
