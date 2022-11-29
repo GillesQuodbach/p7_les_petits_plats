@@ -88,17 +88,33 @@ function filterData(e) {
   //Si plus de 2 lettres entrées alors on lance la recherche
   if (searchedString.length > 2) {
     // Recherche dans DESCRITPION - NOM - INGREDIENT
-    filteredArray = recipes.filter(
-      (recipe) =>
-        // Work well
-        recipe.name.toLowerCase().includes(searchedString) ||
-        // Work well
-        recipe.description.toLowerCase().includes(searchedString) ||
-        // Find what I'm looking for but don't push it in the filteredArr
-        recipe.ingredients.some((item) =>
-          item.ingredient.toLowerCase().includes(searchedString)
-        )
-    );
+    if (filteredArray.length > 0) {
+      console.log(" ===ARRAY > 0 ===== ");
+      filteredArray.filter(
+        (recipe) =>
+          // Work well
+          recipe.name.toLowerCase().includes(searchedString) ||
+          // Work well
+          recipe.description.toLowerCase().includes(searchedString) ||
+          // Find what I'm looking for but don't push it in the filteredArr
+          recipe.ingredients.some((item) =>
+            item.ingredient.toLowerCase().includes(searchedString)
+          )
+      );
+    } else {
+      console.log(" ===ARRAY = 0 ===== ");
+      filteredArray = recipes.filter(
+        (recipe) =>
+          // Work well
+          recipe.name.toLowerCase().includes(searchedString) ||
+          // Work well
+          recipe.description.toLowerCase().includes(searchedString) ||
+          // Find what I'm looking for but don't push it in the filteredArr
+          recipe.ingredients.some((item) =>
+            item.ingredient.toLowerCase().includes(searchedString)
+          )
+      );
+    }
     createCardList(filteredArray);
   } else {
     createCardList(orderedRecipes);
