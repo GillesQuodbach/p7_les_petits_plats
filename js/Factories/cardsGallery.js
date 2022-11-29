@@ -86,10 +86,33 @@ function filterData(e) {
   //Récupération de l'input de l'utilisateur à chaque lettre tapée
   const searchedString = e.target.value.toLowerCase();
   //Si plus de 2 lettres entrées alors on lance la recherche
+  if (searchedString.length === 0 && filteredArray.length === 0) {
+    cardsGallery.innerHTML = "";
+    filteredArray = [];
+    createCardList(orderedRecipes);
+    console.log("= 0 && === 0");
+  }
+  if (searchedString.length === 0 && filteredArray.length !== 0) {
+    cardsGallery.innerHTML = "";
+    filteredArray = [];
+    createCardList(orderedRecipes);
+    console.log("= 0 && !== 0");
+  }
+  if (searchedString.length <= 2 && filteredArray.length === 0) {
+    cardsGallery.innerHTML = "";
+    filteredArray = [];
+    createCardList(orderedRecipes);
+    console.log("<= 2 && === 0");
+  }
+  if (searchedString.length <= 2 && filteredArray.length !== 0) {
+    cardsGallery.innerHTML = "";
+    createCardList(orderedRecipes);
+    console.log("<= 2 && !== 0");
+  }
   if (searchedString.length > 2) {
     // Recherche dans DESCRITPION - NOM - INGREDIENT
     if (filteredArray.length > 0) {
-      console.log(" ===ARRAY > 0 ===== ");
+      console.log(" > 2 ===ARRAY > 0 ===== ");
       filteredArray.filter(
         (recipe) =>
           // Work well
@@ -102,7 +125,7 @@ function filterData(e) {
           )
       );
     } else {
-      console.log(" ===ARRAY = 0 ===== ");
+      console.log(" > 2 ===ARRAY = 0 ===== ");
       filteredArray = recipes.filter(
         (recipe) =>
           // Work well
@@ -138,20 +161,27 @@ window.onload = () => {
     //Pour chaque choix, au clic...
     choice.addEventListener("click", function filterIngr(e) {
       const choicedIngredient = e.target.innerText; // On récupère le text de l'ingrédient choisi
-
-      recipes.forEach((recipe) => {
-        recipe.ingredients.forEach((item) => {
-          if (
+      if (filteredArray > 0) {
+        console.log(" ===ARRAY > 0 ===== ");
+        filteredArray.filter((recipe) =>
+          recipe.ingredients.some((item) =>
             item.ingredient
               .toLowerCase()
               .includes(choicedIngredient.toLowerCase())
-          ) {
-            testIngredients.push(recipe);
-          }
-        });
-      });
+          )
+        );
+      } else {
+        console.log(" ===ARRAY = 0 ===== ");
+        filteredArray.filter((recipe) =>
+          recipe.ingredients.some((item) =>
+            item.ingredient
+              .toLowerCase()
+              .includes(choicedIngredient.toLowerCase())
+          )
+        );
+      }
       cardsGallery.innerHTML = "";
-      createCardList(testIngredients);
+      createCardList(filteredArray);
     });
   });
 
