@@ -21,7 +21,7 @@ flatIngredientsArray.forEach((item) => {
 const uniqueIngredientsArray = Array.from(
   new Set(ingredientArrayWithDuplicate)
 );
-console.log(uniqueIngredientsArray);
+// console.log(uniqueIngredientsArray);
 
 //Mise dans l'ordre alphabétique
 const orderedIngredients = orderChoices(uniqueIngredientsArray);

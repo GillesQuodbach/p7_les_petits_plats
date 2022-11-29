@@ -13,7 +13,6 @@ const flatUstensilesArray = getUstensilesArray.flat(3);
 
 //Suppression des doublons
 const uniqueUstensilesArray = Array.from(new Set(flatUstensilesArray));
-// console.log(uniqueUstensilesArray);
 
 //Mise dans l'ordre alphabétique
 const orderedUstensiles = orderChoices(uniqueUstensilesArray);

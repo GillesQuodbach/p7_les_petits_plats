@@ -1,5 +1,4 @@
-let filteredArr = [];
-let testArr = [];
+let filteredArray = [];
 let testIngredients = [];
 let testAppareils = [];
 let testUstensils = [];
@@ -11,9 +10,8 @@ const searchInput = document.querySelector("#main-search-input");
 const cardsGallery = document.querySelector("#recipes-gallery");
 
 // Fonction mise en ordre alphabetique
-
 function orderList(data) {
-  const orderedData = data.sort((a, b) => {
+  return data.sort((a, b) => {
     if (a.name.toLowerCase() < b.name.toLowerCase()) {
       return -1;
     }
@@ -22,29 +20,19 @@ function orderList(data) {
     }
     return 0;
   });
-  return orderedData;
 }
 
 //Mise en ordre alphabetique
 const orderedRecipes = orderList(recipes);
-// console.log(recipes);
+
 //Fonction de création des cards
 function createCardList(recipesList) {
   //Tableau de chaques RECETTES" (recipesList)
   recipesList.forEach((recipe) => {
     //Destructuring des recette
-    const {
-      appliance,
-      description,
-      id,
-      name,
-      ingredients,
-      serving,
-      time,
-      ustensiles,
-    } = recipe;
+    const { description, id, name, time } = recipe;
 
-    //Récupération du tabelau des ingredients
+    //Récupération du tableau des ingredients
     const recipeIngredients = recipe.ingredients;
 
     //Création du container de la card
@@ -67,7 +55,7 @@ function createCardList(recipesList) {
       .replace("undefined", "")}`;
 
     //Création du HTML de la card
-    const cardsHTML = `
+    listContainer.innerHTML = `
             <div id="${id}" class="card card-body-container">
             <img src="https://picsum.photos/380/178" class="card-img-top" alt="Recipe image">
             <div class="card-body">
@@ -83,19 +71,16 @@ function createCardList(recipesList) {
             </div>
             </div>
         `;
-    listContainer.innerHTML = cardsHTML;
     cardsGallery.appendChild(listContainer);
   });
 }
 // Creation de la liste des cartes
 createCardList(orderedRecipes);
-// console.log(orderedRecipes);
 
 //Fonction de recherche
 searchInput.addEventListener("input", filterData);
 
 function filterData(e) {
-  let filteredIngredientsArr2 = [];
   //Remise a zéro de la gallery
   cardsGallery.innerHTML = "";
   //Récupération de l'input de l'utilisateur à chaque lettre tapée
@@ -103,22 +88,18 @@ function filterData(e) {
   //Si plus de 2 lettres entrées alors on lance la recherche
   if (searchedString.length > 2) {
     // Recherche dans DESCRITPION - NOM - INGREDIENT
-    let filteredIngredientsArr1 = recipes.filter(
+    filteredArray = recipes.filter(
       (recipe) =>
         // Work well
         recipe.name.toLowerCase().includes(searchedString) ||
         // Work well
         recipe.description.toLowerCase().includes(searchedString) ||
         // Find what I'm looking for but don't push it in the filteredArr
-        recipe.ingredients.forEach((item) => {
-          if (item.ingredient.toLowerCase().includes(searchedString)) {
-            filteredIngredientsArr2.push(recipe);
-          }
-        })
+        recipe.ingredients.some((item) =>
+          item.ingredient.toLowerCase().includes(searchedString)
+        )
     );
-    filteredArr = filteredIngredientsArr1.concat(filteredIngredientsArr2);
-    // console.log(filteredArr);
-    createCardList(filteredArr);
+    createCardList(filteredArray);
   } else {
     createCardList(orderedRecipes);
   }
@@ -141,8 +122,7 @@ window.onload = () => {
     //Pour chaque choix, au clic...
     choice.addEventListener("click", function filterIngr(e) {
       const choicedIngredient = e.target.innerText; // On récupère le text de l'ingrédient choisi
-      // console.log(choicedIngredient);
-      // console.log(choicedIngredient.toLowerCase());
+
       recipes.forEach((recipe) => {
         recipe.ingredients.forEach((item) => {
           if (
@@ -154,7 +134,6 @@ window.onload = () => {
           }
         });
       });
-      // console.log("=====DISPLAY OK======");
       cardsGallery.innerHTML = "";
       createCardList(testIngredients);
     });
@@ -182,7 +161,6 @@ window.onload = () => {
           testAppareils.push(recipe);
         }
       });
-      // console.log("=====DISPLAY OK======");
       cardsGallery.innerHTML = "";
       createCardList(testAppareils);
     });
@@ -208,7 +186,6 @@ window.onload = () => {
           }
         });
       });
-      // console.log("=====DISPLAY OK======");
       cardsGallery.innerHTML = "";
       createCardList(testUstensils);
     });

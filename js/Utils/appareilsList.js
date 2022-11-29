@@ -9,7 +9,6 @@ recipes.forEach((recipe) => getAppareilsArray.push(recipe.appliance));
 // console.log(getAppliancesArray);
 // Aplatissage du tableau
 const flatAppareilArray = getAppareilsArray.flat(3);
-// console.log(flatAppliancesArray);
 
 //Suppression des doublons
 const uniqueAppareilsArray = Array.from(new Set(flatAppareilArray));
@@ -17,10 +16,10 @@ const uniqueAppareilsArray = Array.from(new Set(flatAppareilArray));
 //Mise dans l'ordre alphabétique
 const orderedAppareilsArray = orderChoices(uniqueAppareilsArray);
 
-console.log(uniqueAppareilsArray);
+// console.log(uniqueAppareilsArray);
 
 function orderChoices(data) {
-  const orderedData = data.sort((a, b) => {
+  return data.sort((a, b) => {
     if (a.toLowerCase() < b.toLowerCase()) {
       return -1;
     }
@@ -29,10 +28,9 @@ function orderChoices(data) {
     }
     return 0;
   });
-  return orderedData;
 }
 // Création de la liste des ingrédients
-
+// console.log(orderedAppareilsArray);
 orderedAppareilsArray.forEach((appliance) => {
   const applianceItem = document.createElement("li");
   applianceItem.setAttribute("class", "appareils-item text-nowrap");
@@ -65,11 +63,9 @@ appareilsItems.forEach((appareil) => {
     allSelectedItemsContainer.prepend(selectedItemContainer);
     selectedItemContainer.appendChild(selectedItem);
     selectedItem.appendChild(selectedItemCross);
-    // console.log(this.textContent);
 
     // * Suppression du HASHTAG
     selectedItemContainer.addEventListener("click", (e) => {
-      // console.log(this.textContent);
       e.currentTarget.remove(this);
       appareilsListContainer.appendChild(appareil);
       cardsGallery.innerHTML = "";
