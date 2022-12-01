@@ -1,39 +1,57 @@
-//Création des tableaux des ingredients
-const getIngredientsArray = [];
-const ingredientArrayWithDuplicate = [];
+const displayedCardsID = document.querySelectorAll(".card");
 //Liste des ingredients
 const ingredientsListContainer = document.querySelector(
   "#ingredients-dropdown-menu"
 );
-// Récupération des ingrédients
-recipes.forEach((recipe) => getIngredientsArray.push(recipe.ingredients));
-
-// Aplatissage du tableau
-const flatIngredientsArray = getIngredientsArray.flat(3);
-
-// Remplissage du tableau des ingrédients
-flatIngredientsArray.forEach((item) => {
-  const { ingredient } = item;
-  ingredientArrayWithDuplicate.push(ingredient);
-});
-
-//Suppression des doublons
-const uniqueIngredientsArray = Array.from(
-  new Set(ingredientArrayWithDuplicate)
+//Liste des appareils
+const appareilsListContainer = document.querySelector(
+  "#appareils-dropdown-menu"
 );
-// console.log(uniqueIngredientsArray);
-
-//Mise dans l'ordre alphabétique
-const orderedIngredients = orderChoices(uniqueIngredientsArray);
-
-// Création de la liste des ingrédients
-orderedIngredients.forEach((ingredient) => {
-  const ingredientItem = document.createElement("li");
-  ingredientItem.setAttribute("class", "ingredients-item text-nowrap");
-  ingredientItem.textContent = ingredient;
-  ingredientsListContainer.appendChild(ingredientItem);
-});
-
+//Liste des ustensiles
+const ustensilsListContainer = document.querySelector(
+  "#ustensiles-dropdown-menu"
+);
+// Récupération des ingrédients dans les cartes affichées
+function getChoiceList(array) {
+  //Récupération des cartes affichées (avec leur ID)
+  ingredientsListContainer.innerHTML = "";
+  appareilsListContainer.innerHTML = "";
+  ustensilsListContainer.innerHTML = "";
+  array.filter((recipe) => recipe.id === displayedCardsID.id);
+  //Dans les cartes affichées ont recherche leurs ingredients
+  // ET on affiche la liste des INGREDIENTS dans le dropdown
+  array.forEach((displayedIngredients) => {
+    const displayedIngredientsCategory = displayedIngredients.ingredients;
+    displayedIngredientsCategory.forEach((displayedIngredient) => {
+      const displayedIngredientsItem = document.createElement("li");
+      displayedIngredientsItem.setAttribute(
+        "class",
+        "ingredients-item text-nowrap"
+      );
+      displayedIngredientsItem.textContent = displayedIngredient.ingredient;
+      ingredientsListContainer.appendChild(displayedIngredientsItem);
+    });
+  });
+  // ET on affiche la liste des APPAREILS dans le dropdown
+  array.forEach((displayedAppareils) => {
+    const displayedAppareilsItem = document.createElement("li");
+    displayedAppareilsItem.setAttribute("class", "appareils-item text-nowrap");
+    displayedAppareilsItem.textContent = displayedAppareils.appliance;
+    appareilsListContainer.appendChild(displayedAppareilsItem);
+  });
+  array.forEach((displayedUstensiles) => {
+    const displayedUstensilesCategory = displayedUstensiles.ustensils;
+    displayedUstensilesCategory.forEach((displayedUstensiles) => {
+      const displayedUstensilesItem = document.createElement("li");
+      displayedUstensilesItem.setAttribute(
+        "class",
+        "ustensiles-item text-nowrap"
+      );
+      displayedUstensilesItem.textContent = displayedUstensiles;
+      ustensilsListContainer.appendChild(displayedUstensilesItem);
+    });
+  });
+}
 // GESTION DES CHOIX DES INGREDIENTS
 // Récupération de la liste des ingrédients
 const ingredientsItems = document.querySelectorAll(".ingredients-item");
@@ -63,8 +81,6 @@ ingredientsItems.forEach((ingredient) => {
     selectedItemContainer.appendChild(selectedItem);
     selectedItem.appendChild(selectedItemCross);
 
-    // console.log(this.textContent);
-
     // * Suppression du HASHTAG
     selectedItemContainer.addEventListener("click", (e) => {
       e.currentTarget.remove(this);
@@ -74,5 +90,4 @@ ingredientsItems.forEach((ingredient) => {
     });
     ingredient.remove();
   });
-  // console.log(ingredient);
 });

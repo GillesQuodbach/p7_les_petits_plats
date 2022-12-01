@@ -1,11 +1,6 @@
 let filteredArray = [];
-let testIngredients = [];
-let testAppareils = [];
-let testUstensils = [];
-
 // Input de recherche
 const searchInput = document.querySelector("#main-search-input");
-
 // Container de la galerie
 const cardsGallery = document.querySelector("#recipes-gallery");
 
@@ -23,10 +18,11 @@ function orderList(data) {
 }
 
 //Mise en ordre alphabetique
-const orderedRecipes = orderList(recipes);
 
 //Fonction de création des cards
 function createCardList(recipesList) {
+  //Mise dans l'ordre alphabétique
+  orderList(recipesList);
   //Tableau de chaques RECETTES" (recipesList)
   recipesList.forEach((recipe) => {
     //Destructuring des recette
@@ -74,9 +70,8 @@ function createCardList(recipesList) {
     cardsGallery.appendChild(listContainer);
   });
 }
-// Creation de la liste des cartes
-createCardList(orderedRecipes);
-
+// Creation de la liste des cartes "DE BASE"
+createCardList(recipes);
 //Fonction de recherche
 searchInput.addEventListener("input", filterData);
 
@@ -85,155 +80,39 @@ function filterData(e) {
   cardsGallery.innerHTML = "";
   //Récupération de l'input de l'utilisateur à chaque lettre tapée
   const searchedString = e.target.value.toLowerCase();
-  //Si plus de 2 lettres entrées alors on lance la recherche
-  if (searchedString.length === 0 && filteredArray.length === 0) {
+  // Si plus de 2 lettres entrées alors on lance la recherche
+  if (searchedString.length <= 2) {
     cardsGallery.innerHTML = "";
-    filteredArray = [];
-    createCardList(orderedRecipes);
-    console.log("= 0 && === 0");
-  }
-  if (searchedString.length === 0 && filteredArray.length !== 0) {
-    cardsGallery.innerHTML = "";
-    filteredArray = [];
-    createCardList(orderedRecipes);
-    console.log("= 0 && !== 0");
-  }
-  if (searchedString.length <= 2 && filteredArray.length === 0) {
-    cardsGallery.innerHTML = "";
-    filteredArray = [];
-    createCardList(orderedRecipes);
-    console.log("<= 2 && === 0");
-  }
-  if (searchedString.length <= 2 && filteredArray.length !== 0) {
-    cardsGallery.innerHTML = "";
-    createCardList(orderedRecipes);
-    console.log("<= 2 && !== 0");
+    createCardList(recipes);
+    getChoiceList(recipes);
   }
   if (searchedString.length > 2) {
-    // Recherche dans DESCRITPION - NOM - INGREDIENT
-    if (filteredArray.length > 0) {
-      console.log(" > 2 ===ARRAY > 0 ===== ");
-      filteredArray.filter(
-        (recipe) =>
-          // Work well
-          recipe.name.toLowerCase().includes(searchedString) ||
-          // Work well
-          recipe.description.toLowerCase().includes(searchedString) ||
-          // Find what I'm looking for but don't push it in the filteredArr
-          recipe.ingredients.some((item) =>
-            item.ingredient.toLowerCase().includes(searchedString)
-          )
-      );
-    } else {
-      console.log(" > 2 ===ARRAY = 0 ===== ");
-      filteredArray = recipes.filter(
-        (recipe) =>
-          // Work well
-          recipe.name.toLowerCase().includes(searchedString) ||
-          // Work well
-          recipe.description.toLowerCase().includes(searchedString) ||
-          // Find what I'm looking for but don't push it in the filteredArr
-          recipe.ingredients.some((item) =>
-            item.ingredient.toLowerCase().includes(searchedString)
-          )
-      );
-    }
+    // Recherche dans DESCRIPTION - NOM - INGREDIENT
+    filteredArray = recipes.filter(
+      (recipe) =>
+        // Work well
+        recipe.name.toLowerCase().includes(searchedString) ||
+        // Work well
+        recipe.description.toLowerCase().includes(searchedString) ||
+        // Find what I'm looking for but don't push it in the filteredArr
+        recipe.ingredients.some((item) =>
+          item.ingredient.toLowerCase().includes(searchedString)
+        )
+    );
+    //Création des cards
     createCardList(filteredArray);
-  } else {
-    createCardList(orderedRecipes);
+    getChoiceList(filteredArray);
+    // console.log(filteredArray);
+    // console.log("===PUTAIN===");
   }
+  // console.log(filteredArray);
+  // console.log("===PUTAIN===");
 }
 
 //*
 // ! Filtrage par hashtag ==================================
 //*
 window.onload = () => {
-  // Une fois la page complètement chargée
-
-  // *
-  // ?  Choix des ingredients
-  //*
-  //Récupération de la liste des ingredients
-  const allIngredientsChoices = document.querySelectorAll(".ingredients-item");
-
-  //On récupère la liste de tout les ingredients
-  allIngredientsChoices.forEach((choice) => {
-    //Pour chaque choix, au clic...
-    choice.addEventListener("click", function filterIngr(e) {
-      const choicedIngredient = e.target.innerText; // On récupère le text de l'ingrédient choisi
-      if (filteredArray > 0) {
-        console.log(" ===ARRAY > 0 ===== ");
-        filteredArray.filter((recipe) =>
-          recipe.ingredients.some((item) =>
-            item.ingredient
-              .toLowerCase()
-              .includes(choicedIngredient.toLowerCase())
-          )
-        );
-      } else {
-        console.log(" ===ARRAY = 0 ===== ");
-        filteredArray.filter((recipe) =>
-          recipe.ingredients.some((item) =>
-            item.ingredient
-              .toLowerCase()
-              .includes(choicedIngredient.toLowerCase())
-          )
-        );
-      }
-      cardsGallery.innerHTML = "";
-      createCardList(filteredArray);
-    });
-  });
-
-  // *
-  // ? Choix des appareils
-  //*
-  //Récupération de la liste des appareils
-  const allAppareilsChoices = document.querySelectorAll(".appareils-item");
-
-  //On récupère la liste de tout les appareils
-  allAppareilsChoices.forEach((choice) => {
-    //Pour chaque choix, au clic...
-    choice.addEventListener("click", function filterAppareils(e) {
-      const choicedAppareils = e.target.innerText; // On récupère le text de l'appareil choisi
-      // console.log(choicedAppareils);
-      // console.log(choicedAppareils.toLowerCase());
-      recipes.forEach((recipe) => {
-        if (
-          recipe.appliance
-            .toLowerCase()
-            .includes(choicedAppareils.toLowerCase())
-        ) {
-          testAppareils.push(recipe);
-        }
-      });
-      cardsGallery.innerHTML = "";
-      createCardList(testAppareils);
-    });
-  });
-
-  // *
-  // ?  Choix des ustensiles
-  //*
-  //Récupération de la liste des ingredients
-  const allUstensilsChoices = document.querySelectorAll(".ustensiles-item");
-
-  //On récupère la liste de tout les ingredients
-  allUstensilsChoices.forEach((choice) => {
-    //Pour chaque choix, au clic...
-    choice.addEventListener("click", function filterUstensils(e) {
-      const choicedUstensils = e.target.innerText; // On récupère le text de l'ingrédient choisi
-      // console.log(choicedUstensils);
-      // console.log(choicedUstensils.toLowerCase());
-      recipes.forEach((recipe) => {
-        recipe.ustensils.forEach((item) => {
-          if (item.toLowerCase().includes(choicedUstensils.toLowerCase())) {
-            testUstensils.push(recipe);
-          }
-        });
-      });
-      cardsGallery.innerHTML = "";
-      createCardList(testUstensils);
-    });
-  });
+  // Récupération de la liste des ingredient
+  getChoiceList(recipes);
 };
