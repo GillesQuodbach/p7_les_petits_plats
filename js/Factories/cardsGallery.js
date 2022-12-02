@@ -178,10 +178,37 @@ function createChoiceButton(array) {
   //On récupère le choix cliqué
   allChoiceList.forEach((choice) =>
     choice.addEventListener("click", (e) => {
+      const ingredientChoiceContainer = document.querySelector(
+        "#ingredients-choices-container"
+      );
+      const appareilsChoiceContainer = document.querySelector(
+        "#appareils-choices-container"
+      );
+      const ustensilesChoiceContainer = document.querySelector(
+        "#ustensiles-choices-container"
+      );
       let textContent = e.target.textContent;
       let parentCategoryId = e.target.parentElement.id;
 
       if (parentCategoryId.includes("ingredients")) {
+        //Création du bouton de l'item choisi
+        const selectedItemContainer = document.createElement("div");
+        selectedItemContainer.setAttribute(
+          "class",
+          "selected-choices-container ingredients-selected-choices-container"
+        );
+        //Affichage de l'ingrédient choisi
+        const selectedItem = document.createElement("p");
+        selectedItem.setAttribute("class", "selected-choice");
+        selectedItem.textContent = e.target.textContent;
+        const selectedItemCross = document.createElement("img");
+        selectedItemCross.setAttribute("class", "selected-choice-cross");
+        selectedItemCross.setAttribute("src", "img/choice-delete-cross.svg");
+        selectedItemCross.setAttribute("alt", "delete your choice");
+        ingredientChoiceContainer.prepend(selectedItemContainer);
+        selectedItemContainer.appendChild(selectedItem);
+        selectedItem.appendChild(selectedItemCross);
+
         console.log("===Cat INGREDIENT===");
         console.log(textContent);
         console.log(textContent.toLowerCase()); //Choix en minuscule
@@ -194,6 +221,24 @@ function createChoiceButton(array) {
         cardsGallery.innerHTML = "";
         display(newCardsArray);
       } else if (parentCategoryId.includes("appareils")) {
+        //Création du bouton de l'item choisi
+        const selectedItemContainer = document.createElement("div");
+        selectedItemContainer.setAttribute(
+          "class",
+          "selected-choices-container appareils-selected-choices-container"
+        );
+        //Affichage de l'ingrédient choisi
+        const selectedItem = document.createElement("p");
+        selectedItem.setAttribute("class", "selected-choice");
+        selectedItem.textContent = e.target.textContent;
+        const selectedItemCross = document.createElement("img");
+        selectedItemCross.setAttribute("class", "selected-choice-cross");
+        selectedItemCross.setAttribute("src", "img/choice-delete-cross.svg");
+        selectedItemCross.setAttribute("alt", "delete your choice");
+        appareilsChoiceContainer.prepend(selectedItemContainer);
+        selectedItemContainer.appendChild(selectedItem);
+        selectedItem.appendChild(selectedItemCross);
+
         console.log("===Cat APPAREILS===");
         console.log(textContent.toLowerCase()); //Choix en minuscule
         let newCardsArray = recipes.filter((recipe) =>
@@ -203,6 +248,23 @@ function createChoiceButton(array) {
         cardsGallery.innerHTML = "";
         display(newCardsArray);
       } else if (parentCategoryId.includes("ustensiles")) {
+        //Création du bouton de l'item choisi
+        const selectedItemContainer = document.createElement("div");
+        selectedItemContainer.setAttribute(
+          "class",
+          "selected-choices-container ustensiles-selected-choices-container"
+        );
+        //Affichage de l'ingrédient choisi
+        const selectedItem = document.createElement("p");
+        selectedItem.setAttribute("class", "selected-choice");
+        selectedItem.textContent = e.target.textContent;
+        const selectedItemCross = document.createElement("img");
+        selectedItemCross.setAttribute("class", "selected-choice-cross");
+        selectedItemCross.setAttribute("src", "img/choice-delete-cross.svg");
+        selectedItemCross.setAttribute("alt", "delete your choice");
+        ustensilesChoiceContainer.prepend(selectedItemContainer);
+        selectedItemContainer.appendChild(selectedItem);
+        selectedItem.appendChild(selectedItemCross);
         console.log("===Cat USTENSILES===");
         console.log(textContent.toLowerCase()); //Choix en minuscule
         let newCardsArray = recipes.filter((recipe) =>
@@ -217,23 +279,6 @@ function createChoiceButton(array) {
     })
   );
 
-  // const selectedItemContainer = document.createElement("div");
-  // selectedItemContainer.setAttribute(
-  //   "class",
-  //   "selected-choices-container ingredients-selected-choices-container"
-  // );
-  // //Affichage de l'ingrédient choisi
-  // const selectedItem = document.createElement("p");
-  // selectedItem.setAttribute("class", "selected-choice");
-  // selectedItem.textContent = this.textContent;
-  // const selectedItemCross = document.createElement("img");
-  // selectedItemCross.setAttribute("class", "selected-choice-cross");
-  // selectedItemCross.setAttribute("src", "img/choice-delete-cross.svg");
-  // selectedItemCross.setAttribute("alt", "delete your choice");
-  // allSelectedItemsContainer.prepend(selectedItemContainer);
-  // selectedItemContainer.appendChild(selectedItem);
-  // selectedItem.appendChild(selectedItemCross);
-  //
   // // * Suppression du HASHTAG
   // selectedItemContainer.addEventListener("click", (e) => {
   //   e.currentTarget.remove(this);
