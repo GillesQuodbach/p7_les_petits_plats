@@ -1,10 +1,36 @@
 let filteredArray = [];
-// Input de recherche
-const searchInput = document.querySelector("#main-search-input");
+
 // Container de la galerie
 const cardsGallery = document.querySelector("#recipes-gallery");
+// Input de recherche
+const searchInput = document.querySelector("#main-search-input");
+// Liste des cards affichées
+const displayedCardsID = document.querySelectorAll(".card");
+//Liste des ingredients
+const ingredientsListContainer = document.querySelector(
+  "#ingredients-dropdown-menu"
+);
+//Liste des appareils
+const appareilsListContainer = document.querySelector(
+  "#appareils-dropdown-menu"
+);
+//Liste des ustensiles
+const ustensilsListContainer = document.querySelector(
+  "#ustensiles-dropdown-menu"
+);
+// ! Fonction d'affichage des cartes
+function display(data) {
+  //Tri par ordre alphabétique
+  orderList(data);
+  // Creation de la liste des cartes "DE BASE" dans la galerie
+  createCardList(data);
+  getChoiceList(data);
+  createChoiceButton(data);
+}
+// ? Affichage de la galerie de cartes
+display(recipes);
 
-// Fonction mise en ordre alphabetique
+// ! Fonction mise en ordre alphabétique
 function orderList(data) {
   return data.sort((a, b) => {
     if (a.name.toLowerCase() < b.name.toLowerCase()) {
@@ -17,26 +43,19 @@ function orderList(data) {
   });
 }
 
-//Mise en ordre alphabetique
-
-//Fonction de création des cards
-function createCardList(recipesList) {
-  //Mise dans l'ordre alphabétique
-  orderList(recipesList);
-  //Tableau de chaques RECETTES" (recipesList)
-  recipesList.forEach((recipe) => {
+// ! Fonction de création des cards
+function createCardList(array) {
+  //Tableau de chaque RECETTES" (recipesList)
+  array.forEach((recipe) => {
     //Destructuring des recette
     const { description, id, name, time } = recipe;
-
     //Récupération du tableau des ingredients
     const recipeIngredients = recipe.ingredients;
-
     //Création du container de la card
-    const listContainer = document.createElement("div");
-    listContainer.setAttribute("id", recipe.id);
-    listContainer.setAttribute("class", "col recipe-card");
+    const cardContainer = document.createElement("div");
+    cardContainer.setAttribute("id", recipe.id);
+    cardContainer.setAttribute("class", "col recipe-card");
     //Fonction createIngredientList
-
     const cardListIngredient = `${recipeIngredients
       .map((item) => {
         if (item.quantity === undefined) {
@@ -49,9 +68,8 @@ function createCardList(recipesList) {
       })
       .join("")
       .replace("undefined", "")}`;
-
     //Création du HTML de la card
-    listContainer.innerHTML = `
+    cardContainer.innerHTML = `
             <div id="${id}" class="card card-body-container">
             <img src="https://picsum.photos/380/178" class="card-img-top" alt="Recipe image">
             <div class="card-body">
@@ -67,52 +85,160 @@ function createCardList(recipesList) {
             </div>
             </div>
         `;
-    cardsGallery.appendChild(listContainer);
+
+    cardsGallery.appendChild(cardContainer);
   });
 }
-// Creation de la liste des cartes "DE BASE"
-createCardList(recipes);
-//Fonction de recherche
-searchInput.addEventListener("input", filterData);
 
-function filterData(e) {
+//Input listener
+searchInput.addEventListener("input", searchBarreFilter);
+
+// ! Fonction de filtrage
+function searchBarreFilter() {
+  //Récupération de l'input de l'utilisateur à chaque lettre tapée
+  const searchBarreInput = searchInput.value.toLowerCase();
   //Remise a zéro de la gallery
   cardsGallery.innerHTML = "";
-  //Récupération de l'input de l'utilisateur à chaque lettre tapée
-  const searchedString = e.target.value.toLowerCase();
   // Si plus de 2 lettres entrées alors on lance la recherche
-  if (searchedString.length <= 2) {
+  if (searchBarreInput.length <= 2) {
     cardsGallery.innerHTML = "";
-    createCardList(recipes);
-    getChoiceList(recipes);
+    display(recipes);
   }
-  if (searchedString.length > 2) {
+  if (searchBarreInput.length > 2) {
     // Recherche dans DESCRIPTION - NOM - INGREDIENT
     filteredArray = recipes.filter(
       (recipe) =>
         // Work well
-        recipe.name.toLowerCase().includes(searchedString) ||
+        recipe.name.toLowerCase().includes(searchBarreInput) ||
         // Work well
-        recipe.description.toLowerCase().includes(searchedString) ||
+        recipe.description.toLowerCase().includes(searchBarreInput) ||
         // Find what I'm looking for but don't push it in the filteredArr
         recipe.ingredients.some((item) =>
-          item.ingredient.toLowerCase().includes(searchedString)
+          item.ingredient.toLowerCase().includes(searchBarreInput)
         )
     );
     //Création des cards
-    createCardList(filteredArray);
-    getChoiceList(filteredArray);
-    // console.log(filteredArray);
-    // console.log("===PUTAIN===");
+    display(filteredArray);
   }
-  // console.log(filteredArray);
-  // console.log("===PUTAIN===");
 }
 
-//*
-// ! Filtrage par hashtag ==================================
-//*
-window.onload = () => {
-  // Récupération de la liste des ingredient
-  getChoiceList(recipes);
-};
+//Mise à jour de la liste des ingrédients
+function getChoiceList(array) {
+  //Mise à zéro de la liste des choix
+  ingredientsListContainer.innerHTML = "";
+  appareilsListContainer.innerHTML = "";
+  ustensilsListContainer.innerHTML = "";
+  //Récupération des cartes affichées (avec leur ID)
+  array.filter((recipe) => recipe.id === displayedCardsID.id);
+  //Dans les cartes affichées ont recherche leurs ingredients
+  // ET on affiche la liste des INGREDIENTS dans le dropdown
+  array.forEach((displayedIngredients) => {
+    const displayedIngredientsCategory = displayedIngredients.ingredients;
+    displayedIngredientsCategory.forEach((displayedIngredient) => {
+      const displayedIngredientsItem = document.createElement("li");
+      displayedIngredientsItem.setAttribute(
+        "class",
+        "dropdown-list-item ingredients-item text-nowrap"
+      );
+      displayedIngredientsItem.textContent = displayedIngredient.ingredient;
+      ingredientsListContainer.appendChild(displayedIngredientsItem);
+    });
+  });
+  // ET on affiche la liste des APPAREILS dans le dropdown
+  array.forEach((displayedAppareils) => {
+    const displayedAppareilsItem = document.createElement("li");
+    displayedAppareilsItem.setAttribute(
+      "class",
+      "dropdown-list-item appareils-item text-nowrap"
+    );
+    displayedAppareilsItem.textContent = displayedAppareils.appliance;
+    appareilsListContainer.appendChild(displayedAppareilsItem);
+  });
+  // ET on affiche la liste des USTENSILES dans le dropdown
+  array.forEach((displayedUstensiles) => {
+    const displayedUstensilesCategory = displayedUstensiles.ustensils;
+    displayedUstensilesCategory.forEach((displayedUstensiles) => {
+      const displayedUstensilesItem = document.createElement("li");
+      displayedUstensilesItem.setAttribute(
+        "class",
+        "dropdown-list-item ustensiles-item text-nowrap"
+      );
+      displayedUstensilesItem.textContent = displayedUstensiles;
+      ustensilsListContainer.appendChild(displayedUstensilesItem);
+    });
+  });
+}
+
+// TODO supprimer les doublons des listes de choix
+
+//Listener de la liste des choix
+function createChoiceButton(array) {
+  let allChoiceList = document.querySelectorAll(".dropdown-list-item");
+
+  //On récupère le choix cliqué
+  allChoiceList.forEach((choice) =>
+    choice.addEventListener("click", (e) => {
+      let textContent = e.target.textContent;
+      let parentCategoryId = e.target.parentElement.id;
+
+      if (parentCategoryId.includes("ingredients")) {
+        console.log("===Cat INGREDIENT===");
+        console.log(textContent);
+        console.log(textContent.toLowerCase()); //Choix en minuscule
+        let newCardsArray = recipes.filter((recipe) =>
+          recipe.ingredients.some((item) =>
+            item.ingredient.toLowerCase().includes(textContent.toLowerCase())
+          )
+        );
+        //Création des cards
+        cardsGallery.innerHTML = "";
+        display(newCardsArray);
+      } else if (parentCategoryId.includes("appareils")) {
+        console.log("===Cat APPAREILS===");
+        console.log(textContent.toLowerCase()); //Choix en minuscule
+        let newCardsArray = recipes.filter((recipe) =>
+          recipe.appliance.toLowerCase().includes(textContent.toLowerCase())
+        );
+        //Création des cards
+        cardsGallery.innerHTML = "";
+        display(newCardsArray);
+      } else if (parentCategoryId.includes("ustensiles")) {
+        console.log("===Cat USTENSILES===");
+        console.log(textContent.toLowerCase()); //Choix en minuscule
+        let newCardsArray = recipes.filter((recipe) =>
+          recipe.ustensils.some((item) =>
+            item.toLowerCase().includes(textContent.toLowerCase())
+          )
+        );
+        //Création des cards
+        cardsGallery.innerHTML = "";
+        display(newCardsArray);
+      }
+    })
+  );
+
+  // const selectedItemContainer = document.createElement("div");
+  // selectedItemContainer.setAttribute(
+  //   "class",
+  //   "selected-choices-container ingredients-selected-choices-container"
+  // );
+  // //Affichage de l'ingrédient choisi
+  // const selectedItem = document.createElement("p");
+  // selectedItem.setAttribute("class", "selected-choice");
+  // selectedItem.textContent = this.textContent;
+  // const selectedItemCross = document.createElement("img");
+  // selectedItemCross.setAttribute("class", "selected-choice-cross");
+  // selectedItemCross.setAttribute("src", "img/choice-delete-cross.svg");
+  // selectedItemCross.setAttribute("alt", "delete your choice");
+  // allSelectedItemsContainer.prepend(selectedItemContainer);
+  // selectedItemContainer.appendChild(selectedItem);
+  // selectedItem.appendChild(selectedItemCross);
+  //
+  // // * Suppression du HASHTAG
+  // selectedItemContainer.addEventListener("click", (e) => {
+  //   e.currentTarget.remove(this);
+  //   ingredientsListContainer.appendChild(ingredient);
+  //
+  //   // createCardList(orderedRecipes);
+  // });
+}
