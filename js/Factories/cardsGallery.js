@@ -48,7 +48,7 @@ function createCardList(array) {
   //Tableau de chaque RECETTES" (recipesList)
   array.forEach((recipe) => {
     //Destructuring des recette
-    const { description, id, name, time } = recipe;
+    const { description, id, name, time, ingredients } = recipe;
     //Récupération du tableau des ingredients
     const recipeIngredients = recipe.ingredients;
     //Création du container de la card
@@ -173,9 +173,33 @@ function getChoiceList(array) {
 
 //Listener de la liste des choix
 function createChoiceButton(array) {
+  //tableau des cards actuellement affichées
+  let actualDisplayedCards = [];
+  let newArray = [];
   let allChoiceList = document.querySelectorAll(".dropdown-list-item");
+  let actualGallery = document.querySelectorAll(".card");
+  let actualRecipeId = []; //! ID attribué à chaque recette (pas l'emplacement dans le tableau)
 
+  //Tableau des cartes affichées au moment du clic
+  //On récupère l'id des cartes affichées et on push les recettes correspondantes dans le tableau actualDisplayedCards
+  // On transforme string en number
+  actualGallery.forEach((recipe) =>
+    actualRecipeId.push(parseInt(recipe.getAttribute("id")))
+  );
+  console.log(actualRecipeId); // TABLEAU OK
+  //Tableau des recettes présentes
+  //On récupère le tableau qui correspond aux recettes présentes
+  for (let id of actualRecipeId) {
+    for (let recipe of recipes) {
+      if (recipe.id === id) {
+        actualDisplayedCards.push(recipe);
+      }
+    }
+  }
+  //Tableau contenant les recettes actuelles
+  console.log(actualDisplayedCards);
   //On récupère le choix cliqué
+  // Pour chaque choix cliqué
   allChoiceList.forEach((choice) =>
     choice.addEventListener("click", (e) => {
       const ingredientChoiceContainer = document.querySelector(
@@ -210,16 +234,15 @@ function createChoiceButton(array) {
         selectedItem.appendChild(selectedItemCross);
 
         console.log("===Cat INGREDIENT===");
-        console.log(textContent);
         console.log(textContent.toLowerCase()); //Choix en minuscule
-        let newCardsArray = recipes.filter((recipe) =>
+        newArray = actualDisplayedCards.filter((recipe) =>
           recipe.ingredients.some((item) =>
             item.ingredient.toLowerCase().includes(textContent.toLowerCase())
           )
         );
         //Création des cards
         cardsGallery.innerHTML = "";
-        display(newCardsArray);
+        display(newArray);
       } else if (parentCategoryId.includes("appareils")) {
         //Création du bouton de l'item choisi
         const selectedItemContainer = document.createElement("div");
@@ -241,12 +264,12 @@ function createChoiceButton(array) {
 
         console.log("===Cat APPAREILS===");
         console.log(textContent.toLowerCase()); //Choix en minuscule
-        let newCardsArray = recipes.filter((recipe) =>
+        newArray = actualDisplayedCards.filter((recipe) =>
           recipe.appliance.toLowerCase().includes(textContent.toLowerCase())
         );
         //Création des cards
         cardsGallery.innerHTML = "";
-        display(newCardsArray);
+        display(newArray);
       } else if (parentCategoryId.includes("ustensiles")) {
         //Création du bouton de l'item choisi
         const selectedItemContainer = document.createElement("div");
@@ -267,14 +290,14 @@ function createChoiceButton(array) {
         selectedItem.appendChild(selectedItemCross);
         console.log("===Cat USTENSILES===");
         console.log(textContent.toLowerCase()); //Choix en minuscule
-        let newCardsArray = recipes.filter((recipe) =>
+        newArray = actualDisplayedCards.filter((recipe) =>
           recipe.ustensils.some((item) =>
             item.toLowerCase().includes(textContent.toLowerCase())
           )
         );
         //Création des cards
         cardsGallery.innerHTML = "";
-        display(newCardsArray);
+        display(newArray);
       }
     })
   );
