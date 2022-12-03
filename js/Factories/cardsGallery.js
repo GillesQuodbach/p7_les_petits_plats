@@ -1,3 +1,9 @@
+//TODO recherche via input dropdown
+//TODO supprimer les doublons des listes de choix
+//TODO Suppression des choix
+//TODO Modifier le css des listes des dropdowns
+//TODO Supprimer le choix sélectionné de la liste des choix
+
 let filteredArray = [];
 
 // Container de la galerie
@@ -25,7 +31,8 @@ function display(data) {
   // Creation de la liste des cartes "DE BASE" dans la galerie
   createCardList(data);
   getChoiceList(data);
-  createChoiceButton(data);
+  addChoiceButton(data);
+  deleteChoiceButton(data);
 }
 // ? Affichage de la galerie de cartes
 display(recipes);
@@ -169,10 +176,8 @@ function getChoiceList(array) {
   });
 }
 
-// TODO supprimer les doublons des listes de choix
-
 //Listener de la liste des choix
-function createChoiceButton(array) {
+function addChoiceButton(array) {
   //tableau des cards actuellement affichées
   let actualDisplayedCards = [];
   let newArray = [];
@@ -222,6 +227,7 @@ function createChoiceButton(array) {
           "selected-choices-container ingredients-selected-choices-container"
         );
         //Affichage de l'ingrédient choisi
+
         const selectedItem = document.createElement("p");
         selectedItem.setAttribute("class", "selected-choice");
         selectedItem.textContent = e.target.textContent;
@@ -301,12 +307,73 @@ function createChoiceButton(array) {
       }
     })
   );
+}
+function deleteChoiceButton(array) {
+  //Choix affichés
+  const clickedChoices = document.querySelectorAll(
+    ".selected-choices-container"
+  );
+
+  let actualDisplayedCards = [];
+  let newArray = [];
+  let deletedRecipesArray = [];
+  let allChoiceList = document.querySelectorAll(".dropdown-list-item");
+  let actualGallery = document.querySelectorAll(".card");
+  let actualRecipeId = []; //! ID attribué à chaque recette (pas l'emplacement dans le tableau)
+  let concatArray = [];
+
+  //Tableau des cartes affichées au moment du clic
+  //On récupère l'id des cartes affichées et on push les recettes correspondantes dans le tableau actualDisplayedCards
+  // On transforme string en number
+  actualGallery.forEach((recipe) =>
+    actualRecipeId.push(parseInt(recipe.getAttribute("id")))
+  );
+  // console.log(actualRecipeId); // TABLEAU OK
+  //Tableau des recettes présentes
+  //On récupère le tableau qui correspond aux recettes présentes
+  for (let id of actualRecipeId) {
+    for (let recipe of recipes) {
+      if (recipe.id === id) {
+        actualDisplayedCards.push(recipe);
+      }
+    }
+  }
+  //Tableau contenant les recettes actuelles
+  // console.log(actualDisplayedCards);
+  //On récupère le choix cliqué
+  // Pour chaque choix cliqué
 
   // // * Suppression du HASHTAG
-  // selectedItemContainer.addEventListener("click", (e) => {
-  //   e.currentTarget.remove(this);
-  //   ingredientsListContainer.appendChild(ingredient);
-  //
-  //   // createCardList(orderedRecipes);
-  // });
+  clickedChoices.forEach((clickedChoice) =>
+    clickedChoice.addEventListener("click", (e) => {
+      e.currentTarget.remove(this);
+      console.log(e.currentTarget.innerText.toLowerCase()); // Récupération du text
+      const deletedChoice = e.currentTarget.innerText.toLowerCase(); // Récupération du text
+      console.log(e.currentTarget);
+      //Tableau des cartes affichées au moment du clic
+      //On récupère l'id des cartes affichées et on push les recettes correspondantes dans le tableau actualDisplayedCards
+      // On transforme string en number
+
+      //Partir INGREDIENTS
+      if (e.currentTarget.className.includes("ingredient")) {
+        console.log("===DELETE INGREDIENT===");
+
+        // Récupérer tableau qui n'inclus pas le mot supprimé et concatainer le tableau a newArray
+        deletedRecipesArray = actualDisplayedCards.filter((recipe) =>
+          recipe.ingredients.some(
+            (item) => !item.ingredient.toLowerCase().includes(deletedChoice)
+          )
+        );
+        console.log(deletedRecipesArray);
+
+        //Création des cards
+        cardsGallery.innerHTML = "";
+        display(deletedRecipesArray);
+      } else if (e.currentTarget.className.includes("appareils")) {
+        console.log("===DELETE APPAREILS===");
+      } else if (e.currentTarget.className.includes("ustensiles")) {
+        console.log("===DELETE USTENSILES===");
+      }
+    })
+  );
 }
