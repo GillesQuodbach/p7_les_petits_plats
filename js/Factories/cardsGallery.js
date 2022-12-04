@@ -191,7 +191,7 @@ function addChoiceButton(array) {
   actualGallery.forEach((recipe) =>
     actualRecipeId.push(parseInt(recipe.getAttribute("id")))
   );
-  console.log(actualRecipeId); // TABLEAU OK
+  // console.log(actualRecipeId); // TABLEAU OK
   //Tableau des recettes présentes
   //On récupère le tableau qui correspond aux recettes présentes
   for (let id of actualRecipeId) {
@@ -202,7 +202,7 @@ function addChoiceButton(array) {
     }
   }
   //Tableau contenant les recettes actuelles
-  console.log(actualDisplayedCards);
+  // console.log(actualDisplayedCards);
   //On récupère le choix cliqué
   // Pour chaque choix cliqué
   allChoiceList.forEach((choice) =>
@@ -313,66 +313,83 @@ function deleteChoiceButton(array) {
   const clickedChoices = document.querySelectorAll(
     ".selected-choices-container"
   );
-
-  let actualDisplayedCards = [];
-  let newArray = [];
-  let deletedRecipesArray = [];
-  let allChoiceList = document.querySelectorAll(".dropdown-list-item");
-  let actualGallery = document.querySelectorAll(".card");
-  let actualRecipeId = []; //! ID attribué à chaque recette (pas l'emplacement dans le tableau)
-  let concatArray = [];
-
+  let cartesActuellementAffichees = [];
+  let recuperationDesNoeudDOM = document.querySelectorAll(".card");
+  let idDesCartesAffichee = []; //! ID attribué à chaque recette (pas l'emplacement dans le tableau)
+  let deletedChoiceArray = [];
+  let arrayToDisplay = [];
   //Tableau des cartes affichées au moment du clic
   //On récupère l'id des cartes affichées et on push les recettes correspondantes dans le tableau actualDisplayedCards
   // On transforme string en number
-  actualGallery.forEach((recipe) =>
-    actualRecipeId.push(parseInt(recipe.getAttribute("id")))
+  recuperationDesNoeudDOM.forEach((recipe) =>
+    idDesCartesAffichee.push(parseInt(recipe.getAttribute("id")))
   );
-  // console.log(actualRecipeId); // TABLEAU OK
   //Tableau des recettes présentes
   //On récupère le tableau qui correspond aux recettes présentes
-  for (let id of actualRecipeId) {
+  for (let id of idDesCartesAffichee) {
     for (let recipe of recipes) {
       if (recipe.id === id) {
-        actualDisplayedCards.push(recipe);
+        cartesActuellementAffichees.push(recipe);
       }
     }
   }
-  //Tableau contenant les recettes actuelles
-  // console.log(actualDisplayedCards);
-  //On récupère le choix cliqué
-  // Pour chaque choix cliqué
-
   // // * Suppression du HASHTAG
   clickedChoices.forEach((clickedChoice) =>
     clickedChoice.addEventListener("click", (e) => {
       e.currentTarget.remove(this);
-      console.log(e.currentTarget.innerText.toLowerCase()); // Récupération du text
-      const deletedChoice = e.currentTarget.innerText.toLowerCase(); // Récupération du text
-      console.log(e.currentTarget);
       //Tableau des cartes affichées au moment du clic
       //On récupère l'id des cartes affichées et on push les recettes correspondantes dans le tableau actualDisplayedCards
       // On transforme string en number
+      //TODO ICI RAJOUTER FONCTION FILTRE SUPPRESSION DES CHOIX
+      //Récupération de tous les choix
+      const tousLesChoixRestant = document.querySelectorAll(".selected-choice");
+      //On récupère la liste des choix restants
+      console.log(tousLesChoixRestant);
 
-      //Partir INGREDIENTS
-      if (e.currentTarget.className.includes("ingredient")) {
-        console.log("===DELETE INGREDIENT===");
-
-        // Récupérer tableau qui n'inclus pas le mot supprimé et concatainer le tableau a newArray
-        deletedRecipesArray = actualDisplayedCards.filter((recipe) =>
-          recipe.ingredients.some(
-            (item) => !item.ingredient.toLowerCase().includes(deletedChoice)
-          )
-        );
-        console.log(deletedRecipesArray);
-
-        //Création des cards
-        cardsGallery.innerHTML = "";
-        display(deletedRecipesArray);
-      } else if (e.currentTarget.className.includes("appareils")) {
-        console.log("===DELETE APPAREILS===");
-      } else if (e.currentTarget.className.includes("ustensiles")) {
-        console.log("===DELETE USTENSILES===");
+      if (tousLesChoixRestant.length === 0) {
+        searchBarreFilter();
+      } else {
+        tousLesChoixRestant.forEach((choice) => {
+          // listeDesChoixRestant.push(choice.innerText.toLowerCase())
+          // console.log(choice.innerText)
+          // console.log(choice.parentElement.className);
+          if (choice.parentElement.className.includes("ingredients")) {
+            console.log("INGREDIENT");
+            deletedChoiceArray = recipes.filter((recipe) =>
+              recipe.ingredients.some((item) =>
+                item.ingredient
+                  .toLowerCase()
+                  .includes(choice.innerText.toLowerCase())
+              )
+            );
+            arrayToDisplay =
+              cartesActuellementAffichees.concat(deletedChoiceArray);
+            cardsGallery.innerHTML = "";
+            display(arrayToDisplay);
+          } else if (choice.parentElement.className.includes("appareils")) {
+            console.log("APPAREILS");
+            deletedChoiceArray = recipes.filter((recipe) =>
+              recipe.appliance
+                .toLowerCase()
+                .includes(choice.innerText.toLowerCase())
+            );
+            arrayToDisplay =
+              cartesActuellementAffichees.concat(deletedChoiceArray);
+            cardsGallery.innerHTML = "";
+            display(arrayToDisplay);
+          } else if (choice.parentElement.className.includes("ustensiles")) {
+            console.log("USTENSILES");
+            deletedChoiceArray = recipes.filter((recipe) =>
+              recipe.ustensils.some((item) =>
+                item.toLowerCase().includes(choice.innerText.toLowerCase())
+              )
+            );
+            arrayToDisplay =
+              cartesActuellementAffichees.concat(deletedChoiceArray);
+            cardsGallery.innerHTML = "";
+            display(arrayToDisplay);
+          }
+        });
       }
     })
   );
