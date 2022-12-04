@@ -1,8 +1,6 @@
 //TODO recherche via input dropdown
 //TODO supprimer les doublons des listes de choix
-//TODO Suppression des choix
 //TODO Modifier le css des listes des dropdowns
-//TODO Supprimer le choix sélectionné de la liste des choix
 
 let filteredArray = [];
 
@@ -131,48 +129,86 @@ function searchBarreFilter() {
 
 //Mise à jour de la liste des ingrédients
 function getChoiceList(array) {
+  let allIngredientsListWithDupliquate = [];
+  let uniqueIngerdientsList = [];
+  let allAppareilsListWithDupliquate = [];
+  let uniqueAppareilsList = [];
+  let allUstensilesListWithDupliquate = [];
+  let uniqueUstensilesList = [];
   //Mise à zéro de la liste des choix
   ingredientsListContainer.innerHTML = "";
   appareilsListContainer.innerHTML = "";
   ustensilsListContainer.innerHTML = "";
+
   //Récupération des cartes affichées (avec leur ID)
   array.filter((recipe) => recipe.id === displayedCardsID.id);
-  //Dans les cartes affichées ont recherche leurs ingredients
+
+  //Dans les cartes affichées on recherche leurs ingredients
   // ET on affiche la liste des INGREDIENTS dans le dropdown
-  array.forEach((displayedIngredients) => {
-    const displayedIngredientsCategory = displayedIngredients.ingredients;
-    displayedIngredientsCategory.forEach((displayedIngredient) => {
-      const displayedIngredientsItem = document.createElement("li");
-      displayedIngredientsItem.setAttribute(
-        "class",
-        "dropdown-list-item ingredients-item text-nowrap"
-      );
-      displayedIngredientsItem.textContent = displayedIngredient.ingredient;
-      ingredientsListContainer.appendChild(displayedIngredientsItem);
-    });
+  array.forEach((recipe) => {
+    let allDisplayedIngredients = recipe.ingredients;
+    //Liste de tous les ingrédients
+    allDisplayedIngredients.forEach((array) =>
+      allIngredientsListWithDupliquate.push(array.ingredient.toLowerCase())
+    );
   });
+  //Tableau des ingredients avec doublon
+  // console.log(allIngredientsListWithDupliquate);
+  //Tableau des ingrédients sans doublons
+  uniqueIngerdientsList = new Set(allIngredientsListWithDupliquate);
+  //Mise dans l'ordre alphabétique
+  //TODO Mettre les listes dans l'ordre alphabétique
+  //Création de la liste sans doublons
+  uniqueIngerdientsList.forEach((ingredientInList) => {
+    // console.log(displayedIngredient);
+    const displayedIngredientsItem = document.createElement("li");
+    displayedIngredientsItem.setAttribute(
+      "class",
+      "dropdown-list-item ingredients-item text-nowrap"
+    );
+    displayedIngredientsItem.textContent = ingredientInList;
+    ingredientsListContainer.appendChild(displayedIngredientsItem);
+  });
+
   // ET on affiche la liste des APPAREILS dans le dropdown
-  array.forEach((displayedAppareils) => {
+  array.forEach((recipe) => {
+    let allDisplayedAppareils = recipe.appliance;
+    //Liste de tous les APPAREILS
+    allAppareilsListWithDupliquate.push(allDisplayedAppareils.toLowerCase());
+  });
+  // console.log(allAppareilsListWithDupliquate); //Liste des appareils en minuscule
+  //Création de la liste sans doublons
+  uniqueAppareilsList = new Set(allAppareilsListWithDupliquate);
+  uniqueAppareilsList.forEach((displayedAppareils) => {
     const displayedAppareilsItem = document.createElement("li");
     displayedAppareilsItem.setAttribute(
       "class",
       "dropdown-list-item appareils-item text-nowrap"
     );
-    displayedAppareilsItem.textContent = displayedAppareils.appliance;
+    displayedAppareilsItem.textContent = displayedAppareils;
     appareilsListContainer.appendChild(displayedAppareilsItem);
   });
+
   // ET on affiche la liste des USTENSILES dans le dropdown
-  array.forEach((displayedUstensiles) => {
-    const displayedUstensilesCategory = displayedUstensiles.ustensils;
-    displayedUstensilesCategory.forEach((displayedUstensiles) => {
-      const displayedUstensilesItem = document.createElement("li");
-      displayedUstensilesItem.setAttribute(
-        "class",
-        "dropdown-list-item ustensiles-item text-nowrap"
-      );
-      displayedUstensilesItem.textContent = displayedUstensiles;
-      ustensilsListContainer.appendChild(displayedUstensilesItem);
-    });
+
+  array.forEach((recipe) => {
+    const allDisplayedUstensiles = recipe.ustensils;
+    // console.log(allDisplayedUstensiles);
+    allDisplayedUstensiles.forEach((ustensil) =>
+      allUstensilesListWithDupliquate.push(ustensil.toLowerCase())
+    );
+  });
+  //Liste des ustensiles avec doublons
+  console.log(allUstensilesListWithDupliquate);
+  uniqueUstensilesList = new Set(allUstensilesListWithDupliquate);
+  uniqueUstensilesList.forEach((displayedUstensiles) => {
+    const displayedUstensilesItem = document.createElement("li");
+    displayedUstensilesItem.setAttribute(
+      "class",
+      "dropdown-list-item ustensiles-item text-nowrap"
+    );
+    displayedUstensilesItem.textContent = displayedUstensiles;
+    ustensilsListContainer.appendChild(displayedUstensilesItem);
   });
 }
 
