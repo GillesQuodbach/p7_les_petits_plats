@@ -309,27 +309,26 @@ function addChoiceButton(array) {
   );
 }
 function deleteChoiceButton(array) {
-  //Choix affichés
   const clickedChoices = document.querySelectorAll(
     ".selected-choices-container"
   );
-  let cartesActuellementAffichees = [];
-  let recuperationDesNoeudDOM = document.querySelectorAll(".card");
-  let idDesCartesAffichee = []; //! ID attribué à chaque recette (pas l'emplacement dans le tableau)
+  let actualDisplayedCardsGallery = [];
+  let actualDisplayedCardsGalleryDOM = document.querySelectorAll(".card");
+  let actualDisplayedCardsIds = []; //! ID attribué à chaque recette (pas l'emplacement dans le tableau)
   let deletedChoiceArray = [];
   let arrayToDisplay = [];
   //Tableau des cartes affichées au moment du clic
   //On récupère l'id des cartes affichées et on push les recettes correspondantes dans le tableau actualDisplayedCards
   // On transforme string en number
-  recuperationDesNoeudDOM.forEach((recipe) =>
-    idDesCartesAffichee.push(parseInt(recipe.getAttribute("id")))
+  actualDisplayedCardsGalleryDOM.forEach((recipe) =>
+    actualDisplayedCardsIds.push(parseInt(recipe.getAttribute("id")))
   );
   //Tableau des recettes présentes
   //On récupère le tableau qui correspond aux recettes présentes
-  for (let id of idDesCartesAffichee) {
+  for (let id of actualDisplayedCardsIds) {
     for (let recipe of recipes) {
       if (recipe.id === id) {
-        cartesActuellementAffichees.push(recipe);
+        actualDisplayedCardsGallery.push(recipe);
       }
     }
   }
@@ -340,7 +339,6 @@ function deleteChoiceButton(array) {
       //Tableau des cartes affichées au moment du clic
       //On récupère l'id des cartes affichées et on push les recettes correspondantes dans le tableau actualDisplayedCards
       // On transforme string en number
-      //TODO ICI RAJOUTER FONCTION FILTRE SUPPRESSION DES CHOIX
       //Récupération de tous les choix
       const tousLesChoixRestant = document.querySelectorAll(".selected-choice");
       //On récupère la liste des choix restants
@@ -363,7 +361,7 @@ function deleteChoiceButton(array) {
               )
             );
             arrayToDisplay =
-              cartesActuellementAffichees.concat(deletedChoiceArray);
+              actualDisplayedCardsGallery.concat(deletedChoiceArray);
             cardsGallery.innerHTML = "";
             display(arrayToDisplay);
           } else if (choice.parentElement.className.includes("appareils")) {
@@ -374,7 +372,7 @@ function deleteChoiceButton(array) {
                 .includes(choice.innerText.toLowerCase())
             );
             arrayToDisplay =
-              cartesActuellementAffichees.concat(deletedChoiceArray);
+              actualDisplayedCardsGallery.concat(deletedChoiceArray);
             cardsGallery.innerHTML = "";
             display(arrayToDisplay);
           } else if (choice.parentElement.className.includes("ustensiles")) {
@@ -385,7 +383,7 @@ function deleteChoiceButton(array) {
               )
             );
             arrayToDisplay =
-              cartesActuellementAffichees.concat(deletedChoiceArray);
+              actualDisplayedCardsGallery.concat(deletedChoiceArray);
             cardsGallery.innerHTML = "";
             display(arrayToDisplay);
           }
