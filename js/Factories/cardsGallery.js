@@ -1,5 +1,4 @@
 //TODO recherche via input dropdown
-//TODO supprimer les doublons des listes de choix
 //TODO Modifier le css des listes des dropdowns
 
 let filteredArray = [];
@@ -135,6 +134,9 @@ function getChoiceList(array) {
   let uniqueAppareilsList = [];
   let allUstensilesListWithDupliquate = [];
   let uniqueUstensilesList = [];
+  let midChoiceArray = [];
+  let finalIngredientList = [];
+
   //Mise à zéro de la liste des choix
   ingredientsListContainer.innerHTML = "";
   appareilsListContainer.innerHTML = "";
@@ -156,8 +158,25 @@ function getChoiceList(array) {
   // console.log(allIngredientsListWithDupliquate);
   //Tableau des ingrédients sans doublons
   uniqueIngerdientsList = new Set(allIngredientsListWithDupliquate);
-  //Mise dans l'ordre alphabétique
-  //TODO Mettre les listes dans l'ordre alphabétique
+  //!On récupère le tableau des choix, on le compare a la liste, si = supprimer
+  let allActualSelectedChoices = document.querySelectorAll(".selected-choice");
+  let allActualSelectedChoicesValue = [];
+
+  allActualSelectedChoices.forEach((choice) =>
+    allActualSelectedChoicesValue.push(choice.textContent)
+  );
+  console.log(allActualSelectedChoicesValue); // Liste des choix deja selectionné
+  if (allActualSelectedChoices.length !== 0) {
+    console.log(uniqueIngerdientsList); // Set des choix unique
+    for (let i = 0; i < uniqueIngerdientsList.length; i++) {
+      console.log(i);
+    }
+    //Liste des CHOIX OK
+    //TODO TERMINER LA BOUCLE
+  } else {
+    console.log("Auncun choix sélectionné");
+  }
+
   //Création de la liste sans doublons
   uniqueIngerdientsList.forEach((ingredientInList) => {
     // console.log(displayedIngredient);
@@ -199,7 +218,7 @@ function getChoiceList(array) {
     );
   });
   //Liste des ustensiles avec doublons
-  console.log(allUstensilesListWithDupliquate);
+  // console.log(allUstensilesListWithDupliquate);
   uniqueUstensilesList = new Set(allUstensilesListWithDupliquate);
   uniqueUstensilesList.forEach((displayedUstensiles) => {
     const displayedUstensilesItem = document.createElement("li");
@@ -241,8 +260,18 @@ function addChoiceButton(array) {
   // console.log(actualDisplayedCards);
   //On récupère le choix cliqué
   // Pour chaque choix cliqué
+
   allChoiceList.forEach((choice) =>
     choice.addEventListener("click", (e) => {
+      const ingredientsListContainer = document.querySelector(
+        "#ingredients-dropdown-menu"
+      );
+      const appareilsListContainer = document.querySelector(
+        "#ingredients-dropdown-menu"
+      );
+      const ustensilesListContainer = document.querySelector(
+        "#ingredients-dropdown-menu"
+      );
       const ingredientChoiceContainer = document.querySelector(
         "#ingredients-choices-container"
       );
@@ -252,10 +281,7 @@ function addChoiceButton(array) {
       const ustensilesChoiceContainer = document.querySelector(
         "#ustensiles-choices-container"
       );
-      let textContent = e.target.textContent;
-      let parentCategoryId = e.target.parentElement.id;
-
-      if (parentCategoryId.includes("ingredients")) {
+      if (e.target.className.includes("ingredients")) {
         //Création du bouton de l'item choisi
         const selectedItemContainer = document.createElement("div");
         selectedItemContainer.setAttribute(
@@ -275,17 +301,22 @@ function addChoiceButton(array) {
         selectedItemContainer.appendChild(selectedItem);
         selectedItem.appendChild(selectedItemCross);
 
-        console.log("===Cat INGREDIENT===");
-        console.log(textContent.toLowerCase()); //Choix en minuscule
+        // console.log("===Cat INGREDIENT===");
+        // console.log(textContent.toLowerCase()); //Choix en minuscule
         newArray = actualDisplayedCards.filter((recipe) =>
           recipe.ingredients.some((item) =>
-            item.ingredient.toLowerCase().includes(textContent.toLowerCase())
+            item.ingredient
+              .toLowerCase()
+              .includes(e.target.textContent.toLowerCase())
           )
         );
+
+        //TODO ICI SUPPRESSION DU CHOIX DE LA LISTE
+
         //Création des cards
         cardsGallery.innerHTML = "";
         display(newArray);
-      } else if (parentCategoryId.includes("appareils")) {
+      } else if (e.target.className.includes("appareils")) {
         //Création du bouton de l'item choisi
         const selectedItemContainer = document.createElement("div");
         selectedItemContainer.setAttribute(
@@ -305,14 +336,16 @@ function addChoiceButton(array) {
         selectedItem.appendChild(selectedItemCross);
 
         console.log("===Cat APPAREILS===");
-        console.log(textContent.toLowerCase()); //Choix en minuscule
+        console.log(e.target.textContent.toLowerCase()); //Choix en minuscule
         newArray = actualDisplayedCards.filter((recipe) =>
-          recipe.appliance.toLowerCase().includes(textContent.toLowerCase())
+          recipe.appliance
+            .toLowerCase()
+            .includes(e.target.textContent.toLowerCase())
         );
         //Création des cards
         cardsGallery.innerHTML = "";
         display(newArray);
-      } else if (parentCategoryId.includes("ustensiles")) {
+      } else if (e.target.className.includes("ustensiles")) {
         //Création du bouton de l'item choisi
         const selectedItemContainer = document.createElement("div");
         selectedItemContainer.setAttribute(
@@ -331,13 +364,14 @@ function addChoiceButton(array) {
         selectedItemContainer.appendChild(selectedItem);
         selectedItem.appendChild(selectedItemCross);
         console.log("===Cat USTENSILES===");
-        console.log(textContent.toLowerCase()); //Choix en minuscule
+        console.log(e.target.textContent.toLowerCase()); //Choix en minuscule
         newArray = actualDisplayedCards.filter((recipe) =>
           recipe.ustensils.some((item) =>
-            item.toLowerCase().includes(textContent.toLowerCase())
+            item.toLowerCase().includes(e.target.textContent.toLowerCase())
           )
         );
         //Création des cards
+
         cardsGallery.innerHTML = "";
         display(newArray);
       }
