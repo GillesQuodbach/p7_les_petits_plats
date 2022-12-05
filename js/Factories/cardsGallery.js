@@ -134,8 +134,8 @@ function getChoiceList(array) {
   let uniqueAppareilsList = [];
   let allUstensilesListWithDupliquate = [];
   let uniqueUstensilesList = [];
-  let midChoiceArray = [];
   let finalIngredientList = [];
+  let ingredientsListToDispplay = [];
 
   //Mise à zéro de la liste des choix
   ingredientsListContainer.innerHTML = "";
@@ -157,7 +157,7 @@ function getChoiceList(array) {
   //Tableau des ingredients avec doublon
   // console.log(allIngredientsListWithDupliquate);
   //Tableau des ingrédients sans doublons
-  uniqueIngerdientsList = new Set(allIngredientsListWithDupliquate);
+
   //!On récupère le tableau des choix, on le compare a la liste, si = supprimer
   let allActualSelectedChoices = document.querySelectorAll(".selected-choice");
   let allActualSelectedChoicesValue = [];
@@ -165,29 +165,49 @@ function getChoiceList(array) {
   allActualSelectedChoices.forEach((choice) =>
     allActualSelectedChoicesValue.push(choice.textContent)
   );
-  console.log(allActualSelectedChoicesValue); // Liste des choix deja selectionné
+  // console.log(allActualSelectedChoicesValue); // Liste des choix deja selectionné
   if (allActualSelectedChoices.length !== 0) {
-    console.log(uniqueIngerdientsList); // Set des choix unique
-    for (let i = 0; i < uniqueIngerdientsList.length; i++) {
-      console.log(i);
-    }
-    //Liste des CHOIX OK
-    //TODO TERMINER LA BOUCLE
+    // let choixUnique = array3.filter((value, index) => {
+    //   return array3.indexOf(value) === array3.lastIndexOf(value);
+    // });
+
+    console.log(allActualSelectedChoicesValue); // Choix déjà sélectionné
+    console.log(allIngredientsListWithDupliquate); // Tous les choix
+    finalIngredientList = allIngredientsListWithDupliquate.concat(
+      allActualSelectedChoicesValue
+    );
+    console.log(finalIngredientList); // Tous les choix
+    ingredientsListToDispplay = finalIngredientList.filter((value, index) => {
+      return (
+        finalIngredientList.indexOf(value) ===
+        finalIngredientList.lastIndexOf(value)
+      );
+    });
+    console.log(ingredientsListToDispplay); // Array OK liste choix sans choix select
+    ingredientsListToDispplay.forEach((ingredientInList) => {
+      const displayedIngredientsItem = document.createElement("li");
+      displayedIngredientsItem.setAttribute(
+        "class",
+        "dropdown-list-item ingredients-item text-nowrap"
+      );
+      displayedIngredientsItem.textContent = ingredientInList;
+      ingredientsListContainer.appendChild(displayedIngredientsItem);
+    });
   } else {
     console.log("Auncun choix sélectionné");
+    //Création de la liste sans doublons
+    let allIngredientsList = new Set(allIngredientsListWithDupliquate);
+    allIngredientsList.forEach((ingredientInList) => {
+      // console.log(displayedIngredient);
+      const displayedIngredientsItem = document.createElement("li");
+      displayedIngredientsItem.setAttribute(
+        "class",
+        "dropdown-list-item ingredients-item text-nowrap"
+      );
+      displayedIngredientsItem.textContent = ingredientInList;
+      ingredientsListContainer.appendChild(displayedIngredientsItem);
+    });
   }
-
-  //Création de la liste sans doublons
-  uniqueIngerdientsList.forEach((ingredientInList) => {
-    // console.log(displayedIngredient);
-    const displayedIngredientsItem = document.createElement("li");
-    displayedIngredientsItem.setAttribute(
-      "class",
-      "dropdown-list-item ingredients-item text-nowrap"
-    );
-    displayedIngredientsItem.textContent = ingredientInList;
-    ingredientsListContainer.appendChild(displayedIngredientsItem);
-  });
 
   // ET on affiche la liste des APPAREILS dans le dropdown
   array.forEach((recipe) => {
