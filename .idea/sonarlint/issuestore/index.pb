@@ -35,3 +35,15 @@ A
 json/recipes.js,a\c\ac8032c3e61d4fbfc743770a81690f35b1df03d1
 =
 css/style.css,1\2\126b0f8c1ec95fb3a2541745bfc21365b438d668
+9
+	style.css,4\6\46e3381e9569c09e85a30b9e5a2af7525ee9fd78
+F
+js/Utils/createCard.js,8\1\8107276ec1cea4f35c6abf48448558fd197ab59a
+H
+js/Utils/deleteChoice.js,d\6\d631a228c4605b530899f4e759ad2af2bb86cbe0
+G
+js/Utils/searchBarre.js,3\4\3435995cc5c9540f21f42a2d5f991a749224d6fa
+F
+js/Utils/constantes.js,0\5\052d49b6977918b47d7f65b6e23bdba44a727749
+I
+js/Utils/hashtagfilter.js,1\7\17061cff827185ddab22aeb7a3c74e0a6e027480
