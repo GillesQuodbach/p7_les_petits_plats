@@ -196,6 +196,7 @@ function getChoiceList(array) {
 
   if (allActualSelectedChoices.length !== 0) {
     //Gestion des choix si choix effectué
+
     //PARTIE INGREDIENT
     finalIngredientList =
       allIngredientsListWithDupliquate.concat(ingredientsSelected); // On concact les deux tableaux
@@ -206,6 +207,8 @@ function getChoiceList(array) {
         finalIngredientList.lastIndexOf(value)
       ); // On compare les deux tableau tableau est on garde les valeurs uniques
     });
+
+
     ingredientsListToDispplay.forEach((ingredientInList) => {
       const displayedIngredientsItem = document.createElement("li");
       displayedIngredientsItem.setAttribute(
@@ -265,8 +268,27 @@ function getChoiceList(array) {
   } else {
     //SI AUCUN CHOIX FAIT
     //Création de la liste des ingredients sans doublons
-    let allIngredientsList = new Set(allIngredientsListWithDupliquate);
+    let allIngredientsList = Array.from(new Set(allIngredientsListWithDupliquate));
+// TODO INPUT INGREDIENT
+    const dropdownInputIngredient = document.querySelector('#input-ingredients')
+    dropdownInputIngredient.addEventListener('input', dopdownIngredientFilter)
 
+    function dopdownIngredientFilter(){
+      const dropdownInputIngredientValue = dropdownInputIngredient.value.toLowerCase();
+      let filteredIngredient = allIngredientsList.filter(
+        (truc) => truc.toLowerCase().includes(dropdownInputIngredientValue))
+      //Remise a zéro de la gallery
+      ingredientsListContainer.innerHTML = ""
+      filteredIngredient.forEach((ingredientInList) => {
+        const displayedIngredientsItem = document.createElement("li");
+        displayedIngredientsItem.setAttribute(
+          "class",
+          "dropdown-list-item ingredients-item text-nowrap"
+        );
+        displayedIngredientsItem.textContent = ingredientInList;
+        ingredientsListContainer.appendChild(displayedIngredientsItem);
+      });
+    }
     allIngredientsList.forEach((ingredientInList) => {
       const displayedIngredientsItem = document.createElement("li");
       displayedIngredientsItem.setAttribute(
@@ -311,7 +333,7 @@ function getChoiceList(array) {
     });
   }
 }
-
+let actualDisplayedCards = [];
 //Listener de la liste des choix
 function addChoiceButton(array) {
   //tableau des cards actuellement affichées
@@ -382,9 +404,6 @@ function addChoiceButton(array) {
               .includes(e.target.textContent.toLowerCase())
           )
         );
-
-        //TODO ICI SUPPRESSION DU CHOIX DE LA LISTE
-
         //Création des cards
         cardsGallery.innerHTML = "";
         display(newArray);
@@ -534,3 +553,55 @@ function deleteChoiceButton(array) {
     })
   );
 }
+
+function dopdownIngredientFilter(){
+  const dropdownInputIngredientValue = dropdownInputIngredient.value.toLowerCase();
+  let filteredIngredient = allIngredientsList.filter(
+    (truc) => truc.toLowerCase().includes(dropdownInputIngredientValue))
+  //Remise a zéro de la gallery
+  ingredientsListContainer.innerHTML = ""
+  filteredIngredient.forEach((ingredientInList) => {
+    const displayedIngredientsItem = document.createElement("li");
+    displayedIngredientsItem.setAttribute(
+      "class",
+      "dropdown-list-item ingredients-item text-nowrap"
+    );
+    displayedIngredientsItem.textContent = ingredientInList;
+    ingredientsListContainer.appendChild(displayedIngredientsItem);
+
+    displayedIngredientsItem.forEach((choice) =>
+      choice.addEventListener("click", (e) => {
+        const ingredientChoiceContainer = document.querySelector(
+          "#ingredients-choices-container"
+        );
+        //Création du bouton de l'item choisi
+        const selectedItemContainer = document.createElement("div");
+        selectedItemContainer.setAttribute(
+          "class",
+          "selected-choices-container ingredients-selected-choices-container"
+        );
+        //Affichage de l'ingrédient choisi
+        const selectedItem = document.createElement("p");
+        selectedItem.setAttribute("class", "selected-choice");
+        selectedItem.textContent = e.target.textContent;
+        const selectedItemCross = document.createElement("img");
+        selectedItemCross.setAttribute("class", "selected-choice-cross");
+        selectedItemCross.setAttribute("src", "img/choice-delete-cross.svg");
+        selectedItemCross.setAttribute("alt", "delete your choice");
+        ingredientChoiceContainer.prepend(selectedItemContainer);
+        selectedItemContainer.appendChild(selectedItem);
+        selectedItem.appendChild(selectedItemCross);
+
+        let newArray = actualDisplayedCards.filter((recipe) =>
+          recipe.ingredients.some((item) =>
+            item.ingredient
+              .toLowerCase()
+              .includes(e.target.textContent.toLowerCase())
+          )
+        );
+        //Création des cards
+        cardsGallery.innerHTML = "";
+        display(newArray);
+      }));
+
+  })}
