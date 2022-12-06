@@ -288,6 +288,8 @@ function getChoiceList(array) {
         displayedIngredientsItem.textContent = ingredientInList;
         ingredientsListContainer.appendChild(displayedIngredientsItem);
       });
+      const allIng = document.querySelectorAll(".ingredients-item")
+
     }
     allIngredientsList.forEach((ingredientInList) => {
       const displayedIngredientsItem = document.createElement("li");
@@ -395,6 +397,8 @@ function addChoiceButton(array) {
         selectedItemContainer.appendChild(selectedItem);
         selectedItem.appendChild(selectedItemCross);
 
+
+        // TODO ICI
         // console.log("===Cat INGREDIENT===");
         // console.log(textContent.toLowerCase()); //Choix en minuscule
         newArray = actualDisplayedCards.filter((recipe) =>
@@ -404,6 +408,8 @@ function addChoiceButton(array) {
               .includes(e.target.textContent.toLowerCase())
           )
         );
+        //TODO ICI FONTION INPUT SEARCH
+
         //Création des cards
         cardsGallery.innerHTML = "";
         display(newArray);
@@ -554,54 +560,6 @@ function deleteChoiceButton(array) {
   );
 }
 
-function dopdownIngredientFilter(){
-  const dropdownInputIngredientValue = dropdownInputIngredient.value.toLowerCase();
-  let filteredIngredient = allIngredientsList.filter(
-    (truc) => truc.toLowerCase().includes(dropdownInputIngredientValue))
-  //Remise a zéro de la gallery
-  ingredientsListContainer.innerHTML = ""
-  filteredIngredient.forEach((ingredientInList) => {
-    const displayedIngredientsItem = document.createElement("li");
-    displayedIngredientsItem.setAttribute(
-      "class",
-      "dropdown-list-item ingredients-item text-nowrap"
-    );
-    displayedIngredientsItem.textContent = ingredientInList;
-    ingredientsListContainer.appendChild(displayedIngredientsItem);
-
-    displayedIngredientsItem.forEach((choice) =>
-      choice.addEventListener("click", (e) => {
-        const ingredientChoiceContainer = document.querySelector(
-          "#ingredients-choices-container"
-        );
-        //Création du bouton de l'item choisi
-        const selectedItemContainer = document.createElement("div");
-        selectedItemContainer.setAttribute(
-          "class",
-          "selected-choices-container ingredients-selected-choices-container"
-        );
-        //Affichage de l'ingrédient choisi
-        const selectedItem = document.createElement("p");
-        selectedItem.setAttribute("class", "selected-choice");
-        selectedItem.textContent = e.target.textContent;
-        const selectedItemCross = document.createElement("img");
-        selectedItemCross.setAttribute("class", "selected-choice-cross");
-        selectedItemCross.setAttribute("src", "img/choice-delete-cross.svg");
-        selectedItemCross.setAttribute("alt", "delete your choice");
-        ingredientChoiceContainer.prepend(selectedItemContainer);
-        selectedItemContainer.appendChild(selectedItem);
-        selectedItem.appendChild(selectedItemCross);
-
-        let newArray = actualDisplayedCards.filter((recipe) =>
-          recipe.ingredients.some((item) =>
-            item.ingredient
-              .toLowerCase()
-              .includes(e.target.textContent.toLowerCase())
-          )
-        );
-        //Création des cards
-        cardsGallery.innerHTML = "";
-        display(newArray);
-      }));
-
-  })}
+const inputIngredient = document.querySelector('#input-ingredients')
+console.log(inputIngredient)
+inputIngredient.addEventListener('input', e=> console.log(inputIngredient.value.toLowerCase()))
