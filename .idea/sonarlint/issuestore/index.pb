@@ -35,9 +35,3 @@ A
 json/recipes.js,a\c\ac8032c3e61d4fbfc743770a81690f35b1df03d1
 =
 css/style.css,1\2\126b0f8c1ec95fb3a2541745bfc21365b438d668
-D
-js/Utils/dropdown.js,9\7\9703eabea828249023058307090401821839b74a
-F
-js/Factories/script.js,e\6\e667cefb44d946a5a83efb31d845afd52be1bd99
-9
-	style.css,4\6\46e3381e9569c09e85a30b9e5a2af7525ee9fd78

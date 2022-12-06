@@ -94,6 +94,14 @@ input[type="color"]:focus,
     margin: 0;
 }
 
+.selected-choice.show {
+    display: inline;
+}
+
+.selected-choice.hide {
+    display: none;
+}
+
 .selected-choice-cross {
     margin-left: 10px;
     width: 18px;
