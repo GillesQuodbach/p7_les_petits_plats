@@ -7,6 +7,17 @@ const ustensilesChoiceContainer = document.querySelector("#ustensiles-choices-co
 const ingredientsList = document.querySelector('#ingredients-dropdown-menu')
 const appareilsList = document.querySelector('#ingredients-dropdown-menu')
 const ustensilesList = document.querySelector('#ingredients-dropdown-menu')
+//Liste des ingredients
+const ingredientsListContainer = document.querySelector("#ingredients-dropdown-menu")
+const appareilsListContainer = document.querySelector("#appareils-dropdown-menu")
+const ustensilesListContainer = document.querySelector("#ustensiles-dropdown-menu")
+// Liste des choix déjà sélectionnée
+const ingredientsSelected = [];
+const appareilsSelected = [];
+const ustensilesSelected = [];
+const allIngredientsListWithDupliquate = [];
+const allAppareilsListWithDupliquate = [];
+const allUstensilesListWithDupliquate = [];
 //FONCTION FILTRAGE BARRE PRINCIPALE
 //Récupérer les recettes
 console.log(recipes)
@@ -70,17 +81,7 @@ function createCardList(array) {
 }
 //Affichage des choix
 function createdChoiceList(array) {
-  //Liste des ingredients
-  const ingredientsListContainer = document.querySelector("#ingredients-dropdown-menu")
-  const appareilsListContainer = document.querySelector("#appareils-dropdown-menu")
-  const ustensilesListContainer = document.querySelector("#ustensiles-dropdown-menu")
-  // Liste des choix déjà sélectionnée
-  const ingredientsSelected = [];
-  const appareilsSelected = [];
-  const ustensilesSelected = [];
-  const allIngredientsListWithDupliquate = [];
-  const allAppareilsListWithDupliquate = [];
-  const allUstensilesListWithDupliquate = [];
+
   //Mise à zéro de la liste des choix
   ingredientsListContainer.innerHTML = "";
   appareilsListContainer.innerHTML = "";
@@ -137,6 +138,8 @@ function createdChoiceList(array) {
     ingredientsListToDisplay = Array.from (new Set(allIngredientsListWithDupliquate))
   }
   orderChoices(ingredientsListToDisplay)
+
+
   ingredientsListToDisplay.forEach((ingredientInList) => {
     const displayedIngredientsItem = document.createElement("li");
     displayedIngredientsItem.setAttribute(
@@ -479,6 +482,7 @@ ingredientsInput.addEventListener("input", ingredientsDropdownFilter);
 appareilsInput.addEventListener("input", dropdownFilterAppareils);
 ustensilesInput.addEventListener("input", dropdownFilterInputUstensiles);
 
+
 //Fonction de recherche via input Dropdown
 function ingredientsDropdownFilter(){
   //Récupération de l'input de l'utilisateur à chaque lettre tapée
@@ -489,14 +493,20 @@ function ingredientsDropdownFilter(){
       (recipe) =>
         // Find what I'm looking for but don't push it in the filteredArr
         recipe.ingredients.some((item) =>
-          item.ingredient.toLowerCase().includes(ingredientsInputValue)
-        )
-    );
-    //Création des cards
-    // createdChoiceList(dropdownIngredientFilteredArray)
+          item.ingredient.toLowerCase().includes(ingredientsInputValue)))
     displayGallery(dropdownIngredientFilteredArray);
-  }
 
+  console.log(ingredientsListToDisplay)
+  ingredientsListToDisplay.filter(ingredient => {
+    ingredient.includes(ingredientsInputValue)})
+
+  ingredientsListToDisplay.forEach(ingredient => {
+    const ingredientItem = document.createElement('li')
+    ingredientItem.setAttribute("class",
+"dropdown-list-item ustensiles-item text-nowrap")
+    ingredientItem.textContent = ingredient
+  })
+  }
 function dropdownFilterAppareils(){
   //Récupération de l'input de l'utilisateur à chaque lettre tapée
   const appareilsInputValue = appareilsInput.value.toLowerCase();
@@ -509,8 +519,6 @@ function dropdownFilterAppareils(){
   // createdChoiceList(dropdownIngredientFilteredArray)
   displayGallery(dropdownAppareilsFilteredArray);
 }
-
-
 function dropdownFilterInputUstensiles(){
   //Récupération de l'input de l'utilisateur à chaque lettre tapée
   const ustensilesInputValue = ustensilesInput.value.toLowerCase();
@@ -528,61 +536,10 @@ function dropdownFilterInputUstensiles(){
   displayGallery(dropdownUstensilesFilteredArray);
 }
 
-
-// function dopdownIngredientFilter(){
-//   const dropdownInputIngredientValue = ingredientsInput.value.toLowerCase();
-//   let filteredIngredient = allIngredientsList.filter(
-//     (truc) => truc.toLowerCase().includes(dropdownInputIngredientValue))
-//   //Remise a zéro de la gallery
-//   filteredIngredient.forEach((ingredientInList) => {
-//     const displayedIngredientsItem = document.createElement("li");
-//     displayedIngredientsItem.setAttribute(
-//       "class",
-//       "dropdown-list-item ingredients-item text-nowrap"
-//     );
-//     displayedIngredientsItem.textContent = ingredientInList;
-//     ingredientsListContainer.appendChild(displayedIngredientsItem);
-//   });
-//   const allIng = document.querySelectorAll(".ingredients-item")
-//
-// }
-
-
-
-// if (aucune recherche){
-//
-//   function recupDonnée
-//     => tableau RECIPES
-//
-//     => affichage recettes
-//         function displayCards ( sur array RECIPES)
-//
-//     => affichage des choix (displayChoice)
-//         function displayChoice (sur array RECIPES)
-//
-// } else if (une recherche a été faite){
-//
-//
-//     => récupère les choix fait
-//         function reucpeChoice (sur node choiceContainer)
-//
-//     => récup de la gallery affichée
-//       function recupeGalleryDejaAffichée
-//
-//                      => on compare a recipes
-//                       function de comparaison/tri
-//
-//
-//                      => affichage recettes
-//                       function displayCards ( sur array RECIPES)
-//
-//                        => affichage des choix (displayChoice)
-//                       function displayChoice (sur array RECIPES)
-//
-// }
-//
-// function recupeDonnée
-// fonction displayCards
-// fonction displayChoice
-// function reucpeChoice
-// function recupeGalleryDejaAffichée
+//Recherche dans liste
+const ingredientsInputValue = ingredientsInput.value.toLowerCase();
+const ingredientsListNodes = document.querySelectorAll('.ingredients-item')
+// console.log(ingredientsListNodes)
+const ingredientsListNodesText = [...ingredientsListNodes].map(item => item.textContent)
+const filteredListNode = [...ingredientsListNodes].filter(item => item.textContent.includes(ingredientsInputValue))
+// console.log(filteredListNode)
