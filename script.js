@@ -4,6 +4,9 @@ const searchInput = document.querySelector("#main-search-input");
 const ingredientChoiceContainer = document.querySelector("#ingredients-choices-container");
 const appareilsChoiceContainer = document.querySelector("#appareils-choices-container");
 const ustensilesChoiceContainer = document.querySelector("#ustensiles-choices-container");
+const ingredientsList = document.querySelector('#ingredients-dropdown-menu')
+const appareilsList = document.querySelector('#ingredients-dropdown-menu')
+const ustensilesList = document.querySelector('#ingredients-dropdown-menu')
 //FONCTION FILTRAGE BARRE PRINCIPALE
 //Récupérer les recettes
 console.log(recipes)
@@ -466,28 +469,18 @@ function deleteChoiceButton(array) {
   );
 }
 
-
-
-
-
-
-
-
-
-
-
-
 // ? FILTRE DROPDOWNS
 //Inputs dropdowns
 const ingredientsInput = document.querySelector('#input-ingredients')
 const appareilsInput = document.querySelector('#input-appareils')
 const ustensilesInput = document.querySelector('#input-ustensiles')
 //Input listener
-ingredientsInput.addEventListener("input", dropdownFilter);
-// appareilsInput.addEventListener("input", dropdownFilterAppareils);
-// ustensilesInput.addEventListener("input", dropdownFilterInputUstensiles);
+ingredientsInput.addEventListener("input", ingredientsDropdownFilter);
+appareilsInput.addEventListener("input", dropdownFilterAppareils);
+ustensilesInput.addEventListener("input", dropdownFilterInputUstensiles);
+
 //Fonction de recherche via input Dropdown
-function dropdownFilter(){
+function ingredientsDropdownFilter(){
   //Récupération de l'input de l'utilisateur à chaque lettre tapée
   const ingredientsInputValue = ingredientsInput.value.toLowerCase();
   galleryContainer.innerHTML = "";
@@ -503,6 +496,39 @@ function dropdownFilter(){
     // createdChoiceList(dropdownIngredientFilteredArray)
     displayGallery(dropdownIngredientFilteredArray);
   }
+
+function dropdownFilterAppareils(){
+  //Récupération de l'input de l'utilisateur à chaque lettre tapée
+  const appareilsInputValue = appareilsInput.value.toLowerCase();
+  galleryContainer.innerHTML = "";
+  // Recherche dans DESCRIPTION - NOM - INGREDIENT
+  let dropdownAppareilsFilteredArray = recipes.filter(
+    (recipe) =>recipe.appliance.toLowerCase().includes(appareilsInputValue)
+  );
+  //Création des cards
+  // createdChoiceList(dropdownIngredientFilteredArray)
+  displayGallery(dropdownAppareilsFilteredArray);
+}
+
+
+function dropdownFilterInputUstensiles(){
+  //Récupération de l'input de l'utilisateur à chaque lettre tapée
+  const ustensilesInputValue = ustensilesInput.value.toLowerCase();
+  galleryContainer.innerHTML = "";
+  // Recherche dans DESCRIPTION - NOM - INGREDIENT
+  let dropdownUstensilesFilteredArray = recipes.filter(
+    (recipe) =>
+      // Find what I'm looking for but don't push it in the filteredArr
+      recipe.ustensils.some((item) =>
+        item.toLowerCase().includes(ustensilesInputValue)
+      )
+  );
+  //Création des cards
+  // createdChoiceList(dropdownIngredientFilteredArray)
+  displayGallery(dropdownUstensilesFilteredArray);
+}
+
+
 // function dopdownIngredientFilter(){
 //   const dropdownInputIngredientValue = ingredientsInput.value.toLowerCase();
 //   let filteredIngredient = allIngredientsList.filter(
