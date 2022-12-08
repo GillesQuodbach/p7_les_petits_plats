@@ -18,6 +18,7 @@ const ustensilesSelected = [];
 const allIngredientsListWithDupliquate = [];
 const allAppareilsListWithDupliquate = [];
 const allUstensilesListWithDupliquate = [];
+let ingredientToDisplayToUpperCase = []
 //FONCTION FILTRAGE BARRE PRINCIPALE
 //Récupérer les recettes
 console.log(recipes)
@@ -129,7 +130,7 @@ function createdChoiceList(array) {
     let finalIngredientList =
       allIngredientsListWithDupliquate.concat(ingredientsSelected); // On concact les deux tableaux
     // console.log(finalIngredientList); // Tous les choix
-    ingredientsListToDisplay = finalIngredientList.filter((value, index) => {
+    ingredientToDisplayToUpperCase = finalIngredientList.filter((value, index) => {
       return (
         finalIngredientList.indexOf(value) ===
         finalIngredientList.lastIndexOf(value)
@@ -138,9 +139,15 @@ function createdChoiceList(array) {
     ingredientsListToDisplay = Array.from (new Set(allIngredientsListWithDupliquate))
   }
   orderChoices(ingredientsListToDisplay)
+  //Première lettre en MAJ
+let ingredientsListToDisplayUC = []
+  ingredientsListToDisplay.forEach(word => {
+    let firstLetter = word.charAt(0).toUpperCase()
+    let replacement = word.replace(word.charAt(0),firstLetter)
+    ingredientsListToDisplayUC.push(replacement)
+  })
 
-
-  ingredientsListToDisplay.forEach((ingredientInList) => {
+  ingredientsListToDisplayUC.forEach((ingredientInList) => {
     const displayedIngredientsItem = document.createElement("li");
     displayedIngredientsItem.setAttribute(
       "class",
@@ -163,7 +170,16 @@ function createdChoiceList(array) {
     appareilsListToDisplay = Array.from (new Set(allAppareilsListWithDupliquate))
   }
   orderChoices(appareilsListToDisplay)
-  appareilsListToDisplay.forEach((appareilInList) => {
+
+  //Première lettre en MAJ
+  let appareilsListToDisplayUC = []
+  appareilsListToDisplay.forEach(word => {
+    let firstLetter = word.charAt(0).toUpperCase()
+    let replacement = word.replace(word.charAt(0),firstLetter)
+    appareilsListToDisplayUC.push(replacement)
+  })
+
+  appareilsListToDisplayUC.forEach((appareilInList) => {
     const displayedAppareilsItem = document.createElement("li");
     displayedAppareilsItem.setAttribute(
       "class",
@@ -192,7 +208,14 @@ function createdChoiceList(array) {
   }
   // Mise en ordre des choix
   orderChoices(ustensilesListToDisplay)
-  ustensilesListToDisplay.forEach((ustensileInList) => {
+  //Première lettre en MAJ
+  let ustensilesListToDisplayUC = []
+  ustensilesListToDisplay.forEach(word => {
+    let firstLetter = word.charAt(0).toUpperCase()
+    let replacement = word.replace(word.charAt(0),firstLetter)
+    ustensilesListToDisplayUC.push(replacement)
+  })
+  ustensilesListToDisplayUC.forEach((ustensileInList) => {
     const displayedUstensilesItem = document.createElement("li");
     displayedUstensilesItem.setAttribute(
       "class",
@@ -526,12 +549,12 @@ function dropdownFilterInputUstensiles(){
   displayGallery(dropdownUstensilesFilteredArray);
 }
 
+//FILTRE LISTES DES CHOIX
 //Filtre liste ingredients
 ingredientsInput.addEventListener('input', filterIngredientsNodes)
 function filterIngredientsNodes() {
   //TABLEAU DES INGREDIENTS
   let filterValue = ingredientsInput.value.toLowerCase()
-  console.log(filterValue)
   let ul = document.querySelector('#ingredients-dropdown-menu')
   let li = ul.querySelectorAll('.ingredients-item')
   for (const element of li) {
@@ -574,3 +597,16 @@ function filterUstensilesNodes() {
     }
   }
 }
+
+
+function firstLetterUpperCase(arrayLowerCase, arrayUpperCase){
+  //On récupère les premières lettres
+  arrayLowerCase.forEach(word => {
+    let firstLetter = word.charAt(0).toUpperCase()
+    let replacement = word.replace(word.charAt(0),firstLetter)
+    arrayUpperCase.push(replacement)
+  })
+}
+
+// firstLetterUpperCase(ingredientsListToDisplay,ingredientToDisplayToUpperCase)
+// console.log(ingredientToDisplayToUpperCase)

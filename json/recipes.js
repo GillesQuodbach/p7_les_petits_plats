@@ -461,7 +461,7 @@ const recipes = [
         unit: "grammes",
       },
       {
-        ingredient: "Échalote",
+        ingredient: "Echalote",
         quantity: 2,
       },
       {
