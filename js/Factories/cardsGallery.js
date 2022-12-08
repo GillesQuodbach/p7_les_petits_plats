@@ -314,6 +314,8 @@ function getChoiceList(array) {
       displayedUstensilesItem.textContent = ustensileInList;
       ustensilsListContainer.appendChild(displayedUstensilesItem);
     });
+
+
   } else {
     //SI AUCUN CHOIX FAIT
     //Création de la liste des ingredients sans doublons
@@ -674,9 +676,9 @@ function dropdownFilterInputUstensiles(){
 ingredientsInput.addEventListener('input', filterIngredientsNodes)
 function filterIngredientsNodes() {
   //TABLEAU DES INGREDIENTS
-  let filterValue = ingredientsInput.value.toLowerCase()
-  let ul = document.querySelector('#ingredients-dropdown-menu')
-  let li = ul.querySelectorAll('.ingredients-item')
+  const ul = document.querySelector('#ingredients-dropdown-menu')
+  const li = ul.querySelectorAll('.ingredients-item')
+  const filterValue = ingredientsInput.value.toLowerCase()
   for (const element of li) {
     if (element.innerHTML.toLowerCase().indexOf(filterValue) > -1) {
       element.style.display = "";
@@ -685,6 +687,7 @@ function filterIngredientsNodes() {
     }
   }
 }
+
 // // //Filtre liste appareils
 appareilsInput.addEventListener('input', filterAppareilsNodes)
 function filterAppareilsNodes() {
@@ -714,24 +717,4 @@ function filterUstensilesNodes() {
       element.style.display = 'none'
     }
   }
-}
-
-// // //MAJ premiere lettre des listes
-function firstLetterUpperCase(arrayLowerCase, arrayUpperCase){
-  //On récupère les premières lettres
-  arrayLowerCase.forEach(word => {
-    let firstLetter = word.charAt(0).toUpperCase()
-    let replacement = word.replace(word.charAt(0),firstLetter)
-    arrayUpperCase.push(replacement)
-  })
-}
-
-// // //MAJ premiere lettre des listes
-function firstLetterUpperCase(arrayLowerCase, arrayUpperCase){
-  //On récupère les premières lettres
-  arrayLowerCase.forEach(word => {
-    let firstLetter = word.charAt(0).toUpperCase()
-    let replacement = word.replace(word.charAt(0),firstLetter)
-    arrayUpperCase.push(replacement)
-  })
 }
