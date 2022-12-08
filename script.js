@@ -491,21 +491,10 @@ function ingredientsDropdownFilter(){
     // Recherche dans DESCRIPTION - NOM - INGREDIENT
     let dropdownIngredientFilteredArray = recipes.filter(
       (recipe) =>
-        // Find what I'm looking for but don't push it in the filteredArr
         recipe.ingredients.some((item) =>
           item.ingredient.toLowerCase().includes(ingredientsInputValue)))
+  ingredientsListContainer.innerHTML=""
     displayGallery(dropdownIngredientFilteredArray);
-
-  console.log(ingredientsListToDisplay)
-  ingredientsListToDisplay.filter(ingredient => {
-    ingredient.includes(ingredientsInputValue)})
-
-  ingredientsListToDisplay.forEach(ingredient => {
-    const ingredientItem = document.createElement('li')
-    ingredientItem.setAttribute("class",
-"dropdown-list-item ustensiles-item text-nowrap")
-    ingredientItem.textContent = ingredient
-  })
   }
 function dropdownFilterAppareils(){
   //Récupération de l'input de l'utilisateur à chaque lettre tapée
@@ -517,6 +506,7 @@ function dropdownFilterAppareils(){
   );
   //Création des cards
   // createdChoiceList(dropdownIngredientFilteredArray)
+
   displayGallery(dropdownAppareilsFilteredArray);
 }
 function dropdownFilterInputUstensiles(){
@@ -536,10 +526,51 @@ function dropdownFilterInputUstensiles(){
   displayGallery(dropdownUstensilesFilteredArray);
 }
 
-//Recherche dans liste
-const ingredientsInputValue = ingredientsInput.value.toLowerCase();
-const ingredientsListNodes = document.querySelectorAll('.ingredients-item')
-// console.log(ingredientsListNodes)
-const ingredientsListNodesText = [...ingredientsListNodes].map(item => item.textContent)
-const filteredListNode = [...ingredientsListNodes].filter(item => item.textContent.includes(ingredientsInputValue))
-// console.log(filteredListNode)
+//Filtre liste ingredients
+ingredientsInput.addEventListener('input', filterIngredientsNodes)
+function filterIngredientsNodes() {
+  //TABLEAU DES INGREDIENTS
+  let filterValue = ingredientsInput.value.toLowerCase()
+  console.log(filterValue)
+  let ul = document.querySelector('#ingredients-dropdown-menu')
+  let li = ul.querySelectorAll('.ingredients-item')
+  for (const element of li) {
+    if (element.innerHTML.toLowerCase().indexOf(filterValue) > -1) {
+      element.style.display = "";
+    } else {
+      element.style.display = 'none'
+    }
+  }
+}
+
+//Filtre liste appareils
+appareilsInput.addEventListener('input', filterAppareilsNodes)
+function filterAppareilsNodes() {
+  //TABLEAU DES INGREDIENTS
+  let filterValue = appareilsInput.value.toLowerCase()
+  let ul = document.querySelector('#appareils-dropdown-menu')
+  let li = ul.querySelectorAll('.appareils-item')
+  for (const element of li) {
+    if (element.innerHTML.toLowerCase().indexOf(filterValue) > -1) {
+      element.style.display = "";
+    } else {
+      element.style.display = 'none'
+    }
+  }
+}
+
+//Filtre liste ustensiles
+ustensilesInput.addEventListener('input', filterUstensilesNodes)
+function filterUstensilesNodes() {
+  //TABLEAU DES INGREDIENTS
+  let filterValue = ustensilesInput.value.toLowerCase()
+  let ul = document.querySelector('#ustensiles-dropdown-menu')
+  let li = ul.querySelectorAll('.ustensiles-item')
+  for (const element of li) {
+    if (element.innerHTML.toLowerCase().indexOf(filterValue) > -1) {
+      element.style.display = "";
+    } else {
+      element.style.display = 'none'
+    }
+  }
+}
