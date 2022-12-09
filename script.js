@@ -564,8 +564,9 @@ function ingredientsDropdownFilter(){
       recipe.ingredients.some((item) =>
         item.ingredient.toLowerCase().includes(ingredientsInputValue)))
   ingredientsListContainer.innerHTML=""
-  emptyGalleryMessage()
+
   display(dropdownIngredientFilteredArray);
+  emptyGalleryMessage()
 }
 function dropdownFilterAppareils(){
   //Récupération de l'input de l'utilisateur à chaque lettre tapée
