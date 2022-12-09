@@ -1,8 +1,6 @@
 
 @
 scss/_forms.scss,4\f\4f4b04bef1cde52ffeafa18c3615b1e54cf22ed7
-J
-js/bootstrap.bundle.min.js,8\e\8e8d88a5308780099ca27040bdf05d7f8257eb96
 L
 .idea/dictionaries/quodb.xml,8\6\868dc4a7f58b20e019815eb68e4b4ab78be16fad
 L
@@ -33,5 +31,3 @@ A
 css/style.css.map,9\f\9f452116be72e80a7aa1d2a44143b07933383b7d
 =
 css/style.css,1\2\126b0f8c1ec95fb3a2541745bfc21365b438d668
-D
-js/Utils/dropdown.js,9\7\9703eabea828249023058307090401821839b74a
