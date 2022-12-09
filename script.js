@@ -486,7 +486,7 @@ function deleteChoiceButton(array) {
       //On récupère la liste des choix restants
       console.log(tousLesChoixRestant);
 
-      if (tosLesChoixRestant.length === 0) {
+      if (tousLesChoixRestant.length === 0) {
         searchBarreFilter();
       } else {
         tousLesChoixRestant.forEach((choice) => {
