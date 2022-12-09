@@ -191,7 +191,7 @@ function getChoiceList(array) {
     allAppareilsListWithDupliquate.push(allDisplayedAppareils);
     // Liste de tous les ingrédients
   });
-  console.log(allAppareilsListWithDupliquate)
+  // console.log(allAppareilsListWithDupliquate)
   // On récupère tous les appareils des recettes affichées
   array.forEach((recipe) => {
     let allDisplayedUstensiles = recipe.ustensils;
@@ -284,7 +284,7 @@ function getChoiceList(array) {
     let allIngredientsList = Array.from(new Set(allIngredientsListWithDupliquate));
     orderChoices(allIngredientsList)
     // orderChoice(allIngredientsList)
-    console.log(allIngredientsList)
+    // console.log(allIngredientsList)
     //   //Première lettre en MAJ
     let ingredientsListToDisplayUC = []
     allIngredientsList.forEach(word => {
@@ -472,6 +472,7 @@ function deleteChoiceButton(array) {
   let actualDisplayedCardsGalleryDOM = document.querySelectorAll(".card");
   let actualDisplayedCardsIds = []; //! ID attribué à chaque recette (pas l'emplacement dans le tableau)
   let deletedChoiceArray = [];
+  let arrayEqualId = []
   let arrayToDisplay = [];
   //Tableau des cartes affichées au moment du clic
   //On récupère l'id des cartes affichées et on push les recettes correspondantes dans le tableau actualDisplayedCards
@@ -479,66 +480,79 @@ function deleteChoiceButton(array) {
   actualDisplayedCardsGalleryDOM.forEach((recipe) =>
     actualDisplayedCardsIds.push(parseInt(recipe.getAttribute("id")))
   );
+  console.log(actualDisplayedCardsIds)
   //Tableau des recettes présentes
   //On récupère le tableau qui correspond aux recettes présentes
+
+  console.log(actualDisplayedCardsGallery)
   for (let id of actualDisplayedCardsIds) {
     for (let recipe of recipes) {
-        actualDisplayedCardsGallery.push(recipe.id === id);
+      if (recipe.id === id){
+        actualDisplayedCardsGallery.push(recipe)
+      }
     }
   }
+
   // // * Suppression du HASHTAG
   clickedChoices.forEach((clickedChoice) =>
     clickedChoice.addEventListener("click", (e) => {
       e.currentTarget.remove(this);
+      // console.log(e.currentTarget) //OK
       //Tableau des cartes affichées au moment du clic
       //On récupère l'id des cartes affichées et on push les recettes correspondantes dans le tableau actualDisplayedCards
       // On transforme string en number
       //Récupération de tous les choix
       const tousLesChoixRestant = document.querySelectorAll(".selected-choice");
       //On récupère la liste des choix restants
-      console.log(tousLesChoixRestant);
-
       if (tousLesChoixRestant.length === 0) {
         searchBarreFilter();
       } else {
-        tousLesChoixRestant.forEach((choice) => {
-          if (choice.parentElement.className.includes("ingredients")) {
+        //Si la cible include ingredient
+          if (e.currentTarget.className.includes("ingredients")) {
             console.log("INGREDIENT");
+
+            const actualIngredientsLList = document.querySelectorAll('.ingredients-item')
+            console.log(actualIngredientsLList)
+            // On recherche dans les ingredients des recettes
             deletedChoiceArray = recipes.filter((recipe) =>
               recipe.ingredients.some((item) =>
                 item.ingredient
                   .toLowerCase()
-                  .includes(choice.innerText.toLowerCase())
+                  .includes(e.currentTarget.innerText.toLowerCase())
               )
             );
+            console.log(deletedChoiceArray)
+            console.log(actualDisplayedCardsGallery)
+            console.log(arrayToDisplay)
+
             arrayToDisplay =
               actualDisplayedCardsGallery.concat(deletedChoiceArray);
             cardsGallery.innerHTML = "";
             display(arrayToDisplay);
-          } else if (choice.parentElement.className.includes("appareils")) {
+          } else if (e.currentTarget.className.includes("appareils")) {
             console.log("APPAREILS");
             deletedChoiceArray = recipes.filter((recipe) =>
               recipe.appliance
                 .toLowerCase()
-                .includes(choice.innerText.toLowerCase())
+                .includes(e.currentTarget.innerText.toLowerCase())
             );
             arrayToDisplay =
               actualDisplayedCardsGallery.concat(deletedChoiceArray);
             cardsGallery.innerHTML = "";
             display(arrayToDisplay);
-          } else if (choice.parentElement.className.includes("ustensiles")) {
+          } else if (e.currentTarget.className.includes("ustensiles")) {
             console.log("USTENSILES");
             deletedChoiceArray = recipes.filter((recipe) =>
               recipe.ustensils.some((item) =>
-                item.toLowerCase().includes(choice.innerText.toLowerCase())
+                item.toLowerCase().includes(e.currentTarget.innerText.toLowerCase())
               )
             );
             arrayToDisplay =
               actualDisplayedCardsGallery.concat(deletedChoiceArray);
             cardsGallery.innerHTML = "";
             display(arrayToDisplay);
-          }
-        });
+
+        }
       }
     })
   );
@@ -640,3 +654,6 @@ function filterUstensilesNodes() {
     }
   }
 }
+
+
+
