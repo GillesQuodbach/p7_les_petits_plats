@@ -15,19 +15,27 @@ const ingredientsListContainer = document.querySelector("#ingredients-dropdown-m
 const appareilsListContainer = document.querySelector("#appareils-dropdown-menu");
 //Liste des ustensiles
 const ustensilsListContainer = document.querySelector("#ustensiles-dropdown-menu");
-// ! Fonction d'affichage des cartes
+
+//Message si galerie vide
+function emptyGalleryMessage() {
+  if (cardsGallery.innerHTML === "") {
+    cardsGallery.innerHTML = "<p class='empty-message'><b> Aucune recette ne correspond à votre critère… vous pouvez chercher « tarte aux pommes », « poisson », etc. </b></p>"
+  }
+}
+// * Fonction d'affichage des cartes
 function display(data) {
+
   //Tri par ordre alphabétique
-  orderList(data);
-  createCardList(data);
-  getChoiceList(data);
-  addChoiceButton(data);
-  deleteChoiceButton(data);
+  orderList(data);  //Tableau dans l'ordre alphabétique
+  createCardList(data); // Création de la galerie
+  getChoiceList(data); // Création des choix
+  addChoiceButton(data); // Sélection d'un choix
+  deleteChoiceButton(data); // Suppression d'un choix
 }
 // ? Affichage de la galerie de cartes
-display(recipes);
+display(recipes); // Affichage de la page
 
-// ! Fonction mise en ordre alphabétique
+// * Fonction mise en ordre alphabétique
 function orderList(data) {
   return data.sort((a, b) => {
     if (a.name.toLowerCase() < b.name.toLowerCase()) {
@@ -122,6 +130,8 @@ function searchBarreFilter() {
           item.ingredient.toLowerCase().includes(searchBarreInput)
         )
     );
+    //Message gallery vide
+    emptyGalleryMessage()
     //Création des cards
     display(filteredArray);
   }
@@ -395,7 +405,10 @@ function addChoiceButton(array) {
         );
         //Création des cards
         cardsGallery.innerHTML = "";
+        //Message gallery vide
+
         display(newArray);
+
       } else if (e.target.className.includes("appareils")) {
         //Création du bouton de l'item choisi
         const selectedItemContainer = document.createElement("div");
@@ -421,6 +434,7 @@ function addChoiceButton(array) {
         );
         //Création des cards
         cardsGallery.innerHTML = "";
+
         display(newArray);
       } else if (e.target.className.includes("ustensiles")) {
         //Création du bouton de l'item choisi
@@ -447,6 +461,7 @@ function addChoiceButton(array) {
         );
         //Création des cards
         cardsGallery.innerHTML = "";
+
         display(newArray);
       }
     })
@@ -469,9 +484,7 @@ function deleteChoiceButton(array) {
   //On récupère le tableau qui correspond aux recettes présentes
   for (let id of actualDisplayedCardsIds) {
     for (let recipe of recipes) {
-      if (recipe.id === id) {
-        actualDisplayedCardsGallery.push(recipe);
-      }
+        actualDisplayedCardsGallery.push(recipe.id === id);
     }
   }
   // // * Suppression du HASHTAG
@@ -551,6 +564,7 @@ function ingredientsDropdownFilter(){
       recipe.ingredients.some((item) =>
         item.ingredient.toLowerCase().includes(ingredientsInputValue)))
   ingredientsListContainer.innerHTML=""
+  emptyGalleryMessage()
   display(dropdownIngredientFilteredArray);
 }
 function dropdownFilterAppareils(){
@@ -563,6 +577,7 @@ function dropdownFilterAppareils(){
   );
   //Création des cards
   display(dropdownAppareilsFilteredArray);
+  emptyGalleryMessage()
 }
 function dropdownFilterInputUstensiles(){
   //Récupération de l'input de l'utilisateur à chaque lettre tapée
@@ -576,6 +591,7 @@ function dropdownFilterInputUstensiles(){
   );
   //Création des cards
   display(dropdownUstensilesFilteredArray);
+  emptyGalleryMessage()
 }
 
 // //FILTRE LISTES DES CHOIX

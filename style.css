@@ -343,3 +343,7 @@ input[type="color"]:focus,
     min-width: 195px;
     cursor: pointer;
 }
+
+.empty-message {
+    color: #ED6454;
+}
