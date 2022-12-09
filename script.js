@@ -24,7 +24,6 @@ function emptyGalleryMessage() {
 }
 // * Fonction d'affichage des cartes
 function display(data) {
-
   //Tri par ordre alphabétique
   orderList(data);  //Tableau dans l'ordre alphabétique
   createCardList(data); // Création de la galerie
@@ -130,10 +129,10 @@ function searchBarreFilter() {
           item.ingredient.toLowerCase().includes(searchBarreInput)
         )
     );
-    //Message gallery vide
-    emptyGalleryMessage()
     //Création des cards
     display(filteredArray);
+    //Message gallery vide
+    emptyGalleryMessage()
   }
 }
 
