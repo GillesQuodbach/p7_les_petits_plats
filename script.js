@@ -3,7 +3,7 @@ const galleryContainer = document.querySelector("#recipes-gallery");
 // Liste des choix déjà sélectionnée
 let filteredArray = [];
 
-// Container de la galerie
+// Container de la galeries
 const cardsGallery = document.querySelector("#recipes-gallery");
 // Input de recherche
 const searchInput = document.querySelector("#main-search-input");
