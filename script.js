@@ -15,6 +15,12 @@ const appareilsListContainer = document.querySelector("#appareils-dropdown-menu"
 //Liste des ustensiles
 const ustensilsListContainer = document.querySelector("#ustensiles-dropdown-menu");
 // ! Fonction d'affichage des cartes
+//Message si galerie vide
+function emptyGalleryMessage() {
+  if (cardsGallery.innerHTML === "") {
+    cardsGallery.innerHTML = "<p class='empty-message'><b> Aucune recette ne correspond à votre critère… vous pouvez chercher « tarte aux pommes », « poisson », etc. </b></p>"
+  }
+}
 function display(data) {
   //Tri par ordre alphabétique
   orderList(data);
@@ -126,6 +132,8 @@ function searchBarreFilter() {
     }
     //Création des cards
     display(filteredArray);
+    emptyGalleryMessage()
+
   }
 }
 
@@ -158,13 +166,13 @@ function getChoiceList(array) {
   allActualSelectedChoices.forEach((choice) => {
     if (choice.parentElement.className.includes("ingredients")) {
       ingredientsSelected.push(choice.innerText.toLowerCase());
-      console.log(ingredientsSelected);
+
     } else if (choice.parentElement.className.includes("appareils")) {
       appareilsSelected.push(choice.innerText.toLowerCase());
-      console.log(appareilsSelected);
+
     } else if (choice.parentElement.className.includes("ustensiles")) {
       ustensilesSelected.push(choice.innerText.toLowerCase());
-      console.log(ustensilesSelected);
+
     }
   });
   //Récupération des cartes affichées (avec leur ID)
@@ -184,7 +192,7 @@ function getChoiceList(array) {
     allAppareilsListWithDupliquate.push(allDisplayedAppareils);
     // Liste de tous les ingrédients
   });
-  console.log(allAppareilsListWithDupliquate)
+
   // On récupère tous les appareils des recettes affichées
   array.forEach((recipe) => {
     let allDisplayedUstensiles = recipe.ustensils;
@@ -226,7 +234,7 @@ function getChoiceList(array) {
         finalAppareilsList.lastIndexOf(value)
       ); // On compare les deux tableaux est on garde les valeurs uniques
     });
-    console.log(appareilsListToDispplay);
+
     let appareilsListToDisplayUC = []
     appareilsListToDispplay.forEach(word => {
       let firstLetter = word.charAt(0).toUpperCase()
@@ -243,13 +251,13 @@ function getChoiceList(array) {
       appareilsListContainer.appendChild(displayedAppareilsItem);
     });
     //PARTIE USTENSILES
-    // console.log(allUstensilesListWithDupliquate);
+
     let allUstensilesListWithDupliquateFlat =
       allUstensilesListWithDupliquate.flat(1);
     allUstensilesListWithDupliquateFlat.forEach((ust) =>
       ustensilesToLowerCase.push(ust.toLowerCase())
     );
-    console.log(ustensilesToLowerCase);
+
     finalUstensilesList = ustensilesToLowerCase.concat(ustensilesSelected); // On concact les deux tableaux
     ustensilesListToDispplay = finalUstensilesList.filter((value, index) => {
       return (
@@ -277,7 +285,7 @@ function getChoiceList(array) {
     //Création de la liste des ingredients sans doublons
     let allIngredientsList = Array.from(new Set(allIngredientsListWithDupliquate));
     orderChoices(allIngredientsList)
-    console.log(allIngredientsList)
+
 //Première lettre en MAJ
     let ingredientsListToDisplayUC = []
     allIngredientsList.forEach(word => {
@@ -359,9 +367,7 @@ function addChoiceButton(array) {
   //On récupère le tableau qui correspond aux recettes présentes
   for (let id of actualRecipeId) {
     for (let recipe of recipes) {
-      if (recipe.id === id) {
-        actualDisplayedCards.push(recipe);
-      }
+        actualDisplayedCards.push(recipe.id === id);
     }
   }
   allChoiceList.forEach((choice) =>
@@ -438,8 +444,8 @@ function addChoiceButton(array) {
         ustensilesChoiceContainer.prepend(selectedItemContainer);
         selectedItemContainer.appendChild(selectedItem);
         selectedItem.appendChild(selectedItemCross);
-        console.log("===Cat USTENSILES===");
-        console.log(e.target.textContent.toLowerCase()); //Choix en minuscule
+
+
         newArray = actualDisplayedCards.filter((recipe) =>
           recipe.ustensils.some((item) =>
             item.toLowerCase().includes(e.target.textContent.toLowerCase())
@@ -480,13 +486,11 @@ function deleteChoiceButton(array) {
     clickedChoice.addEventListener("click", (e) => {
       e.currentTarget.remove(this);
       const tousLesChoixRestant = document.querySelectorAll(".selected-choice");
-      console.log(tousLesChoixRestant);
       if (tousLesChoixRestant.length === 0) {
         searchBarreFilter();
       } else {
         tousLesChoixRestant.forEach((choice) => {
           if (choice.parentElement.className.includes("ingredients")) {
-            console.log("INGREDIENT");
             deletedChoiceArray = recipes.filter((recipe) =>
               recipe.ingredients.some((item) =>
                 item.ingredient
@@ -499,7 +503,6 @@ function deleteChoiceButton(array) {
             cardsGallery.innerHTML = "";
             display(arrayToDisplay);
           } else if (choice.parentElement.className.includes("appareils")) {
-            console.log("APPAREILS");
             deletedChoiceArray = recipes.filter((recipe) =>
               recipe.appliance
                 .toLowerCase()
@@ -510,7 +513,6 @@ function deleteChoiceButton(array) {
             cardsGallery.innerHTML = "";
             display(arrayToDisplay);
           } else if (choice.parentElement.className.includes("ustensiles")) {
-            console.log("USTENSILES");
             deletedChoiceArray = recipes.filter((recipe) =>
               recipe.ustensils.some((item) =>
                 item.toLowerCase().includes(choice.innerText.toLowerCase())
@@ -548,6 +550,7 @@ function ingredientsDropdownFilter(){
         item.ingredient.toLowerCase().includes(ingredientsInputValue)))
   ingredientsListContainer.innerHTML=""
   display(dropdownIngredientFilteredArray);
+  emptyGalleryMessage()
 }
 function dropdownFilterAppareils(){
   const appareilsInputValue = appareilsInput.value.toLowerCase();
@@ -555,6 +558,7 @@ function dropdownFilterAppareils(){
   let dropdownAppareilsFilteredArray = recipes.filter(
     (recipe) =>recipe.appliance.toLowerCase().includes(appareilsInputValue))
   display(dropdownAppareilsFilteredArray);
+  emptyGalleryMessage()
 }
 function dropdownFilterInputUstensiles(){
   const ustensilesInputValue = ustensilesInput.value.toLowerCase();
@@ -566,6 +570,7 @@ function dropdownFilterInputUstensiles(){
       )
   );
   display(dropdownUstensilesFilteredArray);
+  emptyGalleryMessage()
 }
 
 //? FILTRE LISTES DES CHOIX
