@@ -10,22 +10,29 @@ const searchInput = document.querySelector("#main-search-input");
 // Liste des cards affichées
 const displayedCardsID = document.querySelectorAll(".card");
 //Liste des ingredients
-const ingredientsListContainer = document.querySelector("#ingredients-dropdown-menu");
+const ingredientsListContainer = document.querySelector(
+  "#ingredients-dropdown-menu"
+);
 //Liste des appareils
-const appareilsListContainer = document.querySelector("#appareils-dropdown-menu");
+const appareilsListContainer = document.querySelector(
+  "#appareils-dropdown-menu"
+);
 //Liste des ustensiles
-const ustensilsListContainer = document.querySelector("#ustensiles-dropdown-menu");
+const ustensilsListContainer = document.querySelector(
+  "#ustensiles-dropdown-menu"
+);
 
 //Message si galerie vide
 function emptyGalleryMessage() {
   if (cardsGallery.innerHTML === "") {
-    cardsGallery.innerHTML = "<p class='empty-message'><b> Aucune recette ne correspond à votre critère… vous pouvez chercher « tarte aux pommes », « poisson », etc. </b></p>"
+    cardsGallery.innerHTML =
+      "<p class='empty-message'><b> Aucune recette ne correspond à votre critère… vous pouvez chercher « tarte aux pommes », « poisson », etc. </b></p>";
   }
 }
 // * Fonction d'affichage des cartes
 function display(data) {
   //Tri par ordre alphabétique
-  orderList(data);  //Tableau dans l'ordre alphabétique
+  orderList(data); //Tableau dans l'ordre alphabétique
   createCardList(data); // Création de la galerie
   getChoiceList(data); // Création des choix
   addChoiceButton(data); // Sélection d'un choix
@@ -123,17 +130,19 @@ function searchBarreFilter() {
     // Recherche dans DESCRIPTION - NOM - INGREDIENT
     // BOUCLE FOR OF
     for (let recipe of recipes) {
-      if ((recipe.name.toLowerCase().includes(searchBarreInput)) ||
-        (recipe.description.toLowerCase().includes(searchBarreInput)) ||
-        ((recipe.ingredients.some((item) =>
+      if (
+        recipe.name.toLowerCase().includes(searchBarreInput) ||
+        recipe.description.toLowerCase().includes(searchBarreInput) ||
+        recipe.ingredients.some((item) =>
           item.ingredient.toLowerCase().includes(searchBarreInput)
-        ))))
-        filteredArray.push(recipe)
+        )
+      )
+        filteredArray.push(recipe);
     }
     //Création des cards
     display(filteredArray);
     //Message gallery vide
-    emptyGalleryMessage()
+    emptyGalleryMessage();
   }
 }
 
@@ -166,13 +175,10 @@ function getChoiceList(array) {
   allActualSelectedChoices.forEach((choice) => {
     if (choice.parentElement.className.includes("ingredients")) {
       ingredientsSelected.push(choice.innerText.toLowerCase());
-      console.log(ingredientsSelected);
     } else if (choice.parentElement.className.includes("appareils")) {
       appareilsSelected.push(choice.innerText.toLowerCase());
-      console.log(appareilsSelected);
     } else if (choice.parentElement.className.includes("ustensiles")) {
       ustensilesSelected.push(choice.innerText.toLowerCase());
-      console.log(ustensilesSelected);
     }
   });
   //Récupération des cartes affichées (avec leur ID)
@@ -192,7 +198,6 @@ function getChoiceList(array) {
     allAppareilsListWithDupliquate.push(allDisplayedAppareils);
     // Liste de tous les ingrédients
   });
-  // console.log(allAppareilsListWithDupliquate)
   // On récupère tous les appareils des recettes affichées
   array.forEach((recipe) => {
     let allDisplayedUstensiles = recipe.ustensils;
@@ -204,19 +209,18 @@ function getChoiceList(array) {
     //PARTIE INGREDIENT
     finalIngredientList =
       allIngredientsListWithDupliquate.concat(ingredientsSelected); // On concact les deux tableaux
-    // console.log(finalIngredientList); // Tous les choix
     ingredientsListToDispplay = finalIngredientList.filter((value, index) => {
       return (
         finalIngredientList.indexOf(value) ===
         finalIngredientList.lastIndexOf(value)
       ); // On compare les deux tableau tableau est on garde les valeurs uniques
     });
-    let ingredientsListToDisplayUC = []
-    ingredientsListToDispplay.forEach(word => {
-      let firstLetter = word.charAt(0).toUpperCase()
-      let replacement = word.replace(word.charAt(0),firstLetter)
-      ingredientsListToDisplayUC .push(replacement)
-    })
+    let ingredientsListToDisplayUC = [];
+    ingredientsListToDispplay.forEach((word) => {
+      let firstLetter = word.charAt(0).toUpperCase();
+      let replacement = word.replace(word.charAt(0), firstLetter);
+      ingredientsListToDisplayUC.push(replacement);
+    });
     ingredientsListToDisplayUC.forEach((ingredientInList) => {
       const displayedIngredientsItem = document.createElement("li");
       displayedIngredientsItem.setAttribute(
@@ -235,12 +239,12 @@ function getChoiceList(array) {
         finalAppareilsList.lastIndexOf(value)
       ); // On compare les deux tableaux est on garde les valeurs uniques
     });
-    let appareilsListToDisplayUC = []
-    appareilsListToDispplay.forEach(word => {
-      let firstLetter = word.charAt(0).toUpperCase()
-      let replacement = word.replace(word.charAt(0),firstLetter)
-      appareilsListToDisplayUC .push(replacement)
-    })
+    let appareilsListToDisplayUC = [];
+    appareilsListToDispplay.forEach((word) => {
+      let firstLetter = word.charAt(0).toUpperCase();
+      let replacement = word.replace(word.charAt(0), firstLetter);
+      appareilsListToDisplayUC.push(replacement);
+    });
     appareilsListToDisplayUC.forEach((appareilInList) => {
       const displayedAppareilsItem = document.createElement("li");
       displayedAppareilsItem.setAttribute(
@@ -256,7 +260,6 @@ function getChoiceList(array) {
     allUstensilesListWithDupliquateFlat.forEach((ust) =>
       ustensilesToLowerCase.push(ust.toLowerCase())
     );
-    console.log(ustensilesToLowerCase);
     finalUstensilesList = ustensilesToLowerCase.concat(ustensilesSelected); // On concact les deux tableaux
     ustensilesListToDispplay = finalUstensilesList.filter((value, index) => {
       return (
@@ -264,12 +267,12 @@ function getChoiceList(array) {
         finalUstensilesList.lastIndexOf(value)
       ); // On compare les deux tableau tableau est on garde les valeurs uniques
     });
-    let ustensilesListToDispplayUC = []
-    ustensilesListToDispplay.forEach(word => {
-      let firstLetter = word.charAt(0).toUpperCase()
-      let replacement = word.replace(word.charAt(0),firstLetter)
-      ustensilesListToDispplayUC.push(replacement)
-    })
+    let ustensilesListToDispplayUC = [];
+    ustensilesListToDispplay.forEach((word) => {
+      let firstLetter = word.charAt(0).toUpperCase();
+      let replacement = word.replace(word.charAt(0), firstLetter);
+      ustensilesListToDispplayUC.push(replacement);
+    });
     ustensilesListToDispplayUC.forEach((ustensileInList) => {
       const displayedUstensilesItem = document.createElement("li");
       displayedUstensilesItem.setAttribute(
@@ -282,17 +285,17 @@ function getChoiceList(array) {
   } else {
     //SI AUCUN CHOIX FAIT
     //Création de la liste des ingredients sans doublons
-    let allIngredientsList = Array.from(new Set(allIngredientsListWithDupliquate));
-    orderChoices(allIngredientsList)
-    // orderChoice(allIngredientsList)
-    // console.log(allIngredientsList)
+    let allIngredientsList = Array.from(
+      new Set(allIngredientsListWithDupliquate)
+    );
+    orderChoices(allIngredientsList);
     //   //Première lettre en MAJ
-    let ingredientsListToDisplayUC = []
-    allIngredientsList.forEach(word => {
-      let firstLetter = word.charAt(0).toUpperCase()
-      let replacement = word.replace(word.charAt(0),firstLetter)
-      ingredientsListToDisplayUC.push(replacement)
-    })
+    let ingredientsListToDisplayUC = [];
+    allIngredientsList.forEach((word) => {
+      let firstLetter = word.charAt(0).toUpperCase();
+      let replacement = word.replace(word.charAt(0), firstLetter);
+      ingredientsListToDisplayUC.push(replacement);
+    });
     ingredientsListToDisplayUC.forEach((ingredientInList) => {
       const displayedIngredientsItem = document.createElement("li");
       displayedIngredientsItem.setAttribute(
@@ -307,14 +310,16 @@ function getChoiceList(array) {
     allAppareilsListWithDupliquate.forEach((app) =>
       allAppareilsListWithDupliquateToLowercase.push(app.toLowerCase())
     );
-    let allAppareilsList = Array.from(new Set(allAppareilsListWithDupliquateToLowercase));
-    orderChoices(allAppareilsList)
-    let appareilsListToDisplayUC = []
-    allAppareilsList.forEach(word => {
-      let firstLetter = word.charAt(0).toUpperCase()
-      let replacement = word.replace(word.charAt(0),firstLetter)
-      appareilsListToDisplayUC.push(replacement)
-    })
+    let allAppareilsList = Array.from(
+      new Set(allAppareilsListWithDupliquateToLowercase)
+    );
+    orderChoices(allAppareilsList);
+    let appareilsListToDisplayUC = [];
+    allAppareilsList.forEach((word) => {
+      let firstLetter = word.charAt(0).toUpperCase();
+      let replacement = word.replace(word.charAt(0), firstLetter);
+      appareilsListToDisplayUC.push(replacement);
+    });
     appareilsListToDisplayUC.forEach((appareilInList) => {
       const displayedAppareilsItem = document.createElement("li");
       displayedAppareilsItem.setAttribute(
@@ -331,14 +336,14 @@ function getChoiceList(array) {
       ustensilesListToLowerCase.push(ust.toLowerCase())
     );
     let allUstensilesList = Array.from(new Set(ustensilesListToLowerCase));
-    orderChoices(allUstensilesList)
+    orderChoices(allUstensilesList);
     // orderChoice(allUstensilesList)
-    let ustensilesListToDisplayUC = []
-    allUstensilesList.forEach(word => {
-      let firstLetter = word.charAt(0).toUpperCase()
-      let replacement = word.replace(word.charAt(0),firstLetter)
-      ustensilesListToDisplayUC .push(replacement)
-    })
+    let ustensilesListToDisplayUC = [];
+    allUstensilesList.forEach((word) => {
+      let firstLetter = word.charAt(0).toUpperCase();
+      let replacement = word.replace(word.charAt(0), firstLetter);
+      ustensilesListToDisplayUC.push(replacement);
+    });
     ustensilesListToDisplayUC.forEach((ustensileInList) => {
       const displayedUstensilesItem = document.createElement("li");
       displayedUstensilesItem.setAttribute(
@@ -375,9 +380,15 @@ function addChoiceButton(array) {
   }
   allChoiceList.forEach((choice) =>
     choice.addEventListener("click", (e) => {
-      const ingredientChoiceContainer = document.querySelector("#ingredients-choices-container");
-      const appareilsChoiceContainer = document.querySelector("#appareils-choices-container");
-      const ustensilesChoiceContainer = document.querySelector("#ustensiles-choices-container");
+      const ingredientChoiceContainer = document.querySelector(
+        "#ingredients-choices-container"
+      );
+      const appareilsChoiceContainer = document.querySelector(
+        "#appareils-choices-container"
+      );
+      const ustensilesChoiceContainer = document.querySelector(
+        "#ustensiles-choices-container"
+      );
       if (e.target.className.includes("ingredients")) {
         //Création du bouton de l'item choisi
         const selectedItemContainer = document.createElement("div");
@@ -408,7 +419,6 @@ function addChoiceButton(array) {
         //Message gallery vide
 
         display(newArray);
-
       } else if (e.target.className.includes("appareils")) {
         //Création du bouton de l'item choisi
         const selectedItemContainer = document.createElement("div");
@@ -468,17 +478,19 @@ function addChoiceButton(array) {
   );
 }
 function deleteChoiceButton(array) {
-  const clickedChoices = document.querySelectorAll(".selected-choices-container");
+  const clickedChoices = document.querySelectorAll(
+    ".selected-choices-container"
+  );
   let actualDisplayedCardsGalleryDOM = document.querySelectorAll(".card");
   let actualDisplayedCardsGallery = [];
   let actualDisplayedCardsIds = []; //! ID attribué à chaque recette (pas l'emplacement dans le tableau)
   let deletedChoiceArray = [];
-  let arrayEqualId = []
+  let arrayEqualId = [];
   let arrayToDisplay = [];
-  let ingredientsRestant = []
-  let appareilsRestant = []
-  let ustensilesRestant = []
-  let allRemainingChoices = []
+  let ingredientsRestant = [];
+  let appareilsRestant = [];
+  let ustensilesRestant = [];
+  let allRemainingChoices = [];
   //Tableau des cartes affichées au moment du clic
   //On récupère l'id des cartes affichées et on push les recettes correspondantes dans le tableau actualDisplayedCards
   // On transforme string en number
@@ -489,8 +501,8 @@ function deleteChoiceButton(array) {
   //On récupère le tableau qui correspond aux recettes présentes
   for (let id of actualDisplayedCardsIds) {
     for (let recipe of recipes) {
-      if (recipe.id === id){
-        actualDisplayedCardsGallery.push(recipe)
+      if (recipe.id === id) {
+        actualDisplayedCardsGallery.push(recipe);
       }
     }
   }
@@ -498,8 +510,6 @@ function deleteChoiceButton(array) {
   clickedChoices.forEach((clickedChoice) =>
     clickedChoice.addEventListener("click", (e) => {
       e.currentTarget.remove(this);
-      // TODO rajouter append le tag dans la liste
-      // console.log(e.currentTarget) //OK
       //Tableau des cartes affichées au moment du clic
       //On récupère l'id des cartes affichées et on push les recettes correspondantes dans le tableau actualDisplayedCards
       // On transforme string en number
@@ -509,41 +519,48 @@ function deleteChoiceButton(array) {
       if (tousLesChoixRestant.length === 0) {
         searchBarreFilter();
         // si des choix sont présent
-      } else if (tousLesChoixRestant.length !== 0){
+      } else if (tousLesChoixRestant.length !== 0) {
         // Transformer tousLesChoixRestant en array (ici Node list)
-        console.log(tousLesChoixRestant)
-        tousLesChoixRestant.forEach(choix => {
-          if (choix.parentElement.className.toLowerCase().includes('ingredients')) {
-            console.log(`Ingredients: ${choix.innerText}`)
+        tousLesChoixRestant.forEach((choix) => {
+          if (
+            choix.parentElement.className.toLowerCase().includes("ingredients")
+          ) {
             //Filtrage ingredients
-            ingredientsRestant = recipes.filter(
-              (recipe) =>
-                recipe.ingredients.some((item) =>
-                  item.ingredient.toLowerCase().includes(choix.innerText.toLowerCase())))
+            ingredientsRestant = recipes.filter((recipe) =>
+              recipe.ingredients.some((item) =>
+                item.ingredient
+                  .toLowerCase()
+                  .includes(choix.innerText.toLowerCase())
+              )
+            );
           }
-          if (choix.parentElement.className.toLowerCase().includes('appareils')) {
-            console.log(`Appareils: ${choix.innerText}`)
+          if (
+            choix.parentElement.className.toLowerCase().includes("appareils")
+          ) {
             //Filtrage appareils
             appareilsRestant = recipes.filter((recipe) =>
               recipe.appliance
                 .toLowerCase()
-                .includes(e.target.textContent.toLowerCase()))
-          }
-          if (choix.parentElement.className.toLowerCase().includes('ustensiles')) {
-            console.log(`Ustensiles: ${choix.innerText}`)
-            //Filtrage ustensiles
-            ustensilesRestant = recipes.filter(
-              (recipe) =>
-                recipe.ustensils.some((item) =>
-                  item.toLowerCase().includes(choix.innerText.toLowerCase())
-                )
+                .includes(e.target.textContent.toLowerCase())
             );
           }
-        })
-        allRemainingChoices = ingredientsRestant.concat(appareilsRestant, ustensilesRestant)
-        console.log(allRemainingChoices)
-        galleryContainer.innerHTML = ""
-        display(allRemainingChoices)
+          if (
+            choix.parentElement.className.toLowerCase().includes("ustensiles")
+          ) {
+            //Filtrage ustensiles
+            ustensilesRestant = recipes.filter((recipe) =>
+              recipe.ustensils.some((item) =>
+                item.toLowerCase().includes(choix.innerText.toLowerCase())
+              )
+            );
+          }
+        });
+        allRemainingChoices = ingredientsRestant.concat(
+          appareilsRestant,
+          ustensilesRestant
+        );
+        galleryContainer.innerHTML = "";
+        display(allRemainingChoices);
       }
     })
   );
@@ -551,100 +568,97 @@ function deleteChoiceButton(array) {
 
 // // // ? FILTRE DROPDOWNS
 // // //Inputs dropdowns
-const ingredientsInput = document.querySelector('#input-ingredients')
-const appareilsInput = document.querySelector('#input-appareils')
-const ustensilesInput = document.querySelector('#input-ustensiles')
+const ingredientsInput = document.querySelector("#input-ingredients");
+const appareilsInput = document.querySelector("#input-appareils");
+const ustensilesInput = document.querySelector("#input-ustensiles");
 // //Input listener
 ingredientsInput.addEventListener("input", ingredientsDropdownFilter);
 appareilsInput.addEventListener("input", dropdownFilterAppareils);
 ustensilesInput.addEventListener("input", dropdownFilterInputUstensiles);
 
 // //Fonction de recherche via input Dropdown
-function ingredientsDropdownFilter(){
+function ingredientsDropdownFilter() {
   const ingredientsInputValue = ingredientsInput.value.toLowerCase();
   galleryContainer.innerHTML = "";
-  let dropdownIngredientFilteredArray = recipes.filter(
-    (recipe) =>
-      recipe.ingredients.some((item) =>
-        item.ingredient.toLowerCase().includes(ingredientsInputValue)))
-  ingredientsListContainer.innerHTML=""
+  let dropdownIngredientFilteredArray = recipes.filter((recipe) =>
+    recipe.ingredients.some((item) =>
+      item.ingredient.toLowerCase().includes(ingredientsInputValue)
+    )
+  );
+  ingredientsListContainer.innerHTML = "";
 
   display(dropdownIngredientFilteredArray);
-  emptyGalleryMessage()
+  emptyGalleryMessage();
 }
-function dropdownFilterAppareils(){
+function dropdownFilterAppareils() {
   //Récupération de l'input de l'utilisateur à chaque lettre tapée
   const appareilsInputValue = appareilsInput.value.toLowerCase();
   galleryContainer.innerHTML = "";
   // Recherche dans DESCRIPTION - NOM - INGREDIENT
-  let dropdownAppareilsFilteredArray = recipes.filter(
-    (recipe) =>recipe.appliance.toLowerCase().includes(appareilsInputValue)
+  let dropdownAppareilsFilteredArray = recipes.filter((recipe) =>
+    recipe.appliance.toLowerCase().includes(appareilsInputValue)
   );
   //Création des cards
   display(dropdownAppareilsFilteredArray);
-  emptyGalleryMessage()
+  emptyGalleryMessage();
 }
-function dropdownFilterInputUstensiles(){
+function dropdownFilterInputUstensiles() {
   //Récupération de l'input de l'utilisateur à chaque lettre tapée
   const ustensilesInputValue = ustensilesInput.value.toLowerCase();
   galleryContainer.innerHTML = "";
-  let dropdownUstensilesFilteredArray = recipes.filter(
-    (recipe) =>
-      recipe.ustensils.some((item) =>
-        item.toLowerCase().includes(ustensilesInputValue)
-      )
+  let dropdownUstensilesFilteredArray = recipes.filter((recipe) =>
+    recipe.ustensils.some((item) =>
+      item.toLowerCase().includes(ustensilesInputValue)
+    )
   );
   //Création des cards
   display(dropdownUstensilesFilteredArray);
-  emptyGalleryMessage()
+  emptyGalleryMessage();
 }
 
 // //FILTRE LISTES DES CHOIX
 // //Filtre liste ingredients
-ingredientsInput.addEventListener('input', filterIngredientsNodes)
+ingredientsInput.addEventListener("input", filterIngredientsNodes);
 function filterIngredientsNodes() {
   //TABLEAU DES INGREDIENTS
-  const ul = document.querySelector('#ingredients-dropdown-menu')
-  const li = ul.querySelectorAll('.ingredients-item')
-  const filterValue = ingredientsInput.value.toLowerCase()
+  const ul = document.querySelector("#ingredients-dropdown-menu");
+  const li = ul.querySelectorAll(".ingredients-item");
+  const filterValue = ingredientsInput.value.toLowerCase();
   for (const element of li) {
     if (element.innerHTML.toLowerCase().indexOf(filterValue) > -1) {
       element.style.display = "";
     } else {
-      element.style.display = 'none'
+      element.style.display = "none";
     }
   }
 }
 // // //Filtre liste appareils
-appareilsInput.addEventListener('input', filterAppareilsNodes)
+appareilsInput.addEventListener("input", filterAppareilsNodes);
 function filterAppareilsNodes() {
   //TABLEAU DES INGREDIENTS
-  let filterValue = appareilsInput.value.toLowerCase()
-  let ul = document.querySelector('#appareils-dropdown-menu')
-  let li = ul.querySelectorAll('.appareils-item')
+  let filterValue = appareilsInput.value.toLowerCase();
+  let ul = document.querySelector("#appareils-dropdown-menu");
+  let li = ul.querySelectorAll(".appareils-item");
   for (const element of li) {
     if (element.innerHTML.toLowerCase().indexOf(filterValue) > -1) {
       element.style.display = "";
     } else {
-      element.style.display = 'none'
+      element.style.display = "none";
     }
   }
 }
 // // //Filtre liste ustensiles
-ustensilesInput.addEventListener('input', filterUstensilesNodes)
+ustensilesInput.addEventListener("input", filterUstensilesNodes);
 function filterUstensilesNodes() {
   //TABLEAU DES INGREDIENTS
-  let filterValue = ustensilesInput.value.toLowerCase()
-  let ul = document.querySelector('#ustensiles-dropdown-menu')
-  let li = ul.querySelectorAll('.ustensiles-item')
+  let filterValue = ustensilesInput.value.toLowerCase();
+  let ul = document.querySelector("#ustensiles-dropdown-menu");
+  let li = ul.querySelectorAll(".ustensiles-item");
   for (const element of li) {
     if (element.innerHTML.toLowerCase().indexOf(filterValue) > -1) {
       element.style.display = "";
     } else {
-      element.style.display = 'none'
+      element.style.display = "none";
     }
   }
 }
-
-
-
