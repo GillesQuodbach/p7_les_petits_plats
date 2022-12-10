@@ -1,4 +1,3 @@
-import { recipes } from "./json/recipes";
 // * CONSTANTES
 const galleryContainer = document.querySelector("#recipes-gallery");
 // Liste des choix déjà sélectionnée
