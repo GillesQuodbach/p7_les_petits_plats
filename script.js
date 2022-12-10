@@ -486,8 +486,6 @@ function deleteChoiceButton(array) {
   );
   //Tableau des recettes présentes
   //On récupère le tableau qui correspond aux recettes présentes
-
-
   for (let id of actualDisplayedCardsIds) {
     for (let recipe of recipes) {
       if (recipe.id === id){
@@ -511,7 +509,6 @@ function deleteChoiceButton(array) {
         searchBarreFilter();
         // si des choix sont présent
       } else if (tousLesChoixRestant.length !== 0){
-
         // Transformer tousLesChoixRestant en array (ici Node list)
       console.log(tousLesChoixRestant)
         tousLesChoixRestant.forEach(choix => {
@@ -530,7 +527,6 @@ function deleteChoiceButton(array) {
               recipe.appliance
                 .toLowerCase()
                 .includes(e.target.textContent.toLowerCase()))
-
           }
           if (choix.parentElement.className.toLowerCase().includes('ustensiles')) {
             console.log(`Ustensiles: ${choix.innerText}`)
@@ -543,18 +539,13 @@ function deleteChoiceButton(array) {
             );
           }
         })
-
         allRemainingChoices = ingredientsRestant.concat(appareilsRestant, ustensilesRestant)
         console.log(allRemainingChoices)
         galleryContainer.innerHTML = ""
         display(allRemainingChoices)
-
-
       }
     })
-
   );
-
 }
 
 // // // ? FILTRE DROPDOWNS
