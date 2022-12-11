@@ -36,8 +36,8 @@ function display(data) {
   orderList(data); //Tableau dans l'ordre alphabétique
   createCardList(data); // Création de la galerie
   getChoiceList(data); // Création des choix
-  addChoiceButton(data); // Sélection d'un choix
-  deleteChoiceButton(data); // Suppression d'un choix
+  addChoiceButton(); // Sélection d'un choix
+  deleteChoiceButton(); // Suppression d'un choix
 }
 // ? Affichage de la galerie de cartes
 display(recipes); // Affichage de la page
@@ -290,7 +290,6 @@ function getChoiceList(array) {
       new Set(allIngredientsListWithDupliquate)
     );
     orderChoices(allIngredientsList);
-    //   //Première lettre en MAJ
     let ingredientsListToDisplayUC = [];
     allIngredientsList.forEach((word) => {
       let firstLetter = word.charAt(0).toUpperCase();
@@ -485,6 +484,7 @@ function deleteChoiceButton() {
   let actualDisplayedCardsGalleryDOM = document.querySelectorAll(".card");
   let actualDisplayedCardsGallery = [];
   let actualDisplayedCardsIds = []; //! ID attribué à chaque recette (pas l'emplacement dans le tableau)
+
   let ingredientsRestant = [];
   let appareilsRestant = [];
   let ustensilesRestant = [];
