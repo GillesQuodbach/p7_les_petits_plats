@@ -1,3 +1,4 @@
+import { recipes } from "./json/recipes.js";
 // * CONSTANTES
 const galleryContainer = document.querySelector("#recipes-gallery");
 // Liste des choix déjà sélectionnée
@@ -35,8 +36,8 @@ function display(data) {
   orderList(data); //Tableau dans l'ordre alphabétique
   createCardList(data); // Création de la galerie
   getChoiceList(data); // Création des choix
-  addChoiceButton(data); // Sélection d'un choix
-  deleteChoiceButton(data); // Suppression d'un choix
+  addChoiceButton(); // Sélection d'un choix
+  deleteChoiceButton(); // Suppression d'un choix
 }
 // ? Affichage de la galerie de cartes
 display(recipes); // Affichage de la page
@@ -206,7 +207,7 @@ function getChoiceList(array) {
     //PARTIE INGREDIENT
     finalIngredientList =
       allIngredientsListWithDupliquate.concat(ingredientsSelected); // On concact les deux tableaux
-    ingredientsListToDispplay = finalIngredientList.filter((value, index) => {
+    ingredientsListToDispplay = finalIngredientList.filter((value) => {
       return (
         finalIngredientList.indexOf(value) ===
         finalIngredientList.lastIndexOf(value)
@@ -230,7 +231,7 @@ function getChoiceList(array) {
     //PARTIE APPAREILS
     finalAppareilsList =
       allAppareilsListWithDupliquate.concat(appareilsSelected); // On concact les deux tableaux
-    appareilsListToDispplay = finalAppareilsList.filter((value, index) => {
+    appareilsListToDispplay = finalAppareilsList.filter((value) => {
       return (
         finalAppareilsList.indexOf(value) ===
         finalAppareilsList.lastIndexOf(value)
@@ -258,7 +259,7 @@ function getChoiceList(array) {
       ustensilesToLowerCase.push(ust.toLowerCase())
     );
     finalUstensilesList = ustensilesToLowerCase.concat(ustensilesSelected); // On concact les deux tableaux
-    ustensilesListToDispplay = finalUstensilesList.filter((value, index) => {
+    ustensilesListToDispplay = finalUstensilesList.filter((value) => {
       return (
         finalUstensilesList.indexOf(value) ===
         finalUstensilesList.lastIndexOf(value)
@@ -352,7 +353,7 @@ function getChoiceList(array) {
   }
 }
 //Listener de la liste des choix
-function addChoiceButton(array) {
+function addChoiceButton() {
   //tableau des cards actuellement affichées
   let actualDisplayedCards = [];
   let newArray = [];
@@ -473,16 +474,14 @@ function addChoiceButton(array) {
     })
   );
 }
-function deleteChoiceButton(array) {
+function deleteChoiceButton() {
   const clickedChoices = document.querySelectorAll(
     ".selected-choices-container"
   );
   let actualDisplayedCardsGalleryDOM = document.querySelectorAll(".card");
   let actualDisplayedCardsGallery = [];
   let actualDisplayedCardsIds = []; //! ID attribué à chaque recette (pas l'emplacement dans le tableau)
-  let deletedChoiceArray = [];
-  let arrayEqualId = [];
-  let arrayToDisplay = [];
+
   let ingredientsRestant = [];
   let appareilsRestant = [];
   let ustensilesRestant = [];

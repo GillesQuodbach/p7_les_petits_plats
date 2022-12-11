@@ -26,6 +26,7 @@
   "homepage": "https://github.com/GillesQuodbach/p7_les_petits_plats#readme",
   "description": "",
   "devDependencies": {
+    "eslint": "^8.29.0",
     "prettier": "^2.7.1"
   }
 }
