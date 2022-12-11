@@ -128,7 +128,7 @@ function searchBarreFilter() {
     display(recipes);
   }
   if (searchBarreInput.length > 2) {
-    // Recherche dans DESCRIPTION - NOM - INGREDIENT
+    // Recherche dans DESCRIPTION - NOM - INGREDIENTS
     filteredArray = recipes.filter(
       (recipe) =>
         recipe.name.toLowerCase().includes(searchBarreInput) ||
