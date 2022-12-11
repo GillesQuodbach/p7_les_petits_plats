@@ -128,8 +128,8 @@ function searchBarreFilter() {
     display(recipes);
   }
   if (searchBarreInput.length > 2) {
+    filteredArray = [];
     // Recherche dans DESCRIPTION - NOM - INGREDIENT
-    // BOUCLE FOR OF
     for (let recipe of recipes) {
       if (
         recipe.name.toLowerCase().includes(searchBarreInput) ||
@@ -140,10 +140,14 @@ function searchBarreFilter() {
       )
         filteredArray.push(recipe);
     }
-    //Création des cards
-    display(filteredArray);
-    //Message gallery vide
-    emptyGalleryMessage();
+    if (filteredArray.length <= 0) {
+      //Message gallery vide
+      cardsGallery.innerHTML = "";
+      emptyGalleryMessage();
+    } else {
+      //Création des cards
+      display(filteredArray);
+    }
   }
 }
 
