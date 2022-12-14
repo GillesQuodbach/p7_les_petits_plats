@@ -25,8 +25,6 @@ K
 scss/style.scss,e\f\efa4d8b2a29221ba0bb30281ccccf7ccf2ce193a
 A
 package-lock.json,f\a\fa288d1472d29beccb489a676f68739ad365fc47
-<
-package.json,7\0\7030d0b2f71b999ff89a343de08c414af32fc93a
 A
 css/style.css.map,9\f\9f452116be72e80a7aa1d2a44143b07933383b7d
 =
